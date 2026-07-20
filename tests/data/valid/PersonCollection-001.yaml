@@ -1,0 +1,10 @@
+# A data example for a container with "inline" behaviour.
+people:
+  - id: example:Person001
+    name: foo bar
+    primary_email: foo.bar@example.com
+    age_in_years: 33
+  - id: example:Person002
+    name: fuu bor
+    primary_email: fuu.bor@example.com
+    age_in_years: 44
