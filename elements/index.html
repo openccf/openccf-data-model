@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#openccf" class="md-skip">
+        <a href="#openccf-open-corporate-carbon-footprint-data-model" class="md-skip">
           Skip to content
         </a>
       
@@ -546,9 +546,9 @@
   
 
 
-<h1 id="openccf">openccf</h1>
-<p>An open, interoperable data model for exchanging corporate carbon footprints (GHG Protocol-aligned) between systems.</p>
-<p>URI: <a href="https://w3id.org/openccf/openccf">https://w3id.org/openccf/openccf</a></p>
+<h1 id="openccf-open-corporate-carbon-footprint-data-model">OpenCCF - Open Corporate Carbon Footprint Data Model</h1>
+<p>An open, interoperable data model for exchanging GHG Protocol-aligned corporate carbon footprints between systems. Released under CC0-1.0.</p>
+<p>URI: <a href="https://w3id.org/openccf">https://w3id.org/openccf</a></p>
 <p>Name: openccf</p>
 <h2 id="classes">Classes</h2>
 <table>
@@ -560,16 +560,44 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="NamedThing/">NamedThing</a></td>
-<td>A generic grouping for any identifiable entity</td>
+<td><a href="ActivityData/">ActivityData</a></td>
+<td>Optional activity information underlying the emissions</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Person/">Person</a></td>
-<td>Represents a Person</td>
+<td><a href="CompanyIdentifier/">CompanyIdentifier</a></td>
+<td>Standardised company identifier</td>
 </tr>
 <tr>
-<td><a href="PersonCollection/">PersonCollection</a></td>
-<td>A holder for Person objects</td>
+<td><a href="DataQuality/">DataQuality</a></td>
+<td>Data quality of an emissions line, aligned to the GHG Protocol Scope 3 Standa...</td>
+</tr>
+<tr>
+<td><a href="EmissionFactor/">EmissionFactor</a></td>
+<td>Metadata describing the emission factor applied to a line</td>
+</tr>
+<tr>
+<td><a href="EmissionsLine/">EmissionsLine</a></td>
+<td>A single quantified source or category of emissions within a report</td>
+</tr>
+<tr>
+<td><a href="EmissionsReport/">EmissionsReport</a></td>
+<td>A company's greenhouse gas footprint for a defined reporting period</td>
+</tr>
+<tr>
+<td><a href="GasBreakdown/">GasBreakdown</a></td>
+<td>Constituent gas-level resolution of a line's emissions</td>
+</tr>
+<tr>
+<td><a href="IntensityDenominator/">IntensityDenominator</a></td>
+<td>A denominator for calculating intensity values</td>
+</tr>
+<tr>
+<td><a href="LandSectorData/">LandSectorData</a></td>
+<td>Optional land sector and removals metadata</td>
+</tr>
+<tr>
+<td><a href="Sector/">Sector</a></td>
+<td>Standardised sector classification</td>
 </tr>
 </tbody>
 </table>
@@ -583,36 +611,204 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="age_in_years/">age_in_years</a></td>
-<td>Number of years since birth</td>
+<td><a href="accountingType/">accountingType</a></td>
+<td>Inventory treatment of this line, and its contribution to the report net tota...</td>
 </tr>
 <tr>
-<td><a href="birth_date/">birth_date</a></td>
-<td>Date on which a person is born</td>
-</tr>
-<tr>
-<td><a href="description/">description</a></td>
-<td>A human-readable description for a thing</td>
-</tr>
-<tr>
-<td><a href="id/">id</a></td>
-<td>A unique identifier for a thing</td>
-</tr>
-<tr>
-<td><a href="name/">name</a></td>
-<td>A human-readable name for a thing</td>
-</tr>
-<tr>
-<td><a href="people/">people</a></td>
+<td><a href="activityData/">activityData</a></td>
 <td></td>
 </tr>
 <tr>
-<td><a href="primary_email/">primary_email</a></td>
-<td>The main email address of a person</td>
+<td><a href="boundary/">boundary</a></td>
+<td>Land boundary / traceability level</td>
 </tr>
 <tr>
-<td><a href="vital_status/">vital_status</a></td>
-<td>living or dead status</td>
+<td><a href="category/">category</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="code/">code</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="companyFacilityIdentifier/">companyFacilityIdentifier</a></td>
+<td>Facility where emissions physically occurred (optional)</td>
+</tr>
+<tr>
+<td><a href="companyIdentifiers/">companyIdentifiers</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="companyName/">companyName</a></td>
+<td>Legal or trading name of the reporting entity</td>
+</tr>
+<tr>
+<td><a href="completeness/">completeness</a></td>
+<td>Degree to which the emission estimation is statistically representative and c...</td>
+</tr>
+<tr>
+<td><a href="dataQuality/">dataQuality</a></td>
+<td>GHG Protocol data quality assessment for this line, spanning both the activit...</td>
+</tr>
+<tr>
+<td><a href="dataQualityInformation/">dataQualityInformation</a></td>
+<td>Optional free-text data quality context not captured by the indicators above ...</td>
+</tr>
+<tr>
+<td><a href="dataset/">dataset</a></td>
+<td>Specific dataset used (optional)</td>
+</tr>
+<tr>
+<td><a href="dataYear/">dataYear</a></td>
+<td>Year the emission factor was issued</td>
+</tr>
+<tr>
+<td><a href="description/">description</a></td>
+<td>Free-text description of the specific activity quantity used to calculate thi...</td>
+</tr>
+<tr>
+<td><a href="emissionFactor/">emissionFactor</a></td>
+<td>Metadata on the emission factor used for this line</td>
+</tr>
+<tr>
+<td><a href="emissionOrigin/">emissionOrigin</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="emissionsLines/">emissionsLines</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="emissionsQuantityKgCO2e/">emissionsQuantityKgCO2e</a></td>
+<td>Total CO2-equivalent for this line, expressed as a non-negative magnitude</td>
+</tr>
+<tr>
+<td><a href="gas/">gas</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="gasBreakdown/">gasBreakdown</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="gasCO2eContribution/">gasCO2eContribution</a></td>
+<td>Portion of the line's emissionsQuantityKgCO2e attributable to this gas, as a ...</td>
+</tr>
+<tr>
+<td><a href="gasQuantity/">gasQuantity</a></td>
+<td>Quantity of the gas in its native unit (e</td>
+</tr>
+<tr>
+<td><a href="geographicalRepresentativeness/">geographicalRepresentativeness</a></td>
+<td>Degree to which the emission estimation reflects the actual geography</td>
+</tr>
+<tr>
+<td><a href="gwpHorizon/">gwpHorizon</a></td>
+<td>GWP time horizon applied across the whole report</td>
+</tr>
+<tr>
+<td><a href="intensityDenominators/">intensityDenominators</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ipccBasis/">ipccBasis</a></td>
+<td>IPCC Assessment Report basis for the GWP values used</td>
+</tr>
+<tr>
+<td><a href="landSectorData/">landSectorData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="lifecycleStage/">lifecycleStage</a></td>
+<td>Where applicable (e</td>
+</tr>
+<tr>
+<td><a href="lineStatus/">lineStatus</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="monitoringApproach/">monitoringApproach</a></td>
+<td>Monitoring approach and reversal treatment</td>
+</tr>
+<tr>
+<td><a href="name/">name</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="primaryRegion/">primaryRegion</a></td>
+<td>Location of the reporting entity as a UN/LOCODE (minimum country; state/regio...</td>
+</tr>
+<tr>
+<td><a href="region/">region</a></td>
+<td>Country or region where emissions physically occurred, as a UN/LOCODE (minimu...</td>
+</tr>
+<tr>
+<td><a href="reliability/">reliability</a></td>
+<td>Reliability of the emission estimation sources and measurement or estimation ...</td>
+</tr>
+<tr>
+<td><a href="reportID/">reportID</a></td>
+<td>Unique identifier for this report</td>
+</tr>
+<tr>
+<td><a href="reportingPeriodEnd/">reportingPeriodEnd</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="reportingPeriodStart/">reportingPeriodStart</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="reportStatus/">reportStatus</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="scheme/">scheme</a></td>
+<td>Classification scheme (e</td>
+</tr>
+<tr>
+<td><a href="scope/">scope</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="sectors/">sectors</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="source/">source</a></td>
+<td>Authority for the emission factor used</td>
+</tr>
+<tr>
+<td><a href="storageDuration/">storageDuration</a></td>
+<td>Expected storage duration / permanence category</td>
+</tr>
+<tr>
+<td><a href="subcategory/">subcategory</a></td>
+<td>Optional free-text subcategorisation of the line within its category, at the ...</td>
+</tr>
+<tr>
+<td><a href="technologicalRepresentativeness/">technologicalRepresentativeness</a></td>
+<td>Degree to which the emission estimation reflects the actual technology(ies) u...</td>
+</tr>
+<tr>
+<td><a href="temporalRepresentativeness/">temporalRepresentativeness</a></td>
+<td>Degree to which the emission estimation reflects the actual time period</td>
+</tr>
+<tr>
+<td><a href="totalNetEmissionsKgCO2e/">totalNetEmissionsKgCO2e</a></td>
+<td>Net aggregate for the reporting period, derived as sum(EMISSION) - sum(REMOVA...</td>
+</tr>
+<tr>
+<td><a href="type/">type</a></td>
+<td>e</td>
+</tr>
+<tr>
+<td><a href="unit/">unit</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="value/">value</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -626,8 +822,44 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="PersonStatus/">PersonStatus</a></td>
-<td>The vital status of a person</td>
+<td><a href="AccountingTypeEnum/">AccountingTypeEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="DataQualityRatingEnum/">DataQualityRatingEnum</a></td>
+<td>GHG Protocol data quality indicator rating (Poor to Very good)</td>
+</tr>
+<tr>
+<td><a href="EmissionCategoryEnum/">EmissionCategoryEnum</a></td>
+<td>Source classification</td>
+</tr>
+<tr>
+<td><a href="EmissionOriginEnum/">EmissionOriginEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="GasEnum/">GasEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="GwpHorizonEnum/">GwpHorizonEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="IpccBasisEnum/">IpccBasisEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="LineStatusEnum/">LineStatusEnum</a></td>
+<td>Completeness of this line</td>
+</tr>
+<tr>
+<td><a href="ReportStatusEnum/">ReportStatusEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ScopeEnum/">ScopeEnum</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
