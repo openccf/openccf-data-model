@@ -1,0 +1,486 @@
+name: openccf
+description: An open, interoperable data model for exchanging corporate carbon footprints
+  (GHG Protocol-aligned) between systems.
+title: openccf
+see_also:
+- https://openccf.github.io/openccf
+id: https://w3id.org/openccf/openccf
+imports:
+- linkml:types
+license: LicenseRef-Custom
+prefixes:
+  openccf:
+    prefix_prefix: openccf
+    prefix_reference: https://w3id.org/openccf/openccf/
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  biolink:
+    prefix_prefix: biolink
+    prefix_reference: https://w3id.org/biolink/vocab/
+  schema:
+    prefix_prefix: schema
+    prefix_reference: http://schema.org/
+  PATO:
+    prefix_prefix: PATO
+    prefix_reference: http://purl.obolibrary.org/obo/PATO_
+  example:
+    prefix_prefix: example
+    prefix_reference: http://www.example.org/rdf#
+default_prefix: openccf
+default_range: string
+types:
+  string:
+    name: string
+    definition_uri: https://w3id.org/linkml/String
+    description: A character string
+    notes:
+    - In RDF serializations, a slot with range of string is treated as a literal or
+      type xsd:string. If you are authoring schemas in LinkML YAML, the type is referenced
+      with the lower case "string".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Text
+    base: str
+    uri: xsd:string
+  integer:
+    name: integer
+    definition_uri: https://w3id.org/linkml/Integer
+    description: An integer
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "integer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Integer
+    base: int
+    uri: xsd:integer
+  boolean:
+    name: boolean
+    definition_uri: https://w3id.org/linkml/Boolean
+    description: A binary (true or false) value
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "boolean".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Boolean
+    base: Bool
+    uri: xsd:boolean
+    repr: bool
+  float:
+    name: float
+    definition_uri: https://w3id.org/linkml/Float
+    description: A real number that conforms to the xsd:float specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "float".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:float
+  double:
+    name: double
+    definition_uri: https://w3id.org/linkml/Double
+    description: A real number that conforms to the xsd:double specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "double".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:double
+  decimal:
+    name: decimal
+    definition_uri: https://w3id.org/linkml/Decimal
+    description: A real number with arbitrary precision that conforms to the xsd:decimal
+      specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "decimal".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    broad_mappings:
+    - schema:Number
+    base: Decimal
+    uri: xsd:decimal
+  time:
+    name: time
+    definition_uri: https://w3id.org/linkml/Time
+    description: A time object represents a (local) time of day, independent of any
+      particular day
+    notes:
+    - URI is dateTime because OWL reasoners do not work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "time".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Time
+    base: XSDTime
+    uri: xsd:time
+    repr: str
+  date:
+    name: date
+    definition_uri: https://w3id.org/linkml/Date
+    description: a date (year, month and day) in an idealized calendar
+    notes:
+    - URI is dateTime because OWL reasoners don't work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Date
+    base: XSDDate
+    uri: xsd:date
+    repr: str
+  datetime:
+    name: datetime
+    definition_uri: https://w3id.org/linkml/Datetime
+    description: The combination of a date and time
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:DateTime
+    base: XSDDateTime
+    uri: xsd:dateTime
+    repr: str
+  date_or_datetime:
+    name: date_or_datetime
+    definition_uri: https://w3id.org/linkml/DateOrDatetime
+    description: Either a date or a datetime
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date_or_datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: linkml:DateOrDatetime
+    repr: str
+  uriorcurie:
+    name: uriorcurie
+    definition_uri: https://w3id.org/linkml/Uriorcurie
+    description: a URI or a CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uriorcurie".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: URIorCURIE
+    uri: xsd:anyURI
+    repr: str
+  curie:
+    name: curie
+    definition_uri: https://w3id.org/linkml/Curie
+    conforms_to: https://www.w3.org/TR/curie/
+    description: a compact URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "curie".
+    comments:
+    - in RDF serializations this MUST be expanded to a URI
+    - in non-RDF serializations MAY be serialized as the compact representation
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: Curie
+    uri: xsd:string
+    repr: str
+  uri:
+    name: uri
+    definition_uri: https://w3id.org/linkml/Uri
+    conforms_to: https://www.ietf.org/rfc/rfc3987.txt
+    description: a complete URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uri".
+    comments:
+    - in RDF serializations a slot with range of uri is treated as a literal or type
+      xsd:anyURI unless it is an identifier or a reference to an identifier, in which
+      case it is translated directly to a node
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:URL
+    base: URI
+    uri: xsd:anyURI
+    repr: str
+  ncname:
+    name: ncname
+    definition_uri: https://w3id.org/linkml/Ncname
+    description: Prefix part of CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "ncname".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NCName
+    uri: xsd:string
+    repr: str
+  objectidentifier:
+    name: objectidentifier
+    definition_uri: https://w3id.org/linkml/Objectidentifier
+    description: A URI or CURIE that represents an object in the model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "objectidentifier".
+    comments:
+    - Used for inheritance and type checking
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: ElementIdentifier
+    uri: shex:iri
+    repr: str
+  nodeidentifier:
+    name: nodeidentifier
+    definition_uri: https://w3id.org/linkml/Nodeidentifier
+    description: A URI, CURIE or BNODE that represents a node in a model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "nodeidentifier".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NodeIdentifier
+    uri: shex:nonLiteral
+    repr: str
+  jsonpointer:
+    name: jsonpointer
+    definition_uri: https://w3id.org/linkml/Jsonpointer
+    conforms_to: https://datatracker.ietf.org/doc/html/rfc6901
+    description: A string encoding a JSON Pointer. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to a valid object within the current
+      instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpointer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  jsonpath:
+    name: jsonpath
+    definition_uri: https://w3id.org/linkml/Jsonpath
+    conforms_to: https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html
+    description: A string encoding a JSON Path. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to zero or more valid objects within
+      the current instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  sparqlpath:
+    name: sparqlpath
+    definition_uri: https://w3id.org/linkml/Sparqlpath
+    conforms_to: https://www.w3.org/TR/sparql11-query/#propertypaths
+    description: A string encoding a SPARQL Property Path. The value of the string
+      MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects
+      within the current instance document when encoded as RDF.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "sparqlpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+enums:
+  PersonStatus:
+    name: PersonStatus
+    definition_uri: https://w3id.org/openccf/openccf/PersonStatus
+    description: The vital status of a person
+    from_schema: https://w3id.org/openccf/openccf
+    permissible_values:
+      ALIVE:
+        text: ALIVE
+        description: the person is living
+        meaning: PATO:0001421
+      DEAD:
+        text: DEAD
+        description: the person is deceased
+        meaning: PATO:0001422
+      UNKNOWN:
+        text: UNKNOWN
+        description: the vital status is not known
+        todos:
+        - map this to an ontology
+slots:
+  id:
+    name: id
+    definition_uri: https://w3id.org/openccf/openccf/id
+    description: A unique identifier for a thing
+    from_schema: https://w3id.org/openccf/openccf
+    mappings:
+    - schema:identifier
+    slot_uri: schema:identifier
+    identifier: true
+    owner: NamedThing
+    domain_of:
+    - NamedThing
+    range: uriorcurie
+    required: true
+  name:
+    name: name
+    definition_uri: https://w3id.org/openccf/openccf/name
+    description: A human-readable name for a thing
+    from_schema: https://w3id.org/openccf/openccf
+    mappings:
+    - schema:name
+    slot_uri: schema:name
+    owner: NamedThing
+    domain_of:
+    - NamedThing
+    range: string
+  description:
+    name: description
+    definition_uri: https://w3id.org/openccf/openccf/description
+    description: A human-readable description for a thing
+    from_schema: https://w3id.org/openccf/openccf
+    mappings:
+    - schema:description
+    slot_uri: schema:description
+    owner: NamedThing
+    domain_of:
+    - NamedThing
+    range: string
+  primary_email:
+    name: primary_email
+    definition_uri: https://w3id.org/openccf/openccf/primary_email
+    description: The main email address of a person
+    from_schema: https://w3id.org/openccf/openccf
+    mappings:
+    - schema:email
+    slot_uri: schema:email
+    owner: Person
+    domain_of:
+    - Person
+    range: string
+  birth_date:
+    name: birth_date
+    definition_uri: https://w3id.org/openccf/openccf/birth_date
+    description: Date on which a person is born
+    from_schema: https://w3id.org/openccf/openccf
+    mappings:
+    - schema:birthDate
+    slot_uri: schema:birthDate
+    owner: Person
+    domain_of:
+    - Person
+    range: date
+  age_in_years:
+    name: age_in_years
+    definition_uri: https://w3id.org/openccf/openccf/age_in_years
+    description: Number of years since birth
+    from_schema: https://w3id.org/openccf/openccf
+    slot_uri: openccf:age_in_years
+    owner: Person
+    domain_of:
+    - Person
+    range: integer
+  vital_status:
+    name: vital_status
+    definition_uri: https://w3id.org/openccf/openccf/vital_status
+    description: living or dead status
+    from_schema: https://w3id.org/openccf/openccf
+    slot_uri: openccf:vital_status
+    owner: Person
+    domain_of:
+    - Person
+    range: PersonStatus
+  personCollection__people:
+    name: personCollection__people
+    from_schema: https://w3id.org/openccf/openccf
+    slot_uri: openccf:people
+    alias: people
+    owner: PersonCollection
+    domain_of:
+    - PersonCollection
+    range: Person
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  Person_primary_email:
+    name: Person_primary_email
+    definition_uri: https://w3id.org/openccf/openccf/primary_email
+    description: The main email address of a person
+    from_schema: https://w3id.org/openccf/openccf
+    mappings:
+    - schema:email
+    is_a: primary_email
+    domain: Person
+    slot_uri: schema:email
+    alias: primary_email
+    owner: Person
+    domain_of:
+    - Person
+    is_usage_slot: true
+    usage_slot_name: primary_email
+    range: string
+    pattern: ^\S+@[\S+\.]+\S+
+classes:
+  NamedThing:
+    name: NamedThing
+    definition_uri: https://w3id.org/openccf/openccf/NamedThing
+    description: A generic grouping for any identifiable entity
+    from_schema: https://w3id.org/openccf/openccf
+    mappings:
+    - schema:Thing
+    slots:
+    - id
+    - name
+    - description
+    class_uri: schema:Thing
+  Person:
+    name: Person
+    definition_uri: https://w3id.org/openccf/openccf/Person
+    description: Represents a Person
+    from_schema: https://w3id.org/openccf/openccf
+    is_a: NamedThing
+    slots:
+    - id
+    - name
+    - description
+    - Person_primary_email
+    - birth_date
+    - age_in_years
+    - vital_status
+    slot_usage:
+      primary_email:
+        name: primary_email
+        pattern: ^\S+@[\S+\.]+\S+
+    class_uri: openccf:Person
+  PersonCollection:
+    name: PersonCollection
+    definition_uri: https://w3id.org/openccf/openccf/PersonCollection
+    description: A holder for Person objects
+    from_schema: https://w3id.org/openccf/openccf
+    slots:
+    - personCollection__people
+    attributes:
+      people:
+        name: people
+        range: Person
+        multivalued: true
+        inlined_as_list: true
+    class_uri: openccf:PersonCollection
+    tree_root: true
+metamodel_version: 1.11.0
+source_file: openccf.yaml
+source_file_date: '2026-07-17T17:29:41'
+source_file_size: 2314
+generation_date: '2026-07-21T13:29:52'
+

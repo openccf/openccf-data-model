@@ -1,0 +1,38 @@
+reportID: ACME-2024
+companyName: Acme Manufacturing Ltd
+primaryRegion: GB
+reportingPeriodStart: '2024-01-01'
+reportingPeriodEnd: '2024-12-31'
+totalNetEmissionsKgCO2e: 750000.0
+gwpHorizon: GWP100
+reportStatus: THIRD_PARTY_AUDITED
+emissionsLines:
+  - scope: SCOPE_1
+    category: STATIONARY_COMBUSTION
+    subcategory: Natural gas
+    lineStatus: COMPLETE
+    emissionsQuantityKgCO2e: 450000.0
+    emissionOrigin: FOSSIL
+    accountingType: EMISSION
+    region: GB
+    emissionFactor:
+      source: UK DESNZ
+      dataYear: 2024
+      ipccBasis: AR6
+    dataQuality:
+      technologicalRepresentativeness: GOOD
+      temporalRepresentativeness: VERY_GOOD
+      geographicalRepresentativeness: FAIR
+      completeness: GOOD
+      reliability: GOOD
+  - scope: SCOPE_2
+    category: ELECTRICITY_LOCATION_BASED
+    lineStatus: COMPLETE
+    emissionsQuantityKgCO2e: 300000.0
+    emissionOrigin: FOSSIL
+    accountingType: EMISSION
+    region: GB
+    emissionFactor:
+      source: UK DESNZ
+      dataYear: 2024
+      ipccBasis: AR6

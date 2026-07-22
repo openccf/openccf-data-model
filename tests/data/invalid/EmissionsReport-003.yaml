@@ -1,0 +1,20 @@
+reportID: BAD-SCOPE-CAT
+companyName: Mismatch Co
+primaryRegion: GB
+reportingPeriodStart: '2024-01-01'
+reportingPeriodEnd: '2024-12-31'
+totalNetEmissionsKgCO2e: 100.0
+gwpHorizon: GWP100
+reportStatus: SELF_COMPLETED
+emissionsLines:
+  - scope: SCOPE_1
+    category: S3_11_USE_OF_SOLD_PRODUCTS
+    lineStatus: COMPLETE
+    emissionsQuantityKgCO2e: 100.0
+    emissionOrigin: FOSSIL
+    accountingType: EMISSION
+    region: GB
+    emissionFactor:
+      source: UK DESNZ
+      dataYear: 2024
+      ipccBasis: AR6

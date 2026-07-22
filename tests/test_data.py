@@ -25,3 +25,18 @@ def test_valid_data_files(filepath):
     )
     obj = yaml_loader.load(filepath, target_class=tgt_class)
     assert obj
+
+from linkml.validator import validate_file
+
+
+@pytest.mark.parametrize("filepath", INVALID_EXAMPLE_FILES)
+def test_invalid_data_files(filepath):
+    """Each invalid data file must fail schema validation."""
+    schema_path = Path(__file__).parent.parent / "src" / "openccf" / "schema" / "openccf.yaml"
+    target_class_name = Path(filepath).stem.split("-")[0]
+    report = validate_file(
+        filepath,
+        str(schema_path),
+        target_class_name,
+    )
+    assert report.results, f"Expected validation errors for {filepath}, but it passed"

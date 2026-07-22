@@ -1,0 +1,20 @@
+reportID: BAD-2024
+companyName: Broken Co
+primaryRegion: GB
+reportingPeriodStart: '2024-01-01'
+reportingPeriodEnd: '2024-12-31'
+totalNetEmissionsKgCO2e: 100.0
+gwpHorizon: GWP100
+reportStatus: SELF_COMPLETED
+emissionsLines:
+  - scope: SCOPE_4
+    category: STATIONARY_COMBUSTION
+    lineStatus: SELF_COMPLETED
+    emissionsQuantityKgCO2e: 100.0
+    emissionOrigin: FOSSIL
+    accountingType: EMISSION
+    region: GB
+    emissionFactorSource: UK DESNZ
+    emissionFactorApplicableYear: 2024
+    emissionFactorIpccBasis: AR6
+    dataQualityCode: estimated
