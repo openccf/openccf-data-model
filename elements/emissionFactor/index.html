@@ -486,7 +486,7 @@
 
 
 <h1 id="slot-emissionfactor">Slot: emissionFactor</h1>
-<p><em>Metadata on the emission factor used for this line.</em></p>
+<p><em>Metadata on the emission factor used for this line. Optional as many exchanged figures (e.g. republished totals, or directly measured emissions) have no disclosed factor. Where factor is provided, source, year and ipccBasis are required.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/openccf/emissionFactor">openccf:emissionFactor</a></p>
 <!-- no inheritance hierarchy -->
@@ -537,10 +537,6 @@
 </thead>
 <tbody>
 <tr>
-<td>Required</td>
-<td>Yes</td>
-</tr>
-<tr>
 <td>### Slot Characteristics</td>
 <td></td>
 </tr>
@@ -587,14 +583,15 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">emissionFactor</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Metadata on the emission factor used for this line.</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Metadata on the emission factor used for this line. Optional as many</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">exchanged figures (e.g. republished totals, or directly measured emissions) have</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">no disclosed factor. Where factor is provided, source, year and ipccBasis are required.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsLine</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsLine</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionFactor</span>
-<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>

@@ -447,7 +447,7 @@
 
 
 <h1 id="enum-emissioncategoryenum">Enum: EmissionCategoryEnum</h1>
-<p><em>Source classification. Valid values are scope-dependent; the scope-to-category validity constraint is enforced separately.</em></p>
+<p><em>Source classification. Valid values are scope-dependent; the scope-to-category validity constraint is enforced by rules on EmissionsLine.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/openccf/EmissionCategoryEnum">openccf:EmissionCategoryEnum</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
@@ -570,6 +570,11 @@
 <td>None</td>
 <td>Category 15: Investments</td>
 </tr>
+<tr>
+<td>NOT_SPECIFIED</td>
+<td>None</td>
+<td>Category not specified or not disclosed by the source</td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -596,7 +601,7 @@
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionCategoryEnum</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Source classification. Valid values are scope-dependent; the scope-to-category</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">validity constraint is enforced separately.</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">validity constraint is enforced by rules on EmissionsLine.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">permissible_values</span><span class="p">:</span>
@@ -667,6 +672,9 @@
 <span class="w">  </span><span class="nt">S3_15_INVESTMENTS</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S3_15_INVESTMENTS</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Category</span><span class="nv"> </span><span class="s">15:</span><span class="nv"> </span><span class="s">Investments.&#39;</span>
+<span class="w">  </span><span class="nt">NOT_SPECIFIED</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT_SPECIFIED</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Category not specified or not disclosed by the source.</span>
 </code></pre></div>
 </details>
 </div>

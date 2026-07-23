@@ -368,7 +368,7 @@
 
 
 
-        EmissionsLine --&gt; "1" EmissionFactor : emissionFactor
+        EmissionsLine --&gt; "0..1" EmissionFactor : emissionFactor
         click EmissionFactor href "../EmissionFactor/"
 
 
@@ -511,7 +511,7 @@
 </tr>
 <tr>
 <td><a href="../emissionFactor/">emissionFactor</a></td>
-<td>1 <br/> <a href="../EmissionFactor/">EmissionFactor</a></td>
+<td>0..1 <br/> <a href="../EmissionFactor/">EmissionFactor</a></td>
 <td>Metadata on the emission factor used for this line</td>
 <td>direct</td>
 </tr>
@@ -581,7 +581,7 @@
 <tr>
 <td>slot_conditions</td>
 <td><code>{'scope': {'equals_string': 'SCOPE_1'}}</code></td>
-<td><code>{'category': {'any_of': [{'equals_string': 'STATIONARY_COMBUSTION'}, {'equals_string': 'MOBILE_COMBUSTION'}, {'equals_string': 'PROCESS_EMISSIONS'}, {'equals_string': 'FUGITIVE'}]}}</code></td>
+<td><code>{'category': {'any_of': [{'equals_string': 'STATIONARY_COMBUSTION'}, {'equals_string': 'MOBILE_COMBUSTION'}, {'equals_string': 'PROCESS_EMISSIONS'}, {'equals_string': 'FUGITIVE'}, {'equals_string': 'NOT_SPECIFIED'}]}}</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -600,7 +600,7 @@
 <tr>
 <td>slot_conditions</td>
 <td><code>{'scope': {'equals_string': 'SCOPE_2'}}</code></td>
-<td><code>{'category': {'any_of': [{'equals_string': 'ELECTRICITY_MARKET_BASED'}, {'equals_string': 'ELECTRICITY_LOCATION_BASED'}, {'equals_string': 'HEAT_STEAM_COOLING'}]}}</code></td>
+<td><code>{'category': {'any_of': [{'equals_string': 'ELECTRICITY_MARKET_BASED'}, {'equals_string': 'ELECTRICITY_LOCATION_BASED'}, {'equals_string': 'HEAT_STEAM_COOLING'}, {'equals_string': 'NOT_SPECIFIED'}]}}</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -619,7 +619,7 @@
 <tr>
 <td>slot_conditions</td>
 <td><code>{'scope': {'equals_string': 'SCOPE_3'}}</code></td>
-<td><code>{'category': {'any_of': [{'equals_string': 'S3_01_PURCHASED_GOODS_SERVICES'}, {'equals_string': 'S3_02_CAPITAL_GOODS'}, {'equals_string': 'S3_03_FUEL_ENERGY_RELATED'}, {'equals_string': 'S3_04_UPSTREAM_TRANSPORT'}, {'equals_string': 'S3_05_WASTE_IN_OPERATIONS'}, {'equals_string': 'S3_06_BUSINESS_TRAVEL'}, {'equals_string': 'S3_07_EMPLOYEE_COMMUTING'}, {'equals_string': 'S3_08_UPSTREAM_LEASED_ASSETS'}, {'equals_string': 'S3_09_DOWNSTREAM_TRANSPORT'}, {'equals_string': 'S3_10_PROCESSING_SOLD_PRODUCTS'}, {'equals_string': 'S3_11_USE_OF_SOLD_PRODUCTS'}, {'equals_string': 'S3_12_EOL_SOLD_PRODUCTS'}, {'equals_string': 'S3_13_DOWNSTREAM_LEASED_ASSETS'}, {'equals_string': 'S3_14_FRANCHISES'}, {'equals_string': 'S3_15_INVESTMENTS'}]}}</code></td>
+<td><code>{'category': {'any_of': [{'equals_string': 'S3_01_PURCHASED_GOODS_SERVICES'}, {'equals_string': 'S3_02_CAPITAL_GOODS'}, {'equals_string': 'S3_03_FUEL_ENERGY_RELATED'}, {'equals_string': 'S3_04_UPSTREAM_TRANSPORT'}, {'equals_string': 'S3_05_WASTE_IN_OPERATIONS'}, {'equals_string': 'S3_06_BUSINESS_TRAVEL'}, {'equals_string': 'S3_07_EMPLOYEE_COMMUTING'}, {'equals_string': 'S3_08_UPSTREAM_LEASED_ASSETS'}, {'equals_string': 'S3_09_DOWNSTREAM_TRANSPORT'}, {'equals_string': 'S3_10_PROCESSING_SOLD_PRODUCTS'}, {'equals_string': 'S3_11_USE_OF_SOLD_PRODUCTS'}, {'equals_string': 'S3_12_EOL_SOLD_PRODUCTS'}, {'equals_string': 'S3_13_DOWNSTREAM_LEASED_ASSETS'}, {'equals_string': 'S3_14_FRANCHISES'}, {'equals_string': 'S3_15_INVESTMENTS'}, {'equals_string': 'NOT_SPECIFIED'}]}}</code></td>
 <td></td>
 </tr>
 </tbody>
@@ -756,13 +756,15 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsLine</span>
 <span class="w">  </span><span class="nt">emissionFactor</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">emissionFactor</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Metadata on the emission factor used for this line.</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Metadata on the emission factor used for this line. Optional as many</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">exchanged figures (e.g. republished totals, or directly measured emissions)</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">have no disclosed factor. Where factor is provided, source, year and ipccBasis</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">are required.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsLine</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionFactor</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">dataQuality</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataQuality</span>
@@ -825,7 +827,8 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MOBILE_COMBUSTION</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PROCESS_EMISSIONS</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FUGITIVE</span>
-<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scope 1 lines must use a Scope 1 category.</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT_SPECIFIED</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scope 1 lines must use a Scope 1 category, or NOT_SPECIFIED.</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">preconditions</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">scope</span><span class="p">:</span>
@@ -839,7 +842,8 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ELECTRICITY_MARKET_BASED</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ELECTRICITY_LOCATION_BASED</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HEAT_STEAM_COOLING</span>
-<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scope 2 lines must use a Scope 2 category.</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT_SPECIFIED</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scope 2 lines must use a Scope 2 category, or NOT_SPECIFIED.</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">preconditions</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">scope</span><span class="p">:</span>
@@ -865,7 +869,8 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S3_13_DOWNSTREAM_LEASED_ASSETS</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S3_14_FRANCHISES</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S3_15_INVESTMENTS</span>
-<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scope 3 lines must use a Scope 3 category.</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT_SPECIFIED</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scope 3 lines must use a Scope 3 category, or NOT_SPECIFIED.</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
@@ -988,14 +993,16 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">emissionFactor</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">emissionFactor</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Metadata on the emission factor used for this line.</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Metadata on the emission factor used for this line. Optional as many</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">exchanged figures (e.g. republished totals, or directly measured emissions)</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">have no disclosed factor. Where factor is provided, source, year and ipccBasis</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">are required.</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsLine</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsLine</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionFactor</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">dataQuality</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataQuality</span>
@@ -1065,7 +1072,8 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MOBILE_COMBUSTION</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PROCESS_EMISSIONS</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FUGITIVE</span>
-<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scope 1 lines must use a Scope 1 category.</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT_SPECIFIED</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scope 1 lines must use a Scope 1 category, or NOT_SPECIFIED.</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">preconditions</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">scope</span><span class="p">:</span>
@@ -1079,7 +1087,8 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ELECTRICITY_MARKET_BASED</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ELECTRICITY_LOCATION_BASED</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HEAT_STEAM_COOLING</span>
-<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scope 2 lines must use a Scope 2 category.</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT_SPECIFIED</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scope 2 lines must use a Scope 2 category, or NOT_SPECIFIED.</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">preconditions</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">slot_conditions</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">scope</span><span class="p">:</span>
@@ -1105,7 +1114,8 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S3_13_DOWNSTREAM_LEASED_ASSETS</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S3_14_FRANCHISES</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S3_15_INVESTMENTS</span>
-<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scope 3 lines must use a Scope 3 category.</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">equals_string</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NOT_SPECIFIED</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Scope 3 lines must use a Scope 3 category, or NOT_SPECIFIED.</span>
 </code></pre></div>
 </details>
 </div>

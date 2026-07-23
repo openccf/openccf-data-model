@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://openccf.github.io/openccf/elements/value/">
+        <link rel="canonical" href="https://openccf.github.io/openccf/elements/valueUnit/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: value - openccf</title>
+        <title>Slot: valueUnit - openccf</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-value" class="md-skip">
+        <a href="#slot-valueunit" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: value
+              Slot: valueUnit
             
           </span>
         </div>
@@ -423,6 +423,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -468,9 +485,10 @@
   
 
 
-<h1 id="slot-value">Slot: value</h1>
+<h1 id="slot-valueunit">Slot: valueUnit</h1>
+<p><em>Denominator unit for the emission factor value, i.e. the activity unit it applies to (e.g. "kWh", "litre", "tonne-km", "GBP"). Required where value is provided. Where activityData is also present, this should match its unit.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/openccf/value">openccf:value</a></p>
+<p>URI: <a href="https://w3id.org/openccf/valueUnit">openccf:valueUnit</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -483,23 +501,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../CompanyIdentifier/">CompanyIdentifier</a></td>
-<td>Standardised company identifier</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../IntensityDenominator/">IntensityDenominator</a></td>
-<td>A denominator for calculating intensity values</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../EmissionFactor/">EmissionFactor</a></td>
 <td>Metadata describing the emission factor applied to a line</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ActivityData/">ActivityData</a></td>
-<td>Optional activity information underlying the emissions</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -520,7 +523,7 @@
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../CompanyIdentifier/">CompanyIdentifier</a>, <a href="../IntensityDenominator/">IntensityDenominator</a>, <a href="../EmissionFactor/">EmissionFactor</a>, <a href="../ActivityData/">ActivityData</a></td>
+<td><a href="../EmissionFactor/">EmissionFactor</a></td>
 </tr>
 </tbody>
 </table>
@@ -534,12 +537,30 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td>### Slot Characteristics</td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Owner</td>
+<td><a href="../EmissionFactor/">EmissionFactor</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: <a href="https://w3id.org/openccf">https://w3id.org/openccf</a></li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -551,22 +572,25 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>openccf:value</td>
+<td>openccf:valueUnit</td>
 </tr>
 <tr>
 <td>native</td>
-<td>openccf:value</td>
+<td>openccf:valueUnit</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">valueUnit</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Denominator unit for the emission factor value, i.e. the activity unit</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">it applies to (e.g. &quot;kWh&quot;, &quot;litre&quot;, &quot;tonne-km&quot;, &quot;GBP&quot;). Required where value is</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">provided. Where activityData is also present, this should match its unit.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionFactor</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompanyIdentifier</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntensityDenominator</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionFactor</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ActivityData</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 </code></pre></div>
 </details>

@@ -277,7 +277,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-emissionsreport">Class: EmissionsReport</h1>
-<p><em>A company's greenhouse gas footprint for a defined reporting period. Acts as the container for one or more Emissions Lines.</em></p>
+<p><em>A company's greenhouse gas footprint for a defined reporting period. Acts as the container for one or more Emissions Lines. The location-based net total is always present; the market-based total is present only where the report contains market-based electricity lines. The derivation of each total from its lines is a semantic constraint, verified by the conformance tests rather than by schema validation.</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/openccf/EmissionsReport">openccf:EmissionsReport</a></p>
 <pre class="mermaid"><code> classDiagram
@@ -359,7 +359,9 @@
 
 
 
-      EmissionsReport : totalNetEmissionsKgCO2e
+      EmissionsReport : totalNetEmissionsLocationBasedKgCO2e
+
+      EmissionsReport : totalNetEmissionsMarketBasedKgCO2e
 
 </code></pre>
 <!-- no inheritance hierarchy -->
@@ -420,9 +422,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../totalNetEmissionsKgCO2e/">totalNetEmissionsKgCO2e</a></td>
+<td><a href="../totalNetEmissionsLocationBasedKgCO2e/">totalNetEmissionsLocationBasedKgCO2e</a></td>
 <td>1 <br/> <a href="../Float/">Float</a></td>
-<td>Net aggregate for the reporting period, derived as sum(EMISSION) - sum(REMOVA...</td>
+<td>Net aggregate for the reporting period on the location-based Scope 2 method: ...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../totalNetEmissionsMarketBasedKgCO2e/">totalNetEmissionsMarketBasedKgCO2e</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Net aggregate for the reporting period on the market-based Scope 2 method: as...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -493,7 +501,10 @@
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A company's greenhouse gas footprint for a defined reporting period.</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">Acts as the container for one or more Emissions Lines.</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">Acts as the container for one or more Emissions Lines. The location-based net total</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">is always present; the market-based total is present only where the report contains</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">market-based electricity lines. The derivation of each total from its lines is a</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">semantic constraint, verified by the conformance tests rather than by schema validation.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">reportID</span><span class="p">:</span>
@@ -538,18 +549,31 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">totalNetEmissionsKgCO2e</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">totalNetEmissionsKgCO2e</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Net aggregate for the reporting period, derived as sum(EMISSION)</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">- sum(REMOVAL) + sum(REVERSAL) over emissionsLines, with GROSS_CO2_FLUX and</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">OTHER_LAND_SECTOR_DISCLOSURE excluded. Gross emissions and gross removals are</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">preserved at line level and are not netted away.</span>
+<span class="w">  </span><span class="nt">totalNetEmissionsLocationBasedKgCO2e</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">totalNetEmissionsLocationBasedKgCO2e</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Net</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">reporting</span><span class="nv"> </span><span class="s">period</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">location-based</span><span class="nv"> </span><span class="s">Scope</span>
+<span class="w">      </span><span class="s">2</span><span class="nv"> </span><span class="s">method:</span><span class="nv"> </span><span class="s">sum(EMISSION)</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">sum(REMOVAL)</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">sum(REVERSAL)</span><span class="nv"> </span><span class="s">over</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">emissionsLines,</span>
+<span class="w">      </span><span class="s">excluding</span><span class="nv"> </span><span class="s">GROSS_CO2_FLUX</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">OTHER_LAND_SECTOR_DISCLOSURE</span><span class="nv"> </span><span class="s">lines,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">excluding</span>
+<span class="w">      </span><span class="s">ELECTRICITY_MARKET_BASED</span><span class="nv"> </span><span class="s">lines.</span><span class="nv"> </span><span class="s">Always</span><span class="nv"> </span><span class="s">present:</span><span class="nv"> </span><span class="s">location-based</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">baseline</span>
+<span class="w">      </span><span class="s">method,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">reports</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">no</span><span class="nv"> </span><span class="s">market-based</span><span class="nv"> </span><span class="s">electricity</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">simply</span><span class="nv"> </span><span class="s">the</span>
+<span class="w">      </span><span class="s">report</span><span class="nv"> </span><span class="s">total.'</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">totalNetEmissionsMarketBasedKgCO2e</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">totalNetEmissionsMarketBasedKgCO2e</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Net</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">reporting</span><span class="nv"> </span><span class="s">period</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">market-based</span><span class="nv"> </span><span class="s">Scope</span>
+<span class="w">      </span><span class="s">2</span><span class="nv"> </span><span class="s">method:</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">above,</span><span class="nv"> </span><span class="s">excluding</span><span class="nv"> </span><span class="s">ELECTRICITY_LOCATION_BASED</span><span class="nv"> </span><span class="s">lines.</span><span class="nv"> </span><span class="s">Present</span><span class="nv"> </span><span class="s">only</span>
+<span class="w">      </span><span class="s">where</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">report</span><span class="nv"> </span><span class="s">contains</span><span class="nv"> </span><span class="s">market-based</span><span class="nv"> </span><span class="s">electricity</span><span class="nv"> </span><span class="s">lines.</span><span class="nv"> </span><span class="s">Omitted</span><span class="nv"> </span><span class="s">(left</span><span class="nv"> </span><span class="s">blank,</span>
+<span class="w">      </span><span class="s">never</span><span class="nv"> </span><span class="s">zero)</span><span class="nv"> </span><span class="s">otherwise.'</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
 <span class="w">  </span><span class="nt">gwpHorizon</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gwpHorizon</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GWP time horizon applied across the whole report. Report-level to</span>
@@ -612,7 +636,10 @@
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A company's greenhouse gas footprint for a defined reporting period.</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">Acts as the container for one or more Emissions Lines.</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">Acts as the container for one or more Emissions Lines. The location-based net total</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">is always present; the market-based total is present only where the report contains</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">market-based electricity lines. The derivation of each total from its lines is a</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">semantic constraint, verified by the conformance tests rather than by schema validation.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">reportID</span><span class="p">:</span>
@@ -666,12 +693,14 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">totalNetEmissionsKgCO2e</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">totalNetEmissionsKgCO2e</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Net aggregate for the reporting period, derived as sum(EMISSION)</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">- sum(REMOVAL) + sum(REVERSAL) over emissionsLines, with GROSS_CO2_FLUX and</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">OTHER_LAND_SECTOR_DISCLOSURE excluded. Gross emissions and gross removals are</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">preserved at line level and are not netted away.</span>
+<span class="w">  </span><span class="nt">totalNetEmissionsLocationBasedKgCO2e</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">totalNetEmissionsLocationBasedKgCO2e</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Net</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">reporting</span><span class="nv"> </span><span class="s">period</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">location-based</span><span class="nv"> </span><span class="s">Scope</span>
+<span class="w">      </span><span class="s">2</span><span class="nv"> </span><span class="s">method:</span><span class="nv"> </span><span class="s">sum(EMISSION)</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">sum(REMOVAL)</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">sum(REVERSAL)</span><span class="nv"> </span><span class="s">over</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">emissionsLines,</span>
+<span class="w">      </span><span class="s">excluding</span><span class="nv"> </span><span class="s">GROSS_CO2_FLUX</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">OTHER_LAND_SECTOR_DISCLOSURE</span><span class="nv"> </span><span class="s">lines,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">excluding</span>
+<span class="w">      </span><span class="s">ELECTRICITY_MARKET_BASED</span><span class="nv"> </span><span class="s">lines.</span><span class="nv"> </span><span class="s">Always</span><span class="nv"> </span><span class="s">present:</span><span class="nv"> </span><span class="s">location-based</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">baseline</span>
+<span class="w">      </span><span class="s">method,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">reports</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">no</span><span class="nv"> </span><span class="s">market-based</span><span class="nv"> </span><span class="s">electricity</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">simply</span><span class="nv"> </span><span class="s">the</span>
+<span class="w">      </span><span class="s">report</span><span class="nv"> </span><span class="s">total.'</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
@@ -679,6 +708,18 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">totalNetEmissionsMarketBasedKgCO2e</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">totalNetEmissionsMarketBasedKgCO2e</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'Net</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">reporting</span><span class="nv"> </span><span class="s">period</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">market-based</span><span class="nv"> </span><span class="s">Scope</span>
+<span class="w">      </span><span class="s">2</span><span class="nv"> </span><span class="s">method:</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">above,</span><span class="nv"> </span><span class="s">excluding</span><span class="nv"> </span><span class="s">ELECTRICITY_LOCATION_BASED</span><span class="nv"> </span><span class="s">lines.</span><span class="nv"> </span><span class="s">Present</span><span class="nv"> </span><span class="s">only</span>
+<span class="w">      </span><span class="s">where</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">report</span><span class="nv"> </span><span class="s">contains</span><span class="nv"> </span><span class="s">market-based</span><span class="nv"> </span><span class="s">electricity</span><span class="nv"> </span><span class="s">lines.</span><span class="nv"> </span><span class="s">Omitted</span><span class="nv"> </span><span class="s">(left</span><span class="nv"> </span><span class="s">blank,</span>
+<span class="w">      </span><span class="s">never</span><span class="nv"> </span><span class="s">zero)</span><span class="nv"> </span><span class="s">otherwise.'</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
 <span class="w">  </span><span class="nt">gwpHorizon</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gwpHorizon</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GWP time horizon applied across the whole report. Report-level to</span>

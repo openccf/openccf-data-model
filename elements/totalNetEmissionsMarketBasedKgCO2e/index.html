@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://openccf.github.io/openccf/elements/totalNetEmissionsKgCO2e/">
+        <link rel="canonical" href="https://openccf.github.io/openccf/elements/totalNetEmissionsMarketBasedKgCO2e/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: totalNetEmissionsKgCO2e - openccf</title>
+        <title>Slot: totalNetEmissionsMarketBasedKgCO2e - openccf</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-totalnetemissionskgco2e" class="md-skip">
+        <a href="#slot-totalnetemissionsmarketbasedkgco2e" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: totalNetEmissionsKgCO2e
+              Slot: totalNetEmissionsMarketBasedKgCO2e
             
           </span>
         </div>
@@ -485,10 +485,10 @@
   
 
 
-<h1 id="slot-totalnetemissionskgco2e">Slot: totalNetEmissionsKgCO2e</h1>
-<p><em>Net aggregate for the reporting period, derived as sum(EMISSION) - sum(REMOVAL) + sum(REVERSAL) over emissionsLines, with GROSS_CO2_FLUX and OTHER_LAND_SECTOR_DISCLOSURE excluded. Gross emissions and gross removals are preserved at line level and are not netted away.</em></p>
+<h1 id="slot-totalnetemissionsmarketbasedkgco2e">Slot: totalNetEmissionsMarketBasedKgCO2e</h1>
+<p><em>Net aggregate for the reporting period on the market-based Scope 2 method: as above, excluding ELECTRICITY_LOCATION_BASED lines. Present only where the report contains market-based electricity lines. Omitted (left blank, never zero) otherwise.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/openccf/totalNetEmissionsKgCO2e">openccf:totalNetEmissionsKgCO2e</a></p>
+<p>URI: <a href="https://w3id.org/openccf/totalNetEmissionsMarketBasedKgCO2e">openccf:totalNetEmissionsMarketBasedKgCO2e</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -537,10 +537,6 @@
 </thead>
 <tbody>
 <tr>
-<td>Required</td>
-<td>Yes</td>
-</tr>
-<tr>
 <td>### Slot Characteristics</td>
 <td></td>
 </tr>
@@ -576,28 +572,26 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>openccf:totalNetEmissionsKgCO2e</td>
+<td>openccf:totalNetEmissionsMarketBasedKgCO2e</td>
 </tr>
 <tr>
 <td>native</td>
-<td>openccf:totalNetEmissionsKgCO2e</td>
+<td>openccf:totalNetEmissionsMarketBasedKgCO2e</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">totalNetEmissionsKgCO2e</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Net aggregate for the reporting period, derived as sum(EMISSION) - sum(REMOVAL)</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">+ sum(REVERSAL) over emissionsLines, with GROSS_CO2_FLUX and OTHER_LAND_SECTOR_DISCLOSURE</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">excluded. Gross emissions and gross removals are preserved at line level and are</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">not netted away.</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">totalNetEmissionsMarketBasedKgCO2e</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Net</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">reporting</span><span class="nv"> </span><span class="s">period</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">market-based</span><span class="nv"> </span><span class="s">Scope</span><span class="nv"> </span><span class="s">2</span><span class="nv"> </span><span class="s">method:</span>
+<span class="w">  </span><span class="s">as</span><span class="nv"> </span><span class="s">above,</span><span class="nv"> </span><span class="s">excluding</span><span class="nv"> </span><span class="s">ELECTRICITY_LOCATION_BASED</span><span class="nv"> </span><span class="s">lines.</span><span class="nv"> </span><span class="s">Present</span><span class="nv"> </span><span class="s">only</span><span class="nv"> </span><span class="s">where</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">report</span>
+<span class="w">  </span><span class="s">contains</span><span class="nv"> </span><span class="s">market-based</span><span class="nv"> </span><span class="s">electricity</span><span class="nv"> </span><span class="s">lines.</span><span class="nv"> </span><span class="s">Omitted</span><span class="nv"> </span><span class="s">(left</span><span class="nv"> </span><span class="s">blank,</span><span class="nv"> </span><span class="s">never</span><span class="nv"> </span><span class="s">zero)</span><span class="nv"> </span><span class="s">otherwise.&#39;</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
-<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
 </div>

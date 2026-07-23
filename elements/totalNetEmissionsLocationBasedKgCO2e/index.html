@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://openccf.github.io/openccf/elements/value/">
+        <link rel="canonical" href="https://openccf.github.io/openccf/elements/totalNetEmissionsLocationBasedKgCO2e/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Slot: value - openccf</title>
+        <title>Slot: totalNetEmissionsLocationBasedKgCO2e - openccf</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-value" class="md-skip">
+        <a href="#slot-totalnetemissionslocationbasedkgco2e" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: value
+              Slot: totalNetEmissionsLocationBasedKgCO2e
             
           </span>
         </div>
@@ -423,6 +423,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -468,9 +485,10 @@
   
 
 
-<h1 id="slot-value">Slot: value</h1>
+<h1 id="slot-totalnetemissionslocationbasedkgco2e">Slot: totalNetEmissionsLocationBasedKgCO2e</h1>
+<p><em>Net aggregate for the reporting period on the location-based Scope 2 method: sum(EMISSION) - sum(REMOVAL) + sum(REVERSAL) over all emissionsLines, excluding GROSS_CO2_FLUX and OTHER_LAND_SECTOR_DISCLOSURE lines, and excluding ELECTRICITY_MARKET_BASED lines. Always present: location-based is the baseline method, and for reports with no market-based electricity this is simply the report total.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/openccf/value">openccf:value</a></p>
+<p>URI: <a href="https://w3id.org/openccf/totalNetEmissionsLocationBasedKgCO2e">openccf:totalNetEmissionsLocationBasedKgCO2e</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -483,23 +501,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../CompanyIdentifier/">CompanyIdentifier</a></td>
-<td>Standardised company identifier</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../IntensityDenominator/">IntensityDenominator</a></td>
-<td>A denominator for calculating intensity values</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EmissionFactor/">EmissionFactor</a></td>
-<td>Metadata describing the emission factor applied to a line</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ActivityData/">ActivityData</a></td>
-<td>Optional activity information underlying the emissions</td>
+<td><a href="../EmissionsReport/">EmissionsReport</a></td>
+<td>A company's greenhouse gas footprint for a defined reporting period</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -516,11 +519,11 @@
 <tbody>
 <tr>
 <td>Range</td>
-<td><a href="../String/">String</a></td>
+<td><a href="../Float/">Float</a></td>
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../CompanyIdentifier/">CompanyIdentifier</a>, <a href="../IntensityDenominator/">IntensityDenominator</a>, <a href="../EmissionFactor/">EmissionFactor</a>, <a href="../ActivityData/">ActivityData</a></td>
+<td><a href="../EmissionsReport/">EmissionsReport</a></td>
 </tr>
 </tbody>
 </table>
@@ -534,12 +537,34 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td>Required</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>### Slot Characteristics</td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Owner</td>
+<td><a href="../EmissionsReport/">EmissionsReport</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: <a href="https://w3id.org/openccf">https://w3id.org/openccf</a></li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -551,23 +576,29 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>openccf:value</td>
+<td>openccf:totalNetEmissionsLocationBasedKgCO2e</td>
 </tr>
 <tr>
 <td>native</td>
-<td>openccf:value</td>
+<td>openccf:totalNetEmissionsLocationBasedKgCO2e</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">totalNetEmissionsLocationBasedKgCO2e</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Net</span><span class="nv"> </span><span class="s">aggregate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">reporting</span><span class="nv"> </span><span class="s">period</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">location-based</span><span class="nv"> </span><span class="s">Scope</span><span class="nv"> </span><span class="s">2</span>
+<span class="w">  </span><span class="s">method:</span><span class="nv"> </span><span class="s">sum(EMISSION)</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">sum(REMOVAL)</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">sum(REVERSAL)</span><span class="nv"> </span><span class="s">over</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">emissionsLines,</span><span class="nv"> </span><span class="s">excluding</span>
+<span class="w">  </span><span class="s">GROSS_CO2_FLUX</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">OTHER_LAND_SECTOR_DISCLOSURE</span><span class="nv"> </span><span class="s">lines,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">excluding</span><span class="nv"> </span><span class="s">ELECTRICITY_MARKET_BASED</span>
+<span class="w">  </span><span class="s">lines.</span><span class="nv"> </span><span class="s">Always</span><span class="nv"> </span><span class="s">present:</span><span class="nv"> </span><span class="s">location-based</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">baseline</span><span class="nv"> </span><span class="s">method,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">reports</span><span class="nv"> </span><span class="s">with</span>
+<span class="w">  </span><span class="s">no</span><span class="nv"> </span><span class="s">market-based</span><span class="nv"> </span><span class="s">electricity</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">simply</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">report</span><span class="nv"> </span><span class="s">total.&#39;</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CompanyIdentifier</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntensityDenominator</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionFactor</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ActivityData</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
 </div>
