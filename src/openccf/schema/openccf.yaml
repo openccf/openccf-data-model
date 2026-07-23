@@ -32,7 +32,11 @@ classes:
     tree_root: true
     description: >-
       A company's greenhouse gas footprint for a defined reporting period.
-      Acts as the container for one or more Emissions Lines.
+      Acts as the container for one or more Emissions Lines. The location-based net
+      total is always present; the market-based total is present only where the report
+      contains market-based electricity lines. The derivation of each total from its
+      lines is a semantic constraint, verified by the conformance tests rather than by
+      schema validation.
     # NOTE: coverage/completeness is inferred from the lines present plus each
     # line's lineStatus. Absence of a line is NOT an assertion of zero.
     attributes:
@@ -53,14 +57,23 @@ classes:
       reportingPeriodEnd:
         range: date
         required: true
-      totalNetEmissionsKgCO2e:
+      totalNetEmissionsLocationBasedKgCO2e:
         range: float
         required: true
         description: >-
-          Net aggregate for the reporting period, derived as
-          sum(EMISSION) - sum(REMOVAL) + sum(REVERSAL) over emissionsLines, with
-          GROSS_CO2_FLUX and OTHER_LAND_SECTOR_DISCLOSURE excluded. Gross emissions
-          and gross removals are preserved at line level and are not netted away.
+          Net aggregate for the reporting period on the location-based Scope 2 method:
+          sum(EMISSION) - sum(REMOVAL) + sum(REVERSAL) over all emissionsLines, excluding
+          GROSS_CO2_FLUX and OTHER_LAND_SECTOR_DISCLOSURE lines, and excluding
+          ELECTRICITY_MARKET_BASED lines. Always present: location-based is the baseline
+          method, and for reports with no market-based electricity this is simply the
+          report total.
+      totalNetEmissionsMarketBasedKgCO2e:
+        range: float
+        description: >-
+          Net aggregate for the reporting period on the market-based Scope 2 method: as
+          above, excluding ELECTRICITY_LOCATION_BASED lines. Present only where the report
+          contains market-based electricity lines. Omitted (left blank, never zero)
+          otherwise.
       gwpHorizon:
         range: GwpHorizonEnum
         required: true
@@ -105,7 +118,8 @@ classes:
                 - equals_string: MOBILE_COMBUSTION
                 - equals_string: PROCESS_EMISSIONS
                 - equals_string: FUGITIVE
-        description: Scope 1 lines must use a Scope 1 category.
+                - equals_string: NOT_SPECIFIED
+        description: Scope 1 lines must use a Scope 1 category, or NOT_SPECIFIED.
       - preconditions:
           slot_conditions:
             scope:
@@ -117,7 +131,8 @@ classes:
                 - equals_string: ELECTRICITY_MARKET_BASED
                 - equals_string: ELECTRICITY_LOCATION_BASED
                 - equals_string: HEAT_STEAM_COOLING
-        description: Scope 2 lines must use a Scope 2 category.
+                - equals_string: NOT_SPECIFIED
+        description: Scope 2 lines must use a Scope 2 category, or NOT_SPECIFIED.
       - preconditions:
           slot_conditions:
             scope:
@@ -141,7 +156,8 @@ classes:
                 - equals_string: S3_13_DOWNSTREAM_LEASED_ASSETS
                 - equals_string: S3_14_FRANCHISES
                 - equals_string: S3_15_INVESTMENTS
-        description: Scope 3 lines must use a Scope 3 category.
+                - equals_string: NOT_SPECIFIED
+        description: Scope 3 lines must use a Scope 3 category, or NOT_SPECIFIED.
     attributes:
       reportID:
         description: >-
@@ -196,9 +212,11 @@ classes:
         description: Facility where emissions physically occurred (optional).
       emissionFactor:
         range: EmissionFactor
-        required: true
         inlined: true
-        description: Metadata on the emission factor used for this line.
+        description: >-
+          Metadata on the emission factor used for this line. Optional as many exchanged
+          figures (e.g. republished totals, or directly measured emissions) have no
+          disclosed factor. Where factor is provided, source, year and ipccBasis are required.
       dataQuality:
         range: DataQuality
         inlined: true
@@ -250,6 +268,19 @@ classes:
   EmissionFactor:
     description: Metadata describing the emission factor applied to a line.
     attributes:
+      value:
+        range: float
+        minimum_value: 0
+        description: >-
+          Value of the emission factor applied, expressed in kgCO2e per unit of the
+          activity (see valueUnit). Optional; provided where the sender wishes to expose
+          the conversion rate used. Gas-level constituents are not carried here - where
+          gas resolution is needed, use the line's gasBreakdown.
+      valueUnit:
+        description: >-
+          Denominator unit for the emission factor value, i.e. the activity unit it
+          applies to (e.g. "kWh", "litre", "tonne-km", "GBP"). Required where value is
+          provided. Where activityData is also present, this should match its unit.
       source:
         required: true
         description: Authority for the emission factor used.
@@ -356,7 +387,7 @@ enums:
   EmissionCategoryEnum:
     description: >-
       Source classification. Valid values are scope-dependent; the scope-to-category
-      validity constraint is enforced separately.
+      validity constraint is enforced by rules on EmissionsLine.
     permissible_values:
       # --- Scope 1 (direct) ---
       STATIONARY_COMBUSTION: {description: "Scope 1: Stationary combustion."}
@@ -383,6 +414,7 @@ enums:
       S3_13_DOWNSTREAM_LEASED_ASSETS: {description: "Category 13: Downstream leased assets."}
       S3_14_FRANCHISES: {description: "Category 14: Franchises."}
       S3_15_INVESTMENTS: {description: "Category 15: Investments."}
+      NOT_SPECIFIED: {description: "Category not specified or not disclosed by the source."}
 
   LineStatusEnum:
     description: Completeness of this line. Assurance status is recorded at report level.

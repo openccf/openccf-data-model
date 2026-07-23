@@ -1,5 +1,5 @@
 # Auto generated from openccf.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-22T09:48:47
+# Generation date: 2026-07-23T11:44:52
 # Schema: openccf
 #
 # id: https://w3id.org/openccf
@@ -79,7 +79,9 @@ class EmissionsReportReportID(extended_str):
 class EmissionsReport(YAMLRoot):
     """
     A company's greenhouse gas footprint for a defined reporting period. Acts as the container for one or more
-    Emissions Lines.
+    Emissions Lines. The location-based net total is always present; the market-based total is present only where the
+    report contains market-based electricity lines. The derivation of each total from its lines is a semantic
+    constraint, verified by the conformance tests rather than by schema validation.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -93,10 +95,11 @@ class EmissionsReport(YAMLRoot):
     primaryRegion: str = None
     reportingPeriodStart: Union[str, XSDDate] = None
     reportingPeriodEnd: Union[str, XSDDate] = None
-    totalNetEmissionsKgCO2e: float = None
+    totalNetEmissionsLocationBasedKgCO2e: float = None
     gwpHorizon: Union[str, "GwpHorizonEnum"] = None
     reportStatus: Union[str, "ReportStatusEnum"] = None
     emissionsLines: Union[Union[dict, "EmissionsLine"], list[Union[dict, "EmissionsLine"]]] = None
+    totalNetEmissionsMarketBasedKgCO2e: Optional[float] = None
     sectors: Optional[Union[Union[dict, "Sector"], list[Union[dict, "Sector"]]]] = empty_list()
     companyIdentifiers: Optional[Union[Union[dict, "CompanyIdentifier"], list[Union[dict, "CompanyIdentifier"]]]] = empty_list()
     intensityDenominators: Optional[Union[Union[dict, "IntensityDenominator"], list[Union[dict, "IntensityDenominator"]]]] = empty_list()
@@ -127,10 +130,10 @@ class EmissionsReport(YAMLRoot):
         if not isinstance(self.reportingPeriodEnd, XSDDate):
             self.reportingPeriodEnd = XSDDate(self.reportingPeriodEnd)
 
-        if self._is_empty(self.totalNetEmissionsKgCO2e):
-            self.MissingRequiredField("totalNetEmissionsKgCO2e")
-        if not isinstance(self.totalNetEmissionsKgCO2e, float):
-            self.totalNetEmissionsKgCO2e = float(self.totalNetEmissionsKgCO2e)
+        if self._is_empty(self.totalNetEmissionsLocationBasedKgCO2e):
+            self.MissingRequiredField("totalNetEmissionsLocationBasedKgCO2e")
+        if not isinstance(self.totalNetEmissionsLocationBasedKgCO2e, float):
+            self.totalNetEmissionsLocationBasedKgCO2e = float(self.totalNetEmissionsLocationBasedKgCO2e)
 
         if self._is_empty(self.gwpHorizon):
             self.MissingRequiredField("gwpHorizon")
@@ -145,6 +148,9 @@ class EmissionsReport(YAMLRoot):
         if self._is_empty(self.emissionsLines):
             self.MissingRequiredField("emissionsLines")
         self._normalize_inlined_as_list(slot_name="emissionsLines", slot_type=EmissionsLine, key_name="scope", keyed=False)
+
+        if self.totalNetEmissionsMarketBasedKgCO2e is not None and not isinstance(self.totalNetEmissionsMarketBasedKgCO2e, float):
+            self.totalNetEmissionsMarketBasedKgCO2e = float(self.totalNetEmissionsMarketBasedKgCO2e)
 
         if not isinstance(self.sectors, list):
             self.sectors = [self.sectors] if self.sectors is not None else []
@@ -180,11 +186,11 @@ class EmissionsLine(YAMLRoot):
     emissionsQuantityKgCO2e: float = None
     emissionOrigin: Union[str, "EmissionOriginEnum"] = None
     region: str = None
-    emissionFactor: Union[dict, "EmissionFactor"] = None
     reportID: Optional[str] = None
     subcategory: Optional[str] = None
     accountingType: Optional[Union[str, "AccountingTypeEnum"]] = 'EMISSION'
     companyFacilityIdentifier: Optional[str] = None
+    emissionFactor: Optional[Union[dict, "EmissionFactor"]] = None
     dataQuality: Optional[Union[dict, "DataQuality"]] = None
     dataQualityInformation: Optional[str] = None
     gasBreakdown: Optional[Union[Union[dict, "GasBreakdown"], list[Union[dict, "GasBreakdown"]]]] = empty_list()
@@ -222,11 +228,6 @@ class EmissionsLine(YAMLRoot):
         if not isinstance(self.region, str):
             self.region = str(self.region)
 
-        if self._is_empty(self.emissionFactor):
-            self.MissingRequiredField("emissionFactor")
-        if not isinstance(self.emissionFactor, EmissionFactor):
-            self.emissionFactor = EmissionFactor(**as_dict(self.emissionFactor))
-
         if self.reportID is not None and not isinstance(self.reportID, str):
             self.reportID = str(self.reportID)
 
@@ -238,6 +239,9 @@ class EmissionsLine(YAMLRoot):
 
         if self.companyFacilityIdentifier is not None and not isinstance(self.companyFacilityIdentifier, str):
             self.companyFacilityIdentifier = str(self.companyFacilityIdentifier)
+
+        if self.emissionFactor is not None and not isinstance(self.emissionFactor, EmissionFactor):
+            self.emissionFactor = EmissionFactor(**as_dict(self.emissionFactor))
 
         if self.dataQuality is not None and not isinstance(self.dataQuality, DataQuality):
             self.dataQuality = DataQuality(**as_dict(self.dataQuality))
@@ -538,8 +542,8 @@ class ScopeEnum(EnumDefinitionImpl):
 
 class EmissionCategoryEnum(EnumDefinitionImpl):
     """
-    Source classification. Valid values are scope-dependent; the scope-to-category validity constraint is enforced
-    separately.
+    Source classification. Valid values are scope-dependent; the scope-to-category validity constraint is enforced by
+    rules on EmissionsLine.
     """
     STATIONARY_COMBUSTION = PermissibleValue(
         text="STATIONARY_COMBUSTION",
@@ -607,10 +611,13 @@ class EmissionCategoryEnum(EnumDefinitionImpl):
     S3_15_INVESTMENTS = PermissibleValue(
         text="S3_15_INVESTMENTS",
         description="Category 15: Investments.")
+    NOT_SPECIFIED = PermissibleValue(
+        text="NOT_SPECIFIED",
+        description="Category not specified or not disclosed by the source.")
 
     _defn = EnumDefinition(
         name="EmissionCategoryEnum",
-        description="""Source classification. Valid values are scope-dependent; the scope-to-category validity constraint is enforced separately.""",
+        description="""Source classification. Valid values are scope-dependent; the scope-to-category validity constraint is enforced by rules on EmissionsLine.""",
     )
 
 class LineStatusEnum(EnumDefinitionImpl):
@@ -752,8 +759,11 @@ slots.emissionsReport__reportingPeriodStart = Slot(uri=OPENCCF.reportingPeriodSt
 slots.emissionsReport__reportingPeriodEnd = Slot(uri=OPENCCF.reportingPeriodEnd, name="emissionsReport__reportingPeriodEnd", curie=OPENCCF.curie('reportingPeriodEnd'),
                    model_uri=OPENCCF.emissionsReport__reportingPeriodEnd, domain=None, range=Union[str, XSDDate])
 
-slots.emissionsReport__totalNetEmissionsKgCO2e = Slot(uri=OPENCCF.totalNetEmissionsKgCO2e, name="emissionsReport__totalNetEmissionsKgCO2e", curie=OPENCCF.curie('totalNetEmissionsKgCO2e'),
-                   model_uri=OPENCCF.emissionsReport__totalNetEmissionsKgCO2e, domain=None, range=float)
+slots.emissionsReport__totalNetEmissionsLocationBasedKgCO2e = Slot(uri=OPENCCF.totalNetEmissionsLocationBasedKgCO2e, name="emissionsReport__totalNetEmissionsLocationBasedKgCO2e", curie=OPENCCF.curie('totalNetEmissionsLocationBasedKgCO2e'),
+                   model_uri=OPENCCF.emissionsReport__totalNetEmissionsLocationBasedKgCO2e, domain=None, range=float)
+
+slots.emissionsReport__totalNetEmissionsMarketBasedKgCO2e = Slot(uri=OPENCCF.totalNetEmissionsMarketBasedKgCO2e, name="emissionsReport__totalNetEmissionsMarketBasedKgCO2e", curie=OPENCCF.curie('totalNetEmissionsMarketBasedKgCO2e'),
+                   model_uri=OPENCCF.emissionsReport__totalNetEmissionsMarketBasedKgCO2e, domain=None, range=Optional[float])
 
 slots.emissionsReport__gwpHorizon = Slot(uri=OPENCCF.gwpHorizon, name="emissionsReport__gwpHorizon", curie=OPENCCF.curie('gwpHorizon'),
                    model_uri=OPENCCF.emissionsReport__gwpHorizon, domain=None, range=Union[str, "GwpHorizonEnum"])
@@ -804,7 +814,7 @@ slots.emissionsLine__companyFacilityIdentifier = Slot(uri=OPENCCF.companyFacilit
                    model_uri=OPENCCF.emissionsLine__companyFacilityIdentifier, domain=None, range=Optional[str])
 
 slots.emissionsLine__emissionFactor = Slot(uri=OPENCCF.emissionFactor, name="emissionsLine__emissionFactor", curie=OPENCCF.curie('emissionFactor'),
-                   model_uri=OPENCCF.emissionsLine__emissionFactor, domain=None, range=Union[dict, EmissionFactor])
+                   model_uri=OPENCCF.emissionsLine__emissionFactor, domain=None, range=Optional[Union[dict, EmissionFactor]])
 
 slots.emissionsLine__dataQuality = Slot(uri=OPENCCF.dataQuality, name="emissionsLine__dataQuality", curie=OPENCCF.curie('dataQuality'),
                    model_uri=OPENCCF.emissionsLine__dataQuality, domain=None, range=Optional[Union[dict, DataQuality]])

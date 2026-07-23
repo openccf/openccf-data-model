@@ -102,7 +102,7 @@ class ScopeEnum(str, Enum):
 
 class EmissionCategoryEnum(str, Enum):
     """
-    Source classification. Valid values are scope-dependent; the scope-to-category validity constraint is enforced separately.
+    Source classification. Valid values are scope-dependent; the scope-to-category validity constraint is enforced by rules on EmissionsLine.
     """
     STATIONARY_COMBUSTION = "STATIONARY_COMBUSTION"
     """
@@ -191,6 +191,10 @@ class EmissionCategoryEnum(str, Enum):
     S3_15_INVESTMENTS = "S3_15_INVESTMENTS"
     """
     Category 15: Investments.
+    """
+    NOT_SPECIFIED = "NOT_SPECIFIED"
+    """
+    Category not specified or not disclosed by the source.
     """
 
 
@@ -296,7 +300,7 @@ class DataQualityRatingEnum(str, Enum):
 
 class EmissionsReport(ConfiguredBaseModel):
     """
-    A company's greenhouse gas footprint for a defined reporting period. Acts as the container for one or more Emissions Lines.
+    A company's greenhouse gas footprint for a defined reporting period. Acts as the container for one or more Emissions Lines. The location-based net total is always present; the market-based total is present only where the report contains market-based electricity lines. The derivation of each total from its lines is a semantic constraint, verified by the conformance tests rather than by schema validation.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/openccf', 'tree_root': True})
 
@@ -305,7 +309,8 @@ class EmissionsReport(ConfiguredBaseModel):
     primaryRegion: str = Field(default=..., description="""Location of the reporting entity as a UN/LOCODE (minimum country; state/region extension supported).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     reportingPeriodStart: date = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     reportingPeriodEnd: date = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
-    totalNetEmissionsKgCO2e: float = Field(default=..., description="""Net aggregate for the reporting period, derived as sum(EMISSION) - sum(REMOVAL) + sum(REVERSAL) over emissionsLines, with GROSS_CO2_FLUX and OTHER_LAND_SECTOR_DISCLOSURE excluded. Gross emissions and gross removals are preserved at line level and are not netted away.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
+    totalNetEmissionsLocationBasedKgCO2e: float = Field(default=..., description="""Net aggregate for the reporting period on the location-based Scope 2 method: sum(EMISSION) - sum(REMOVAL) + sum(REVERSAL) over all emissionsLines, excluding GROSS_CO2_FLUX and OTHER_LAND_SECTOR_DISCLOSURE lines, and excluding ELECTRICITY_MARKET_BASED lines. Always present: location-based is the baseline method, and for reports with no market-based electricity this is simply the report total.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
+    totalNetEmissionsMarketBasedKgCO2e: Optional[float] = Field(default=None, description="""Net aggregate for the reporting period on the market-based Scope 2 method: as above, excluding ELECTRICITY_LOCATION_BASED lines. Present only where the report contains market-based electricity lines. Omitted (left blank, never zero) otherwise.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     gwpHorizon: GwpHorizonEnum = Field(default=..., description="""GWP time horizon applied across the whole report. Report-level to enforce consistency; IPCC AR basis is recorded per line.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     reportStatus: ReportStatusEnum = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     emissionsLines: list[EmissionsLine] = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
@@ -319,22 +324,27 @@ class EmissionsLine(ConfiguredBaseModel):
     A single quantified source or category of emissions within a report. Lines are flat; totals and subtotals are derived by grouping, not nesting.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/openccf',
-         'rules': [{'description': 'Scope 1 lines must use a Scope 1 category.',
+         'rules': [{'description': 'Scope 1 lines must use a Scope 1 category, or '
+                                   'NOT_SPECIFIED.',
                     'postconditions': {'slot_conditions': {'category': {'any_of': [{'equals_string': 'STATIONARY_COMBUSTION'},
                                                                                    {'equals_string': 'MOBILE_COMBUSTION'},
                                                                                    {'equals_string': 'PROCESS_EMISSIONS'},
-                                                                                   {'equals_string': 'FUGITIVE'}],
+                                                                                   {'equals_string': 'FUGITIVE'},
+                                                                                   {'equals_string': 'NOT_SPECIFIED'}],
                                                                         'name': 'category'}}},
                     'preconditions': {'slot_conditions': {'scope': {'equals_string': 'SCOPE_1',
                                                                     'name': 'scope'}}}},
-                   {'description': 'Scope 2 lines must use a Scope 2 category.',
+                   {'description': 'Scope 2 lines must use a Scope 2 category, or '
+                                   'NOT_SPECIFIED.',
                     'postconditions': {'slot_conditions': {'category': {'any_of': [{'equals_string': 'ELECTRICITY_MARKET_BASED'},
                                                                                    {'equals_string': 'ELECTRICITY_LOCATION_BASED'},
-                                                                                   {'equals_string': 'HEAT_STEAM_COOLING'}],
+                                                                                   {'equals_string': 'HEAT_STEAM_COOLING'},
+                                                                                   {'equals_string': 'NOT_SPECIFIED'}],
                                                                         'name': 'category'}}},
                     'preconditions': {'slot_conditions': {'scope': {'equals_string': 'SCOPE_2',
                                                                     'name': 'scope'}}}},
-                   {'description': 'Scope 3 lines must use a Scope 3 category.',
+                   {'description': 'Scope 3 lines must use a Scope 3 category, or '
+                                   'NOT_SPECIFIED.',
                     'postconditions': {'slot_conditions': {'category': {'any_of': [{'equals_string': 'S3_01_PURCHASED_GOODS_SERVICES'},
                                                                                    {'equals_string': 'S3_02_CAPITAL_GOODS'},
                                                                                    {'equals_string': 'S3_03_FUEL_ENERGY_RELATED'},
@@ -349,7 +359,8 @@ class EmissionsLine(ConfiguredBaseModel):
                                                                                    {'equals_string': 'S3_12_EOL_SOLD_PRODUCTS'},
                                                                                    {'equals_string': 'S3_13_DOWNSTREAM_LEASED_ASSETS'},
                                                                                    {'equals_string': 'S3_14_FRANCHISES'},
-                                                                                   {'equals_string': 'S3_15_INVESTMENTS'}],
+                                                                                   {'equals_string': 'S3_15_INVESTMENTS'},
+                                                                                   {'equals_string': 'NOT_SPECIFIED'}],
                                                                         'name': 'category'}}},
                     'preconditions': {'slot_conditions': {'scope': {'equals_string': 'SCOPE_3',
                                                                     'name': 'scope'}}}}]})
@@ -364,7 +375,7 @@ class EmissionsLine(ConfiguredBaseModel):
     accountingType: Optional[AccountingTypeEnum] = Field(default=AccountingTypeEnum.EMISSION, description="""Inventory treatment of this line, and its contribution to the report net total: EMISSION adds, REMOVAL subtracts, REVERSAL adds; GROSS_CO2_FLUX and OTHER_LAND_SECTOR_DISCLOSURE are disclosure-only and excluded from the net. Defaults to EMISSION where omitted.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine'], 'ifabsent': 'EMISSION'} })
     region: str = Field(default=..., description="""Country or region where emissions physically occurred, as a UN/LOCODE (minimum country; state/region extension supported).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     companyFacilityIdentifier: Optional[str] = Field(default=None, description="""Facility where emissions physically occurred (optional).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
-    emissionFactor: EmissionFactor = Field(default=..., description="""Metadata on the emission factor used for this line.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
+    emissionFactor: Optional[EmissionFactor] = Field(default=None, description="""Metadata on the emission factor used for this line. Optional as many exchanged figures (e.g. republished totals, or directly measured emissions) have no disclosed factor. Where provided, source and ipccBasis are required.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     dataQuality: Optional[DataQuality] = Field(default=None, description="""GHG Protocol data quality assessment for this line, spanning both the activity data and the emission factor used. Optional; most relevant where secondary, proxy or estimated inputs are applied. Use dataQualityInformation for any additional context.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     dataQualityInformation: Optional[str] = Field(default=None, description="""Optional free-text data quality context not captured by the indicators above (e.g. calculation method, provenance, known limitations). Sender's discretion; not machine-comparable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     gasBreakdown: Optional[list[GasBreakdown]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })

@@ -1,20 +1,15 @@
-reportID: BAD-2024
-companyName: Broken Co
+reportID: NO-TOTAL
+companyName: Missing Total Co
 primaryRegion: GB
 reportingPeriodStart: '2024-01-01'
 reportingPeriodEnd: '2024-12-31'
-totalNetEmissionsKgCO2e: 100.0
 gwpHorizon: GWP100
 reportStatus: SELF_COMPLETED
 emissionsLines:
-  - scope: SCOPE_4
+  - scope: SCOPE_1
     category: STATIONARY_COMBUSTION
     lineStatus: COMPLETE
-    totalNetEmissionsLocationBasedKgCO2e: 100.0
+    emissionsQuantityKgCO2e: 100.0
     emissionOrigin: FOSSIL
     accountingType: EMISSION
     region: GB
-    emissionFactor:
-      source: UK DESNZ
-      dataYear: 2024
-      ipccBasis: AR6

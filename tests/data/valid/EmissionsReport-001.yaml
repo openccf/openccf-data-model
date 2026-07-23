@@ -3,7 +3,7 @@ companyName: Acme Manufacturing Ltd
 primaryRegion: GB
 reportingPeriodStart: '2024-01-01'
 reportingPeriodEnd: '2024-12-31'
-totalNetEmissionsKgCO2e: 750000.0
+totalNetEmissionsLocationBasedKgCO2e: 750000.0
 gwpHorizon: GWP100
 reportStatus: THIRD_PARTY_AUDITED
 emissionsLines:
