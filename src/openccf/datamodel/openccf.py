@@ -1,5 +1,5 @@
 # Auto generated from openccf.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-23T11:44:52
+# Generation date: 2026-07-24T16:27:31
 # Schema: openccf
 #
 # id: https://w3id.org/openccf
@@ -186,7 +186,6 @@ class EmissionsLine(YAMLRoot):
     emissionsQuantityKgCO2e: float = None
     emissionOrigin: Union[str, "EmissionOriginEnum"] = None
     region: str = None
-    reportID: Optional[str] = None
     subcategory: Optional[str] = None
     accountingType: Optional[Union[str, "AccountingTypeEnum"]] = 'EMISSION'
     companyFacilityIdentifier: Optional[str] = None
@@ -227,9 +226,6 @@ class EmissionsLine(YAMLRoot):
             self.MissingRequiredField("region")
         if not isinstance(self.region, str):
             self.region = str(self.region)
-
-        if self.reportID is not None and not isinstance(self.reportID, str):
-            self.reportID = str(self.reportID)
 
         if self.subcategory is not None and not isinstance(self.subcategory, str):
             self.subcategory = str(self.subcategory)
@@ -358,6 +354,8 @@ class EmissionFactor(YAMLRoot):
     source: str = None
     dataYear: int = None
     ipccBasis: Union[str, "IpccBasisEnum"] = None
+    value: Optional[float] = None
+    valueUnit: Optional[str] = None
     dataset: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -375,6 +373,12 @@ class EmissionFactor(YAMLRoot):
             self.MissingRequiredField("ipccBasis")
         if not isinstance(self.ipccBasis, IpccBasisEnum):
             self.ipccBasis = IpccBasisEnum(self.ipccBasis)
+
+        if self.value is not None and not isinstance(self.value, float):
+            self.value = float(self.value)
+
+        if self.valueUnit is not None and not isinstance(self.valueUnit, str):
+            self.valueUnit = str(self.valueUnit)
 
         if self.dataset is not None and not isinstance(self.dataset, str):
             self.dataset = str(self.dataset)
@@ -783,9 +787,6 @@ slots.emissionsReport__companyIdentifiers = Slot(uri=OPENCCF.companyIdentifiers,
 slots.emissionsReport__intensityDenominators = Slot(uri=OPENCCF.intensityDenominators, name="emissionsReport__intensityDenominators", curie=OPENCCF.curie('intensityDenominators'),
                    model_uri=OPENCCF.emissionsReport__intensityDenominators, domain=None, range=Optional[Union[Union[dict, IntensityDenominator], list[Union[dict, IntensityDenominator]]]])
 
-slots.emissionsLine__reportID = Slot(uri=OPENCCF.reportID, name="emissionsLine__reportID", curie=OPENCCF.curie('reportID'),
-                   model_uri=OPENCCF.emissionsLine__reportID, domain=None, range=Optional[str])
-
 slots.emissionsLine__scope = Slot(uri=OPENCCF.scope, name="emissionsLine__scope", curie=OPENCCF.curie('scope'),
                    model_uri=OPENCCF.emissionsLine__scope, domain=None, range=Union[str, "ScopeEnum"])
 
@@ -854,6 +855,12 @@ slots.intensityDenominator__value = Slot(uri=OPENCCF.value, name="intensityDenom
 
 slots.intensityDenominator__unit = Slot(uri=OPENCCF.unit, name="intensityDenominator__unit", curie=OPENCCF.curie('unit'),
                    model_uri=OPENCCF.intensityDenominator__unit, domain=None, range=Optional[str])
+
+slots.emissionFactor__value = Slot(uri=OPENCCF.value, name="emissionFactor__value", curie=OPENCCF.curie('value'),
+                   model_uri=OPENCCF.emissionFactor__value, domain=None, range=Optional[float])
+
+slots.emissionFactor__valueUnit = Slot(uri=OPENCCF.valueUnit, name="emissionFactor__valueUnit", curie=OPENCCF.curie('valueUnit'),
+                   model_uri=OPENCCF.emissionFactor__valueUnit, domain=None, range=Optional[str])
 
 slots.emissionFactor__source = Slot(uri=OPENCCF.source, name="emissionFactor__source", curie=OPENCCF.curie('source'),
                    model_uri=OPENCCF.emissionFactor__source, domain=None, range=str)

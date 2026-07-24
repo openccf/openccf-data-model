@@ -159,10 +159,6 @@ classes:
                 - equals_string: NOT_SPECIFIED
         description: Scope 3 lines must use a Scope 3 category, or NOT_SPECIFIED.
     attributes:
-      reportID:
-        description: >-
-          Optional back-reference to the owning report, for cases where a line
-          is exchanged on its own rather than nested inside a report.
       scope:
         range: ScopeEnum
         required: true

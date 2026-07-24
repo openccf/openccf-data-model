@@ -304,7 +304,7 @@ class EmissionsReport(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/openccf', 'tree_root': True})
 
-    reportID: str = Field(default=..., description="""Unique identifier for this report.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport', 'EmissionsLine']} })
+    reportID: str = Field(default=..., description="""Unique identifier for this report.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     companyName: str = Field(default=..., description="""Legal or trading name of the reporting entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     primaryRegion: str = Field(default=..., description="""Location of the reporting entity as a UN/LOCODE (minimum country; state/region extension supported).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     reportingPeriodStart: date = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
@@ -365,7 +365,6 @@ class EmissionsLine(ConfiguredBaseModel):
                     'preconditions': {'slot_conditions': {'scope': {'equals_string': 'SCOPE_3',
                                                                     'name': 'scope'}}}}]})
 
-    reportID: Optional[str] = Field(default=None, description="""Optional back-reference to the owning report, for cases where a line is exchanged on its own rather than nested inside a report.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport', 'EmissionsLine']} })
     scope: ScopeEnum = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     category: EmissionCategoryEnum = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     subcategory: Optional[str] = Field(default=None, description="""Optional free-text subcategorisation of the line within its category, at the sender's discretion (e.g. \"Food and beverages\" or \"HGV fleet\"). There is no controlled vocabulary; values are descriptive and not intended to be machine-comparable. Useful for breaking a category into meaningful detail  without changing its GHG Protocol classification. It is intended as a grouping label  a sender or receiver can use to aggregate or subtotal lines (e.g. summing all  \"HGV fleet\" lines). It describes the kind of line, not the specific activity used  to calculate it (see ActivityData).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
@@ -375,7 +374,7 @@ class EmissionsLine(ConfiguredBaseModel):
     accountingType: Optional[AccountingTypeEnum] = Field(default=AccountingTypeEnum.EMISSION, description="""Inventory treatment of this line, and its contribution to the report net total: EMISSION adds, REMOVAL subtracts, REVERSAL adds; GROSS_CO2_FLUX and OTHER_LAND_SECTOR_DISCLOSURE are disclosure-only and excluded from the net. Defaults to EMISSION where omitted.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine'], 'ifabsent': 'EMISSION'} })
     region: str = Field(default=..., description="""Country or region where emissions physically occurred, as a UN/LOCODE (minimum country; state/region extension supported).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     companyFacilityIdentifier: Optional[str] = Field(default=None, description="""Facility where emissions physically occurred (optional).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
-    emissionFactor: Optional[EmissionFactor] = Field(default=None, description="""Metadata on the emission factor used for this line. Optional as many exchanged figures (e.g. republished totals, or directly measured emissions) have no disclosed factor. Where provided, source and ipccBasis are required.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
+    emissionFactor: Optional[EmissionFactor] = Field(default=None, description="""Metadata on the emission factor used for this line. Optional as many exchanged figures (e.g. republished totals, or directly measured emissions) have no disclosed factor. Where factor is provided, source, year and ipccBasis are required.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     dataQuality: Optional[DataQuality] = Field(default=None, description="""GHG Protocol data quality assessment for this line, spanning both the activity data and the emission factor used. Optional; most relevant where secondary, proxy or estimated inputs are applied. Use dataQualityInformation for any additional context.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     dataQualityInformation: Optional[str] = Field(default=None, description="""Optional free-text data quality context not captured by the indicators above (e.g. calculation method, provenance, known limitations). Sender's discretion; not machine-comparable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     gasBreakdown: Optional[list[GasBreakdown]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
@@ -401,7 +400,10 @@ class CompanyIdentifier(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/openccf'})
 
     scheme: Optional[str] = Field(default=None, description="""Identifier scheme (e.g. LEI, DUNS).""", json_schema_extra = { "linkml_meta": {'domain_of': ['Sector', 'CompanyIdentifier']} })
-    value: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CompanyIdentifier', 'IntensityDenominator', 'ActivityData']} })
+    value: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CompanyIdentifier',
+                       'IntensityDenominator',
+                       'EmissionFactor',
+                       'ActivityData']} })
 
 
 class IntensityDenominator(ConfiguredBaseModel):
@@ -411,7 +413,10 @@ class IntensityDenominator(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/openccf'})
 
     type: Optional[str] = Field(default=None, description="""e.g. full-time employees, revenue, facility area.""", json_schema_extra = { "linkml_meta": {'domain_of': ['IntensityDenominator']} })
-    value: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CompanyIdentifier', 'IntensityDenominator', 'ActivityData']} })
+    value: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CompanyIdentifier',
+                       'IntensityDenominator',
+                       'EmissionFactor',
+                       'ActivityData']} })
     unit: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IntensityDenominator', 'ActivityData']} })
 
 
@@ -421,6 +426,11 @@ class EmissionFactor(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/openccf'})
 
+    value: Optional[float] = Field(default=None, description="""Value of the emission factor applied, expressed in kgCO2e per unit of the activity (see valueUnit). Optional; provided where the sender wishes to expose the conversion rate used. Gas-level constituents are not carried here - where gas resolution is needed, use the line's gasBreakdown.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['CompanyIdentifier',
+                       'IntensityDenominator',
+                       'EmissionFactor',
+                       'ActivityData']} })
+    valueUnit: Optional[str] = Field(default=None, description="""Denominator unit for the emission factor value, i.e. the activity unit it applies to (e.g. \"kWh\", \"litre\", \"tonne-km\", \"GBP\"). Required where value is provided. Where activityData is also present, this should match its unit.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionFactor']} })
     source: str = Field(default=..., description="""Authority for the emission factor used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionFactor']} })
     dataset: Optional[str] = Field(default=None, description="""Specific dataset used (optional).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionFactor']} })
     dataYear: int = Field(default=..., description="""Year the emission factor was issued.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionFactor']} })
@@ -447,7 +457,10 @@ class ActivityData(ConfiguredBaseModel):
 
     description: Optional[str] = Field(default=None, description="""Free-text description of the specific activity quantity used to calculate this line's emissions (e.g. \"diesel purchased for site generator\"). Describes this particular measurement for provenance or recalculation, not a grouping label - use subcategory on the line for aggregation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ActivityData']} })
     lifecycleStage: Optional[str] = Field(default=None, description="""Where applicable (e.g. upstream, use phase, end-of-life).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ActivityData']} })
-    value: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CompanyIdentifier', 'IntensityDenominator', 'ActivityData']} })
+    value: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['CompanyIdentifier',
+                       'IntensityDenominator',
+                       'EmissionFactor',
+                       'ActivityData']} })
     unit: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['IntensityDenominator', 'ActivityData']} })
 
 
