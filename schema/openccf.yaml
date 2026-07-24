@@ -665,17 +665,6 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  emissionsLine__reportID:
-    name: emissionsLine__reportID
-    description: Optional back-reference to the owning report, for cases where a line
-      is exchanged on its own rather than nested inside a report.
-    from_schema: https://w3id.org/openccf
-    slot_uri: openccf:reportID
-    alias: reportID
-    owner: EmissionsLine
-    domain_of:
-    - EmissionsLine
-    range: string
   emissionsLine__scope:
     name: emissionsLine__scope
     from_schema: https://w3id.org/openccf
@@ -1279,7 +1268,6 @@ classes:
       Lines are flat; totals and subtotals are derived by grouping, not nesting.
     from_schema: https://w3id.org/openccf
     slots:
-    - emissionsLine__reportID
     - emissionsLine__scope
     - emissionsLine__category
     - emissionsLine__subcategory
@@ -1296,10 +1284,6 @@ classes:
     - emissionsLine__activityData
     - emissionsLine__landSectorData
     attributes:
-      reportID:
-        name: reportID
-        description: Optional back-reference to the owning report, for cases where
-          a line is exchanged on its own rather than nested inside a report.
       scope:
         name: scope
         range: ScopeEnum
@@ -1671,7 +1655,7 @@ classes:
     class_uri: openccf:LandSectorData
 metamodel_version: 1.11.0
 source_file: openccf.yaml
-source_file_date: '2026-07-23T10:56:26'
-source_file_size: 20010
-generation_date: '2026-07-23T10:56:37'
+source_file_date: '2026-07-24T15:32:58'
+source_file_size: 19821
+generation_date: '2026-07-24T15:33:10'
 
