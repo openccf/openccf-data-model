@@ -1,0 +1,150 @@
+# Worked example: a company reporting Scope 2 electricity under both methods.
+#
+# This fixture exercises the parts of the model most easily misread:
+#   - dual Scope 2 reporting and the two net totals
+#   - a gas breakdown summing to its line total
+#   - an emission factor carrying its value and unit
+#
+# The two totals below are NOT the sum of every line. Each excludes the
+# electricity line belonging to the other method:
+#
+#   location-based  450,000 + 80,000 + 300,000 + 150,000 = 980,000
+#   market-based    450,000 + 80,000 + 120,000 + 150,000 = 800,000
+#
+# Summing all five lines would count the same electricity twice.
+
+reportID: ACME-2024-DUAL
+companyName: Acme Manufacturing Ltd
+primaryRegion: GB
+reportingPeriodStart: '2024-01-01'
+reportingPeriodEnd: '2024-12-31'
+totalNetEmissionsLocationBasedKgCO2e: 980000.0
+totalNetEmissionsMarketBasedKgCO2e: 800000.0
+gwpHorizon: GWP100
+reportStatus: THIRD_PARTY_AUDITED
+
+sectors:
+  - scheme: NACE
+    code: '25.62'
+    name: Machining
+
+companyIdentifiers:
+  - scheme: LEI
+    value: 213800QLZKM7WNQ7FN70
+
+intensityDenominators:
+  - type: Average full-time employees
+    value: 420.0
+    unit: FTE
+
+emissionsLines:
+
+  # --- Scope 1 -------------------------------------------------------------
+  # Fully specified line: activity data, emission factor value, and a gas
+  # breakdown. 2,500,000 kWh x 0.18 kgCO2e/kWh = 450,000 kgCO2e.
+  - scope: SCOPE_1
+    category: STATIONARY_COMBUSTION
+    subcategory: Natural gas
+    lineStatus: COMPLETE
+    emissionsQuantityKgCO2e: 450000.0
+    emissionOrigin: FOSSIL
+    accountingType: EMISSION
+    region: GB
+    companyFacilityIdentifier: SITE-01
+    activityData:
+      description: Natural gas metered at the Sheffield site
+      value: 2500000.0
+      unit: kWh
+    emissionFactor:
+      value: 0.18
+      valueUnit: kWh
+      source: UK DESNZ
+      dataset: Greenhouse gas reporting - conversion factors 2024
+      dataYear: 2024
+      ipccBasis: AR6
+    # Gas contributions sum to the line total: 445,000 + 3,000 + 2,000.
+    gasBreakdown:
+      - gas: CO2
+        gasQuantity: 445.0
+        gasCO2eContribution: 445000.0
+        emissionOrigin: FOSSIL
+      - gas: CH4
+        gasQuantity: 0.1
+        gasCO2eContribution: 3000.0
+        emissionOrigin: FOSSIL
+      - gas: N2O
+        gasQuantity: 0.007
+        gasCO2eContribution: 2000.0
+        emissionOrigin: FOSSIL
+    dataQuality:
+      technologicalRepresentativeness: VERY_GOOD
+      temporalRepresentativeness: VERY_GOOD
+      geographicalRepresentativeness: VERY_GOOD
+      completeness: VERY_GOOD
+      reliability: VERY_GOOD
+
+  - scope: SCOPE_1
+    category: MOBILE_COMBUSTION
+    subcategory: HGV fleet
+    lineStatus: COMPLETE
+    emissionsQuantityKgCO2e: 80000.0
+    emissionOrigin: FOSSIL
+    accountingType: EMISSION
+    region: GB
+    emissionFactor:
+      source: UK DESNZ
+      dataYear: 2024
+      ipccBasis: AR6
+
+  # --- Scope 2 -------------------------------------------------------------
+  # Both electricity lines are present. Each net total excludes one of them.
+  - scope: SCOPE_2
+    category: ELECTRICITY_LOCATION_BASED
+    lineStatus: COMPLETE
+    emissionsQuantityKgCO2e: 300000.0
+    emissionOrigin: FOSSIL
+    accountingType: EMISSION
+    region: GB
+    emissionFactor:
+      value: 0.207
+      valueUnit: kWh
+      source: UK DESNZ
+      dataset: UK grid average
+      dataYear: 2024
+      ipccBasis: AR6
+
+  - scope: SCOPE_2
+    category: ELECTRICITY_MARKET_BASED
+    lineStatus: COMPLETE
+    emissionsQuantityKgCO2e: 120000.0
+    emissionOrigin: FOSSIL
+    accountingType: EMISSION
+    region: GB
+    dataQualityInformation: >-
+      Residual mix applied to the unbundled portion; REGO-backed supply for the
+      remainder.
+    emissionFactor:
+      source: Supplier contractual instrument
+      dataYear: 2024
+      ipccBasis: AR6
+
+  # --- Scope 3 -------------------------------------------------------------
+  # Estimated line: no emission factor disclosed by the data provider, and the
+  # data quality block records that the inputs are secondary.
+  - scope: SCOPE_3
+    category: S3_06_BUSINESS_TRAVEL
+    subcategory: Air travel
+    lineStatus: INCOMPLETE
+    emissionsQuantityKgCO2e: 150000.0
+    emissionOrigin: FOSSIL
+    accountingType: EMISSION
+    region: GB
+    dataQualityInformation: >-
+      Supplied by the travel management company as a finished figure; radiative
+      forcing uplift applied. Rail travel not yet included.
+    dataQuality:
+      technologicalRepresentativeness: FAIR
+      temporalRepresentativeness: GOOD
+      geographicalRepresentativeness: FAIR
+      completeness: POOR
+      reliability: FAIR
