@@ -486,9 +486,9 @@
 
 
 <h1 id="slot-description">Slot: description</h1>
-<p><em>A human-readable description for a thing</em></p>
+<p><em>Free-text description of the specific activity quantity used to calculate this line's emissions (e.g. "diesel purchased for site generator"). Describes this particular measurement for provenance or recalculation, not a grouping label - use subcategory on the line for aggregation.</em></p>
 <div>
-<p>URI: <a href="http://schema.org/description">schema:description</a></p>
+<p>URI: <a href="https://w3id.org/openccf/description">openccf:description</a></p>
 <!-- no inheritance hierarchy -->
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
@@ -501,13 +501,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NamedThing/">NamedThing</a></td>
-<td>A generic grouping for any identifiable entity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Person/">Person</a></td>
-<td>Represents a Person</td>
+<td><a href="../ActivityData/">ActivityData</a></td>
+<td>Optional activity information underlying the emissions</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -528,11 +523,7 @@
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td>Slot URI</td>
-<td><a href="http://schema.org/description">schema:description</a></td>
+<td><a href="../ActivityData/">ActivityData</a></td>
 </tr>
 </tbody>
 </table>
@@ -546,15 +537,29 @@
 </thead>
 <tbody>
 <tr>
+<td>### Slot Characteristics</td>
 <td></td>
-<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Owner</td>
+<td><a href="../ActivityData/">ActivityData</a></td>
 </tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: <a href="https://w3id.org/openccf/openccf">https://w3id.org/openccf/openccf</a></li>
+<li>from schema: <a href="https://w3id.org/openccf">https://w3id.org/openccf</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -567,7 +572,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>schema:description</td>
+<td>openccf:description</td>
 </tr>
 <tr>
 <td>native</td>
@@ -578,12 +583,15 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A human-readable description for a thing</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf/openccf</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Free-text description of the specific activity quantity used to calculate</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">this line&#39;s emissions (e.g. &quot;diesel purchased for site generator&quot;). Describes this</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">particular measurement for provenance or recalculation, not a grouping label - use</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">subcategory on the line for aggregation.</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">schema:description</span>
+<span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ActivityData</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NamedThing</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ActivityData</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 </code></pre></div>
 </details>

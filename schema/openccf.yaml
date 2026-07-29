@@ -1,32 +1,24 @@
 name: openccf
-description: An open, interoperable data model for exchanging corporate carbon footprints
-  (GHG Protocol-aligned) between systems.
-title: openccf
+id_prefixes:
+- openccf
+description: An open, interoperable data model for exchanging GHG Protocol-aligned
+  corporate carbon footprints between systems. Released under CC0-1.0.
+title: OpenCCF - Open Corporate Carbon Footprint Data Model
 see_also:
-- https://openccf.github.io/openccf
-id: https://w3id.org/openccf/openccf
+- https://openccf.org
+id: https://w3id.org/openccf
 imports:
 - linkml:types
-license: LicenseRef-Custom
+license: CC0-1.0
 prefixes:
   openccf:
     prefix_prefix: openccf
-    prefix_reference: https://w3id.org/openccf/openccf/
+    prefix_reference: https://w3id.org/openccf/
   linkml:
     prefix_prefix: linkml
     prefix_reference: https://w3id.org/linkml/
-  biolink:
-    prefix_prefix: biolink
-    prefix_reference: https://w3id.org/biolink/vocab/
-  schema:
-    prefix_prefix: schema
-    prefix_reference: http://schema.org/
-  PATO:
-    prefix_prefix: PATO
-    prefix_reference: http://purl.obolibrary.org/obo/PATO_
-  example:
-    prefix_prefix: example
-    prefix_reference: http://www.example.org/rdf#
+default_curi_maps:
+- semweb_context
 default_prefix: openccf
 default_range: string
 types:
@@ -299,188 +291,1371 @@ types:
     uri: xsd:string
     repr: str
 enums:
-  PersonStatus:
-    name: PersonStatus
-    definition_uri: https://w3id.org/openccf/openccf/PersonStatus
-    description: The vital status of a person
-    from_schema: https://w3id.org/openccf/openccf
+  ScopeEnum:
+    name: ScopeEnum
+    definition_uri: https://w3id.org/openccf/ScopeEnum
+    from_schema: https://w3id.org/openccf
     permissible_values:
-      ALIVE:
-        text: ALIVE
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        text: DEAD
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        text: UNKNOWN
-        description: the vital status is not known
-        todos:
-        - map this to an ontology
+      SCOPE_1:
+        text: SCOPE_1
+        description: Direct emissions from owned or controlled sources.
+      SCOPE_2:
+        text: SCOPE_2
+        description: Indirect emissions from purchased energy.
+      SCOPE_3:
+        text: SCOPE_3
+        description: All other indirect value-chain emissions.
+  EmissionCategoryEnum:
+    name: EmissionCategoryEnum
+    definition_uri: https://w3id.org/openccf/EmissionCategoryEnum
+    description: Source classification. Valid values are scope-dependent; the scope-to-category
+      validity constraint is enforced by rules on EmissionsLine.
+    from_schema: https://w3id.org/openccf
+    permissible_values:
+      STATIONARY_COMBUSTION:
+        text: STATIONARY_COMBUSTION
+        description: 'Scope 1: Stationary combustion.'
+      MOBILE_COMBUSTION:
+        text: MOBILE_COMBUSTION
+        description: 'Scope 1: Mobile combustion.'
+      PROCESS_EMISSIONS:
+        text: PROCESS_EMISSIONS
+        description: 'Scope 1: Process emissions from physical or chemical processes.'
+      FUGITIVE:
+        text: FUGITIVE
+        description: 'Scope 1: Fugitive emissions.'
+      ELECTRICITY_MARKET_BASED:
+        text: ELECTRICITY_MARKET_BASED
+        description: 'Scope 2: Purchased electricity (market-based method).'
+      ELECTRICITY_LOCATION_BASED:
+        text: ELECTRICITY_LOCATION_BASED
+        description: 'Scope 2: Purchased electricity (location-based method).'
+      HEAT_STEAM_COOLING:
+        text: HEAT_STEAM_COOLING
+        description: 'Scope 2: Purchased heat, steam and cooling.'
+      S3_01_PURCHASED_GOODS_SERVICES:
+        text: S3_01_PURCHASED_GOODS_SERVICES
+        description: 'Category 1: Purchased goods and services.'
+      S3_02_CAPITAL_GOODS:
+        text: S3_02_CAPITAL_GOODS
+        description: 'Category 2: Capital goods.'
+      S3_03_FUEL_ENERGY_RELATED:
+        text: S3_03_FUEL_ENERGY_RELATED
+        description: 'Category 3: Fuel- and energy-related activities (not included
+          in Scope 1 or Scope 2).'
+      S3_04_UPSTREAM_TRANSPORT:
+        text: S3_04_UPSTREAM_TRANSPORT
+        description: 'Category 4: Upstream transportation and distribution.'
+      S3_05_WASTE_IN_OPERATIONS:
+        text: S3_05_WASTE_IN_OPERATIONS
+        description: 'Category 5: Waste generated in operations.'
+      S3_06_BUSINESS_TRAVEL:
+        text: S3_06_BUSINESS_TRAVEL
+        description: 'Category 6: Business travel.'
+      S3_07_EMPLOYEE_COMMUTING:
+        text: S3_07_EMPLOYEE_COMMUTING
+        description: 'Category 7: Employee commuting.'
+      S3_08_UPSTREAM_LEASED_ASSETS:
+        text: S3_08_UPSTREAM_LEASED_ASSETS
+        description: 'Category 8: Upstream leased assets.'
+      S3_09_DOWNSTREAM_TRANSPORT:
+        text: S3_09_DOWNSTREAM_TRANSPORT
+        description: 'Category 9: Downstream transportation and distribution.'
+      S3_10_PROCESSING_SOLD_PRODUCTS:
+        text: S3_10_PROCESSING_SOLD_PRODUCTS
+        description: 'Category 10: Processing of sold products.'
+      S3_11_USE_OF_SOLD_PRODUCTS:
+        text: S3_11_USE_OF_SOLD_PRODUCTS
+        description: 'Category 11: Use of sold products.'
+      S3_12_EOL_SOLD_PRODUCTS:
+        text: S3_12_EOL_SOLD_PRODUCTS
+        description: 'Category 12: End-of-life treatment of sold products.'
+      S3_13_DOWNSTREAM_LEASED_ASSETS:
+        text: S3_13_DOWNSTREAM_LEASED_ASSETS
+        description: 'Category 13: Downstream leased assets.'
+      S3_14_FRANCHISES:
+        text: S3_14_FRANCHISES
+        description: 'Category 14: Franchises.'
+      S3_15_INVESTMENTS:
+        text: S3_15_INVESTMENTS
+        description: 'Category 15: Investments.'
+      NOT_SPECIFIED:
+        text: NOT_SPECIFIED
+        description: Category not specified or not disclosed by the source.
+  LineStatusEnum:
+    name: LineStatusEnum
+    definition_uri: https://w3id.org/openccf/LineStatusEnum
+    description: Completeness of this line. Assurance status is recorded at report
+      level.
+    from_schema: https://w3id.org/openccf
+    permissible_values:
+      COMPLETE:
+        text: COMPLETE
+        description: Fully measured or calculated for the reporting period.
+      INCOMPLETE:
+        text: INCOMPLETE
+        description: Partially measured; known to under-represent the total for this
+          line.
+      EXCLUDED:
+        text: EXCLUDED
+        description: Explicitly excluded from the report.
+  ReportStatusEnum:
+    name: ReportStatusEnum
+    definition_uri: https://w3id.org/openccf/ReportStatusEnum
+    from_schema: https://w3id.org/openccf
+    permissible_values:
+      INCOMPLETE:
+        text: INCOMPLETE
+        description: Not for utilisation as a full company report.
+      SELF_COMPLETED:
+        text: SELF_COMPLETED
+      THIRD_PARTY_COMPLETED:
+        text: THIRD_PARTY_COMPLETED
+      THIRD_PARTY_AUDITED:
+        text: THIRD_PARTY_AUDITED
+  EmissionOriginEnum:
+    name: EmissionOriginEnum
+    definition_uri: https://w3id.org/openccf/EmissionOriginEnum
+    from_schema: https://w3id.org/openccf
+    permissible_values:
+      FOSSIL:
+        text: FOSSIL
+      BIOGENIC:
+        text: BIOGENIC
+      MIXED:
+        text: MIXED
+        description: Origin cannot be disaggregated in the source data.
+      NOT_SPECIFIED:
+        text: NOT_SPECIFIED
+        description: Underlying data does not distinguish origin.
+      NOT_APPLICABLE:
+        text: NOT_APPLICABLE
+        description: Origin concept not relevant for this gas.
+  AccountingTypeEnum:
+    name: AccountingTypeEnum
+    definition_uri: https://w3id.org/openccf/AccountingTypeEnum
+    from_schema: https://w3id.org/openccf
+    permissible_values:
+      EMISSION:
+        text: EMISSION
+      REMOVAL:
+        text: REMOVAL
+      GROSS_CO2_FLUX:
+        text: GROSS_CO2_FLUX
+        description: Additional disclosure.
+      REVERSAL:
+        text: REVERSAL
+      OTHER_LAND_SECTOR_DISCLOSURE:
+        text: OTHER_LAND_SECTOR_DISCLOSURE
+        description: Reserved for future expansion.
+  GwpHorizonEnum:
+    name: GwpHorizonEnum
+    definition_uri: https://w3id.org/openccf/GwpHorizonEnum
+    from_schema: https://w3id.org/openccf
+    permissible_values:
+      GWP20:
+        text: GWP20
+      GWP100:
+        text: GWP100
+      GWP500:
+        text: GWP500
+  IpccBasisEnum:
+    name: IpccBasisEnum
+    definition_uri: https://w3id.org/openccf/IpccBasisEnum
+    from_schema: https://w3id.org/openccf
+    permissible_values:
+      AR4:
+        text: AR4
+      AR5:
+        text: AR5
+      AR6:
+        text: AR6
+      NOT_SPECIFIED:
+        text: NOT_SPECIFIED
+  GasEnum:
+    name: GasEnum
+    definition_uri: https://w3id.org/openccf/GasEnum
+    from_schema: https://w3id.org/openccf
+    permissible_values:
+      CO2:
+        text: CO2
+      CH4:
+        text: CH4
+      N2O:
+        text: N2O
+      HFC:
+        text: HFC
+        description: With subtype to be specified.
+      PFC:
+        text: PFC
+      SF6:
+        text: SF6
+      NF3:
+        text: NF3
+      OTHER:
+        text: OTHER
+        description: Specified separately.
+  DataQualityRatingEnum:
+    name: DataQualityRatingEnum
+    definition_uri: https://w3id.org/openccf/DataQualityRatingEnum
+    description: GHG Protocol data quality indicator rating (Poor to Very good).
+    from_schema: https://w3id.org/openccf
+    permissible_values:
+      VERY_GOOD:
+        text: VERY_GOOD
+      GOOD:
+        text: GOOD
+      FAIR:
+        text: FAIR
+      POOR:
+        text: POOR
 slots:
-  id:
-    name: id
-    definition_uri: https://w3id.org/openccf/openccf/id
-    description: A unique identifier for a thing
-    from_schema: https://w3id.org/openccf/openccf
-    mappings:
-    - schema:identifier
-    slot_uri: schema:identifier
+  emissionsReport__reportID:
+    name: emissionsReport__reportID
+    description: Unique identifier for this report.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:reportID
     identifier: true
-    owner: NamedThing
+    alias: reportID
+    owner: EmissionsReport
     domain_of:
-    - NamedThing
-    range: uriorcurie
+    - EmissionsReport
+    range: string
     required: true
-  name:
-    name: name
-    definition_uri: https://w3id.org/openccf/openccf/name
-    description: A human-readable name for a thing
-    from_schema: https://w3id.org/openccf/openccf
-    mappings:
-    - schema:name
-    slot_uri: schema:name
-    owner: NamedThing
+  emissionsReport__companyName:
+    name: emissionsReport__companyName
+    description: Legal or trading name of the reporting entity.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:companyName
+    alias: companyName
+    owner: EmissionsReport
     domain_of:
-    - NamedThing
+    - EmissionsReport
     range: string
-  description:
-    name: description
-    definition_uri: https://w3id.org/openccf/openccf/description
-    description: A human-readable description for a thing
-    from_schema: https://w3id.org/openccf/openccf
-    mappings:
-    - schema:description
-    slot_uri: schema:description
-    owner: NamedThing
+    required: true
+  emissionsReport__primaryRegion:
+    name: emissionsReport__primaryRegion
+    description: Location of the reporting entity as a UN/LOCODE (minimum country;
+      state/region extension supported).
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:primaryRegion
+    alias: primaryRegion
+    owner: EmissionsReport
     domain_of:
-    - NamedThing
+    - EmissionsReport
     range: string
-  primary_email:
-    name: primary_email
-    definition_uri: https://w3id.org/openccf/openccf/primary_email
-    description: The main email address of a person
-    from_schema: https://w3id.org/openccf/openccf
-    mappings:
-    - schema:email
-    slot_uri: schema:email
-    owner: Person
+    required: true
+  emissionsReport__reportingPeriodStart:
+    name: emissionsReport__reportingPeriodStart
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:reportingPeriodStart
+    alias: reportingPeriodStart
+    owner: EmissionsReport
     domain_of:
-    - Person
-    range: string
-  birth_date:
-    name: birth_date
-    definition_uri: https://w3id.org/openccf/openccf/birth_date
-    description: Date on which a person is born
-    from_schema: https://w3id.org/openccf/openccf
-    mappings:
-    - schema:birthDate
-    slot_uri: schema:birthDate
-    owner: Person
-    domain_of:
-    - Person
+    - EmissionsReport
     range: date
-  age_in_years:
-    name: age_in_years
-    definition_uri: https://w3id.org/openccf/openccf/age_in_years
-    description: Number of years since birth
-    from_schema: https://w3id.org/openccf/openccf
-    slot_uri: openccf:age_in_years
-    owner: Person
+    required: true
+  emissionsReport__reportingPeriodEnd:
+    name: emissionsReport__reportingPeriodEnd
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:reportingPeriodEnd
+    alias: reportingPeriodEnd
+    owner: EmissionsReport
     domain_of:
-    - Person
-    range: integer
-  vital_status:
-    name: vital_status
-    definition_uri: https://w3id.org/openccf/openccf/vital_status
-    description: living or dead status
-    from_schema: https://w3id.org/openccf/openccf
-    slot_uri: openccf:vital_status
-    owner: Person
+    - EmissionsReport
+    range: date
+    required: true
+  emissionsReport__totalNetEmissionsLocationBasedKgCO2e:
+    name: emissionsReport__totalNetEmissionsLocationBasedKgCO2e
+    description: 'Net aggregate for the reporting period on the location-based Scope
+      2 method: sum(EMISSION) - sum(REMOVAL) + sum(REVERSAL) over all emissionsLines,
+      excluding GROSS_CO2_FLUX and OTHER_LAND_SECTOR_DISCLOSURE lines, and excluding
+      ELECTRICITY_MARKET_BASED lines. Always present: location-based is the baseline
+      method, and for reports with no market-based electricity this is simply the
+      report total.'
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:totalNetEmissionsLocationBasedKgCO2e
+    alias: totalNetEmissionsLocationBasedKgCO2e
+    owner: EmissionsReport
     domain_of:
-    - Person
-    range: PersonStatus
-  personCollection__people:
-    name: personCollection__people
-    from_schema: https://w3id.org/openccf/openccf
-    slot_uri: openccf:people
-    alias: people
-    owner: PersonCollection
+    - EmissionsReport
+    range: float
+    required: true
+  emissionsReport__totalNetEmissionsMarketBasedKgCO2e:
+    name: emissionsReport__totalNetEmissionsMarketBasedKgCO2e
+    description: 'Net aggregate for the reporting period on the market-based Scope
+      2 method: as above, excluding ELECTRICITY_LOCATION_BASED lines. Present only
+      where the report contains market-based electricity lines. Omitted (left blank,
+      never zero) otherwise.'
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:totalNetEmissionsMarketBasedKgCO2e
+    alias: totalNetEmissionsMarketBasedKgCO2e
+    owner: EmissionsReport
     domain_of:
-    - PersonCollection
-    range: Person
+    - EmissionsReport
+    range: float
+  emissionsReport__gwpHorizon:
+    name: emissionsReport__gwpHorizon
+    description: GWP time horizon applied across the whole report. Report-level to
+      enforce consistency; IPCC AR basis is recorded per line.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:gwpHorizon
+    alias: gwpHorizon
+    owner: EmissionsReport
+    domain_of:
+    - EmissionsReport
+    range: GwpHorizonEnum
+    required: true
+  emissionsReport__reportStatus:
+    name: emissionsReport__reportStatus
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:reportStatus
+    alias: reportStatus
+    owner: EmissionsReport
+    domain_of:
+    - EmissionsReport
+    range: ReportStatusEnum
+    required: true
+  emissionsReport__emissionsLines:
+    name: emissionsReport__emissionsLines
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:emissionsLines
+    alias: emissionsLines
+    owner: EmissionsReport
+    domain_of:
+    - EmissionsReport
+    range: EmissionsLine
+    required: true
     multivalued: true
     inlined: true
     inlined_as_list: true
-  Person_primary_email:
-    name: Person_primary_email
-    definition_uri: https://w3id.org/openccf/openccf/primary_email
-    description: The main email address of a person
-    from_schema: https://w3id.org/openccf/openccf
-    mappings:
-    - schema:email
-    is_a: primary_email
-    domain: Person
-    slot_uri: schema:email
-    alias: primary_email
-    owner: Person
+  emissionsReport__sectors:
+    name: emissionsReport__sectors
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:sectors
+    alias: sectors
+    owner: EmissionsReport
     domain_of:
-    - Person
-    is_usage_slot: true
-    usage_slot_name: primary_email
+    - EmissionsReport
+    range: Sector
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  emissionsReport__companyIdentifiers:
+    name: emissionsReport__companyIdentifiers
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:companyIdentifiers
+    alias: companyIdentifiers
+    owner: EmissionsReport
+    domain_of:
+    - EmissionsReport
+    range: CompanyIdentifier
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  emissionsReport__intensityDenominators:
+    name: emissionsReport__intensityDenominators
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:intensityDenominators
+    alias: intensityDenominators
+    owner: EmissionsReport
+    domain_of:
+    - EmissionsReport
+    range: IntensityDenominator
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  emissionsLine__scope:
+    name: emissionsLine__scope
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:scope
+    alias: scope
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: ScopeEnum
+    required: true
+  emissionsLine__category:
+    name: emissionsLine__category
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:category
+    alias: category
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: EmissionCategoryEnum
+    required: true
+  emissionsLine__subcategory:
+    name: emissionsLine__subcategory
+    description: Optional free-text subcategorisation of the line within its category,
+      at the sender's discretion (e.g. "Food and beverages" or "HGV fleet"). There
+      is no controlled vocabulary; values are descriptive and not intended to be machine-comparable.
+      Useful for breaking a category into meaningful detail  without changing its
+      GHG Protocol classification. It is intended as a grouping label  a sender or
+      receiver can use to aggregate or subtotal lines (e.g. summing all  "HGV fleet"
+      lines). It describes the kind of line, not the specific activity used  to calculate
+      it (see ActivityData).
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:subcategory
+    alias: subcategory
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
     range: string
-    pattern: ^\S+@[\S+\.]+\S+
+  emissionsLine__lineStatus:
+    name: emissionsLine__lineStatus
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:lineStatus
+    alias: lineStatus
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: LineStatusEnum
+    required: true
+  emissionsLine__emissionsQuantityKgCO2e:
+    name: emissionsLine__emissionsQuantityKgCO2e
+    description: Total CO2-equivalent for this line, expressed as a non-negative magnitude.
+      Direction (whether the line adds to or subtracts from the net) is determined
+      by accountingType, not by the sign of this value - consistent with GHG Protocol
+      gross reporting, under which gross emissions and gross removals are reported
+      separately and not netted within a category.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:emissionsQuantityKgCO2e
+    alias: emissionsQuantityKgCO2e
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: float
+    required: true
+    minimum_value: 0
+  emissionsLine__emissionOrigin:
+    name: emissionsLine__emissionOrigin
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:emissionOrigin
+    alias: emissionOrigin
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: EmissionOriginEnum
+    required: true
+  emissionsLine__accountingType:
+    name: emissionsLine__accountingType
+    description: 'Inventory treatment of this line, and its contribution to the report
+      net total: EMISSION adds, REMOVAL subtracts, REVERSAL adds; GROSS_CO2_FLUX and
+      OTHER_LAND_SECTOR_DISCLOSURE are disclosure-only and excluded from the net.
+      Defaults to EMISSION where omitted.'
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:accountingType
+    ifabsent: EMISSION
+    alias: accountingType
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: AccountingTypeEnum
+  emissionsLine__region:
+    name: emissionsLine__region
+    description: Country or region where emissions physically occurred, as a UN/LOCODE
+      (minimum country; state/region extension supported).
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:region
+    alias: region
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: string
+    required: true
+  emissionsLine__companyFacilityIdentifier:
+    name: emissionsLine__companyFacilityIdentifier
+    description: Facility where emissions physically occurred (optional).
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:companyFacilityIdentifier
+    alias: companyFacilityIdentifier
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: string
+  emissionsLine__emissionFactor:
+    name: emissionsLine__emissionFactor
+    description: Metadata on the emission factor used for this line. Optional as many
+      exchanged figures (e.g. republished totals, or directly measured emissions)
+      have no disclosed factor. Where factor is provided, source, year and ipccBasis
+      are required.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:emissionFactor
+    alias: emissionFactor
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: EmissionFactor
+    inlined: true
+    inlined_as_list: true
+  emissionsLine__dataQuality:
+    name: emissionsLine__dataQuality
+    description: GHG Protocol data quality assessment for this line, spanning both
+      the activity data and the emission factor used. Optional; most relevant where
+      secondary, proxy or estimated inputs are applied. Use dataQualityInformation
+      for any additional context.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:dataQuality
+    alias: dataQuality
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: DataQuality
+    inlined: true
+    inlined_as_list: true
+  emissionsLine__dataQualityInformation:
+    name: emissionsLine__dataQualityInformation
+    description: Optional free-text data quality context not captured by the indicators
+      above (e.g. calculation method, provenance, known limitations). Sender's discretion;
+      not machine-comparable.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:dataQualityInformation
+    alias: dataQualityInformation
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: string
+  emissionsLine__gasBreakdown:
+    name: emissionsLine__gasBreakdown
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:gasBreakdown
+    alias: gasBreakdown
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: GasBreakdown
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  emissionsLine__activityData:
+    name: emissionsLine__activityData
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:activityData
+    alias: activityData
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: ActivityData
+    inlined: true
+    inlined_as_list: true
+  emissionsLine__landSectorData:
+    name: emissionsLine__landSectorData
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:landSectorData
+    alias: landSectorData
+    owner: EmissionsLine
+    domain_of:
+    - EmissionsLine
+    range: LandSectorData
+    inlined: true
+    inlined_as_list: true
+  sector__scheme:
+    name: sector__scheme
+    description: Classification scheme (e.g. NACE, SIC, GHG Protocol sector).
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:scheme
+    alias: scheme
+    owner: Sector
+    domain_of:
+    - Sector
+    range: string
+  sector__code:
+    name: sector__code
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:code
+    alias: code
+    owner: Sector
+    domain_of:
+    - Sector
+    range: string
+  sector__name:
+    name: sector__name
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:name
+    alias: name
+    owner: Sector
+    domain_of:
+    - Sector
+    range: string
+  companyIdentifier__scheme:
+    name: companyIdentifier__scheme
+    description: Identifier scheme (e.g. LEI, DUNS).
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:scheme
+    alias: scheme
+    owner: CompanyIdentifier
+    domain_of:
+    - CompanyIdentifier
+    range: string
+  companyIdentifier__value:
+    name: companyIdentifier__value
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:value
+    alias: value
+    owner: CompanyIdentifier
+    domain_of:
+    - CompanyIdentifier
+    range: string
+  intensityDenominator__type:
+    name: intensityDenominator__type
+    description: e.g. full-time employees, revenue, facility area.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:type
+    alias: type
+    owner: IntensityDenominator
+    domain_of:
+    - IntensityDenominator
+    range: string
+  intensityDenominator__value:
+    name: intensityDenominator__value
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:value
+    alias: value
+    owner: IntensityDenominator
+    domain_of:
+    - IntensityDenominator
+    range: float
+  intensityDenominator__unit:
+    name: intensityDenominator__unit
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:unit
+    alias: unit
+    owner: IntensityDenominator
+    domain_of:
+    - IntensityDenominator
+    range: string
+  emissionFactor__value:
+    name: emissionFactor__value
+    description: Value of the emission factor applied, expressed in kgCO2e per unit
+      of the activity (see valueUnit). Optional; provided where the sender wishes
+      to expose the conversion rate used. Gas-level constituents are not carried here
+      - where gas resolution is needed, use the line's gasBreakdown.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:value
+    alias: value
+    owner: EmissionFactor
+    domain_of:
+    - EmissionFactor
+    range: float
+    minimum_value: 0
+  emissionFactor__valueUnit:
+    name: emissionFactor__valueUnit
+    description: Denominator unit for the emission factor value, i.e. the activity
+      unit it applies to (e.g. "kWh", "litre", "tonne-km", "GBP"). Required where
+      value is provided. Where activityData is also present, this should match its
+      unit.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:valueUnit
+    alias: valueUnit
+    owner: EmissionFactor
+    domain_of:
+    - EmissionFactor
+    range: string
+  emissionFactor__source:
+    name: emissionFactor__source
+    description: Authority for the emission factor used.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:source
+    alias: source
+    owner: EmissionFactor
+    domain_of:
+    - EmissionFactor
+    range: string
+    required: true
+  emissionFactor__dataset:
+    name: emissionFactor__dataset
+    description: Specific dataset used (optional).
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:dataset
+    alias: dataset
+    owner: EmissionFactor
+    domain_of:
+    - EmissionFactor
+    range: string
+  emissionFactor__dataYear:
+    name: emissionFactor__dataYear
+    description: Year the emission factor was issued.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:dataYear
+    alias: dataYear
+    owner: EmissionFactor
+    domain_of:
+    - EmissionFactor
+    range: integer
+    required: true
+  emissionFactor__ipccBasis:
+    name: emissionFactor__ipccBasis
+    description: IPCC Assessment Report basis for the GWP values used.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:ipccBasis
+    alias: ipccBasis
+    owner: EmissionFactor
+    domain_of:
+    - EmissionFactor
+    range: IpccBasisEnum
+    required: true
+  gasBreakdown__gas:
+    name: gasBreakdown__gas
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:gas
+    alias: gas
+    owner: GasBreakdown
+    domain_of:
+    - GasBreakdown
+    range: GasEnum
+    required: true
+  gasBreakdown__gasQuantity:
+    name: gasBreakdown__gasQuantity
+    description: Quantity of the gas in its native unit (e.g. tonnes CH4).
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:gasQuantity
+    alias: gasQuantity
+    owner: GasBreakdown
+    domain_of:
+    - GasBreakdown
+    range: float
+  gasBreakdown__gasCO2eContribution:
+    name: gasBreakdown__gasCO2eContribution
+    description: Portion of the line's emissionsQuantityKgCO2e attributable to this
+      gas, as a non-negative magnitude. Where a breakdown is present, contributions
+      sum to the line total (see class-level note).
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:gasCO2eContribution
+    alias: gasCO2eContribution
+    owner: GasBreakdown
+    domain_of:
+    - GasBreakdown
+    range: float
+    minimum_value: 0
+  gasBreakdown__emissionOrigin:
+    name: gasBreakdown__emissionOrigin
+    description: Origin of this gas's emissions. Where a gas breakdown is provided,
+      gas-level origin takes precedence over the line-level emissionOrigin.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:emissionOrigin
+    alias: emissionOrigin
+    owner: GasBreakdown
+    domain_of:
+    - GasBreakdown
+    range: EmissionOriginEnum
+  activityData__description:
+    name: activityData__description
+    description: Free-text description of the specific activity quantity used to calculate
+      this line's emissions (e.g. "diesel purchased for site generator"). Describes
+      this particular measurement for provenance or recalculation, not a grouping
+      label - use subcategory on the line for aggregation.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:description
+    alias: description
+    owner: ActivityData
+    domain_of:
+    - ActivityData
+    range: string
+  activityData__lifecycleStage:
+    name: activityData__lifecycleStage
+    description: Where applicable (e.g. upstream, use phase, end-of-life).
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:lifecycleStage
+    alias: lifecycleStage
+    owner: ActivityData
+    domain_of:
+    - ActivityData
+    range: string
+  activityData__value:
+    name: activityData__value
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:value
+    alias: value
+    owner: ActivityData
+    domain_of:
+    - ActivityData
+    range: float
+  activityData__unit:
+    name: activityData__unit
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:unit
+    alias: unit
+    owner: ActivityData
+    domain_of:
+    - ActivityData
+    range: string
+  dataQuality__technologicalRepresentativeness:
+    name: dataQuality__technologicalRepresentativeness
+    description: Degree to which the emission estimation reflects the actual technology(ies)
+      used.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:technologicalRepresentativeness
+    alias: technologicalRepresentativeness
+    owner: DataQuality
+    domain_of:
+    - DataQuality
+    range: DataQualityRatingEnum
+  dataQuality__temporalRepresentativeness:
+    name: dataQuality__temporalRepresentativeness
+    description: Degree to which the emission estimation reflects the actual time
+      period.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:temporalRepresentativeness
+    alias: temporalRepresentativeness
+    owner: DataQuality
+    domain_of:
+    - DataQuality
+    range: DataQualityRatingEnum
+  dataQuality__geographicalRepresentativeness:
+    name: dataQuality__geographicalRepresentativeness
+    description: Degree to which the emission estimation reflects the actual geography.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:geographicalRepresentativeness
+    alias: geographicalRepresentativeness
+    owner: DataQuality
+    domain_of:
+    - DataQuality
+    range: DataQualityRatingEnum
+  dataQuality__completeness:
+    name: dataQuality__completeness
+    description: Degree to which the emission estimation is statistically representative
+      and complete.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:completeness
+    alias: completeness
+    owner: DataQuality
+    domain_of:
+    - DataQuality
+    range: DataQualityRatingEnum
+  dataQuality__reliability:
+    name: dataQuality__reliability
+    description: Reliability of the emission estimation sources and measurement or
+      estimation methods.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:reliability
+    alias: reliability
+    owner: DataQuality
+    domain_of:
+    - DataQuality
+    range: DataQualityRatingEnum
+  landSectorData__boundary:
+    name: landSectorData__boundary
+    description: Land boundary / traceability level.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:boundary
+    alias: boundary
+    owner: LandSectorData
+    domain_of:
+    - LandSectorData
+    range: string
+  landSectorData__storageDuration:
+    name: landSectorData__storageDuration
+    description: Expected storage duration / permanence category.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:storageDuration
+    alias: storageDuration
+    owner: LandSectorData
+    domain_of:
+    - LandSectorData
+    range: string
+  landSectorData__monitoringApproach:
+    name: landSectorData__monitoringApproach
+    description: Monitoring approach and reversal treatment.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:monitoringApproach
+    alias: monitoringApproach
+    owner: LandSectorData
+    domain_of:
+    - LandSectorData
+    range: string
 classes:
-  NamedThing:
-    name: NamedThing
-    definition_uri: https://w3id.org/openccf/openccf/NamedThing
-    description: A generic grouping for any identifiable entity
-    from_schema: https://w3id.org/openccf/openccf
-    mappings:
-    - schema:Thing
+  EmissionsReport:
+    name: EmissionsReport
+    definition_uri: https://w3id.org/openccf/EmissionsReport
+    description: A company's greenhouse gas footprint for a defined reporting period.
+      Acts as the container for one or more Emissions Lines. The location-based net
+      total is always present; the market-based total is present only where the report
+      contains market-based electricity lines. The derivation of each total from its
+      lines is a semantic constraint, verified by the conformance tests rather than
+      by schema validation.
+    from_schema: https://w3id.org/openccf
     slots:
-    - id
-    - name
-    - description
-    class_uri: schema:Thing
-  Person:
-    name: Person
-    definition_uri: https://w3id.org/openccf/openccf/Person
-    description: Represents a Person
-    from_schema: https://w3id.org/openccf/openccf
-    is_a: NamedThing
-    slots:
-    - id
-    - name
-    - description
-    - Person_primary_email
-    - birth_date
-    - age_in_years
-    - vital_status
-    slot_usage:
-      primary_email:
-        name: primary_email
-        pattern: ^\S+@[\S+\.]+\S+
-    class_uri: openccf:Person
-  PersonCollection:
-    name: PersonCollection
-    definition_uri: https://w3id.org/openccf/openccf/PersonCollection
-    description: A holder for Person objects
-    from_schema: https://w3id.org/openccf/openccf
-    slots:
-    - personCollection__people
+    - emissionsReport__reportID
+    - emissionsReport__companyName
+    - emissionsReport__primaryRegion
+    - emissionsReport__reportingPeriodStart
+    - emissionsReport__reportingPeriodEnd
+    - emissionsReport__totalNetEmissionsLocationBasedKgCO2e
+    - emissionsReport__totalNetEmissionsMarketBasedKgCO2e
+    - emissionsReport__gwpHorizon
+    - emissionsReport__reportStatus
+    - emissionsReport__emissionsLines
+    - emissionsReport__sectors
+    - emissionsReport__companyIdentifiers
+    - emissionsReport__intensityDenominators
     attributes:
-      people:
-        name: people
-        range: Person
+      reportID:
+        name: reportID
+        description: Unique identifier for this report.
+        identifier: true
+      companyName:
+        name: companyName
+        description: Legal or trading name of the reporting entity.
+        required: true
+      primaryRegion:
+        name: primaryRegion
+        description: Location of the reporting entity as a UN/LOCODE (minimum country;
+          state/region extension supported).
+        required: true
+      reportingPeriodStart:
+        name: reportingPeriodStart
+        range: date
+        required: true
+      reportingPeriodEnd:
+        name: reportingPeriodEnd
+        range: date
+        required: true
+      totalNetEmissionsLocationBasedKgCO2e:
+        name: totalNetEmissionsLocationBasedKgCO2e
+        description: 'Net aggregate for the reporting period on the location-based
+          Scope 2 method: sum(EMISSION) - sum(REMOVAL) + sum(REVERSAL) over all emissionsLines,
+          excluding GROSS_CO2_FLUX and OTHER_LAND_SECTOR_DISCLOSURE lines, and excluding
+          ELECTRICITY_MARKET_BASED lines. Always present: location-based is the baseline
+          method, and for reports with no market-based electricity this is simply
+          the report total.'
+        range: float
+        required: true
+      totalNetEmissionsMarketBasedKgCO2e:
+        name: totalNetEmissionsMarketBasedKgCO2e
+        description: 'Net aggregate for the reporting period on the market-based Scope
+          2 method: as above, excluding ELECTRICITY_LOCATION_BASED lines. Present
+          only where the report contains market-based electricity lines. Omitted (left
+          blank, never zero) otherwise.'
+        range: float
+      gwpHorizon:
+        name: gwpHorizon
+        description: GWP time horizon applied across the whole report. Report-level
+          to enforce consistency; IPCC AR basis is recorded per line.
+        range: GwpHorizonEnum
+        required: true
+      reportStatus:
+        name: reportStatus
+        range: ReportStatusEnum
+        required: true
+      emissionsLines:
+        name: emissionsLines
+        range: EmissionsLine
+        required: true
         multivalued: true
         inlined_as_list: true
-    class_uri: openccf:PersonCollection
+      sectors:
+        name: sectors
+        range: Sector
+        multivalued: true
+        inlined_as_list: true
+      companyIdentifiers:
+        name: companyIdentifiers
+        range: CompanyIdentifier
+        multivalued: true
+        inlined_as_list: true
+      intensityDenominators:
+        name: intensityDenominators
+        range: IntensityDenominator
+        multivalued: true
+        inlined_as_list: true
+    class_uri: openccf:EmissionsReport
     tree_root: true
+  EmissionsLine:
+    name: EmissionsLine
+    definition_uri: https://w3id.org/openccf/EmissionsLine
+    description: A single quantified source or category of emissions within a report.
+      Lines are flat; totals and subtotals are derived by grouping, not nesting.
+    from_schema: https://w3id.org/openccf
+    slots:
+    - emissionsLine__scope
+    - emissionsLine__category
+    - emissionsLine__subcategory
+    - emissionsLine__lineStatus
+    - emissionsLine__emissionsQuantityKgCO2e
+    - emissionsLine__emissionOrigin
+    - emissionsLine__accountingType
+    - emissionsLine__region
+    - emissionsLine__companyFacilityIdentifier
+    - emissionsLine__emissionFactor
+    - emissionsLine__dataQuality
+    - emissionsLine__dataQualityInformation
+    - emissionsLine__gasBreakdown
+    - emissionsLine__activityData
+    - emissionsLine__landSectorData
+    attributes:
+      scope:
+        name: scope
+        range: ScopeEnum
+        required: true
+      category:
+        name: category
+        range: EmissionCategoryEnum
+        required: true
+      subcategory:
+        name: subcategory
+        description: Optional free-text subcategorisation of the line within its category,
+          at the sender's discretion (e.g. "Food and beverages" or "HGV fleet"). There
+          is no controlled vocabulary; values are descriptive and not intended to
+          be machine-comparable. Useful for breaking a category into meaningful detail  without
+          changing its GHG Protocol classification. It is intended as a grouping label  a
+          sender or receiver can use to aggregate or subtotal lines (e.g. summing
+          all  "HGV fleet" lines). It describes the kind of line, not the specific
+          activity used  to calculate it (see ActivityData).
+      lineStatus:
+        name: lineStatus
+        range: LineStatusEnum
+        required: true
+      emissionsQuantityKgCO2e:
+        name: emissionsQuantityKgCO2e
+        description: Total CO2-equivalent for this line, expressed as a non-negative
+          magnitude. Direction (whether the line adds to or subtracts from the net)
+          is determined by accountingType, not by the sign of this value - consistent
+          with GHG Protocol gross reporting, under which gross emissions and gross
+          removals are reported separately and not netted within a category.
+        range: float
+        required: true
+        minimum_value: 0
+      emissionOrigin:
+        name: emissionOrigin
+        range: EmissionOriginEnum
+        required: true
+      accountingType:
+        name: accountingType
+        description: 'Inventory treatment of this line, and its contribution to the
+          report net total: EMISSION adds, REMOVAL subtracts, REVERSAL adds; GROSS_CO2_FLUX
+          and OTHER_LAND_SECTOR_DISCLOSURE are disclosure-only and excluded from the
+          net. Defaults to EMISSION where omitted.'
+        ifabsent: EMISSION
+        range: AccountingTypeEnum
+      region:
+        name: region
+        description: Country or region where emissions physically occurred, as a UN/LOCODE
+          (minimum country; state/region extension supported).
+        required: true
+      companyFacilityIdentifier:
+        name: companyFacilityIdentifier
+        description: Facility where emissions physically occurred (optional).
+      emissionFactor:
+        name: emissionFactor
+        description: Metadata on the emission factor used for this line. Optional
+          as many exchanged figures (e.g. republished totals, or directly measured
+          emissions) have no disclosed factor. Where factor is provided, source, year
+          and ipccBasis are required.
+        range: EmissionFactor
+        inlined: true
+      dataQuality:
+        name: dataQuality
+        description: GHG Protocol data quality assessment for this line, spanning
+          both the activity data and the emission factor used. Optional; most relevant
+          where secondary, proxy or estimated inputs are applied. Use dataQualityInformation
+          for any additional context.
+        range: DataQuality
+        inlined: true
+      dataQualityInformation:
+        name: dataQualityInformation
+        description: Optional free-text data quality context not captured by the indicators
+          above (e.g. calculation method, provenance, known limitations). Sender's
+          discretion; not machine-comparable.
+      gasBreakdown:
+        name: gasBreakdown
+        range: GasBreakdown
+        multivalued: true
+        inlined_as_list: true
+      activityData:
+        name: activityData
+        range: ActivityData
+        inlined: true
+      landSectorData:
+        name: landSectorData
+        range: LandSectorData
+        inlined: true
+    class_uri: openccf:EmissionsLine
+    rules:
+    - preconditions:
+        slot_conditions:
+          scope:
+            name: scope
+            equals_string: SCOPE_1
+      postconditions:
+        slot_conditions:
+          category:
+            name: category
+            any_of:
+            - equals_string: STATIONARY_COMBUSTION
+            - equals_string: MOBILE_COMBUSTION
+            - equals_string: PROCESS_EMISSIONS
+            - equals_string: FUGITIVE
+            - equals_string: NOT_SPECIFIED
+      description: Scope 1 lines must use a Scope 1 category, or NOT_SPECIFIED.
+    - preconditions:
+        slot_conditions:
+          scope:
+            name: scope
+            equals_string: SCOPE_2
+      postconditions:
+        slot_conditions:
+          category:
+            name: category
+            any_of:
+            - equals_string: ELECTRICITY_MARKET_BASED
+            - equals_string: ELECTRICITY_LOCATION_BASED
+            - equals_string: HEAT_STEAM_COOLING
+            - equals_string: NOT_SPECIFIED
+      description: Scope 2 lines must use a Scope 2 category, or NOT_SPECIFIED.
+    - preconditions:
+        slot_conditions:
+          scope:
+            name: scope
+            equals_string: SCOPE_3
+      postconditions:
+        slot_conditions:
+          category:
+            name: category
+            any_of:
+            - equals_string: S3_01_PURCHASED_GOODS_SERVICES
+            - equals_string: S3_02_CAPITAL_GOODS
+            - equals_string: S3_03_FUEL_ENERGY_RELATED
+            - equals_string: S3_04_UPSTREAM_TRANSPORT
+            - equals_string: S3_05_WASTE_IN_OPERATIONS
+            - equals_string: S3_06_BUSINESS_TRAVEL
+            - equals_string: S3_07_EMPLOYEE_COMMUTING
+            - equals_string: S3_08_UPSTREAM_LEASED_ASSETS
+            - equals_string: S3_09_DOWNSTREAM_TRANSPORT
+            - equals_string: S3_10_PROCESSING_SOLD_PRODUCTS
+            - equals_string: S3_11_USE_OF_SOLD_PRODUCTS
+            - equals_string: S3_12_EOL_SOLD_PRODUCTS
+            - equals_string: S3_13_DOWNSTREAM_LEASED_ASSETS
+            - equals_string: S3_14_FRANCHISES
+            - equals_string: S3_15_INVESTMENTS
+            - equals_string: NOT_SPECIFIED
+      description: Scope 3 lines must use a Scope 3 category, or NOT_SPECIFIED.
+  Sector:
+    name: Sector
+    definition_uri: https://w3id.org/openccf/Sector
+    description: Standardised sector classification.
+    from_schema: https://w3id.org/openccf
+    slots:
+    - sector__scheme
+    - sector__code
+    - sector__name
+    attributes:
+      scheme:
+        name: scheme
+        description: Classification scheme (e.g. NACE, SIC, GHG Protocol sector).
+      code:
+        name: code
+      name:
+        name: name
+    class_uri: openccf:Sector
+  CompanyIdentifier:
+    name: CompanyIdentifier
+    definition_uri: https://w3id.org/openccf/CompanyIdentifier
+    description: Standardised company identifier.
+    from_schema: https://w3id.org/openccf
+    slots:
+    - companyIdentifier__scheme
+    - companyIdentifier__value
+    attributes:
+      scheme:
+        name: scheme
+        description: Identifier scheme (e.g. LEI, DUNS).
+      value:
+        name: value
+    class_uri: openccf:CompanyIdentifier
+  IntensityDenominator:
+    name: IntensityDenominator
+    definition_uri: https://w3id.org/openccf/IntensityDenominator
+    description: A denominator for calculating intensity values.
+    from_schema: https://w3id.org/openccf
+    slots:
+    - intensityDenominator__type
+    - intensityDenominator__value
+    - intensityDenominator__unit
+    attributes:
+      type:
+        name: type
+        description: e.g. full-time employees, revenue, facility area.
+      value:
+        name: value
+        range: float
+      unit:
+        name: unit
+    class_uri: openccf:IntensityDenominator
+  EmissionFactor:
+    name: EmissionFactor
+    definition_uri: https://w3id.org/openccf/EmissionFactor
+    description: Metadata describing the emission factor applied to a line.
+    from_schema: https://w3id.org/openccf
+    slots:
+    - emissionFactor__value
+    - emissionFactor__valueUnit
+    - emissionFactor__source
+    - emissionFactor__dataset
+    - emissionFactor__dataYear
+    - emissionFactor__ipccBasis
+    attributes:
+      value:
+        name: value
+        description: Value of the emission factor applied, expressed in kgCO2e per
+          unit of the activity (see valueUnit). Optional; provided where the sender
+          wishes to expose the conversion rate used. Gas-level constituents are not
+          carried here - where gas resolution is needed, use the line's gasBreakdown.
+        range: float
+        minimum_value: 0
+      valueUnit:
+        name: valueUnit
+        description: Denominator unit for the emission factor value, i.e. the activity
+          unit it applies to (e.g. "kWh", "litre", "tonne-km", "GBP"). Required where
+          value is provided. Where activityData is also present, this should match
+          its unit.
+      source:
+        name: source
+        description: Authority for the emission factor used.
+        required: true
+      dataset:
+        name: dataset
+        description: Specific dataset used (optional).
+      dataYear:
+        name: dataYear
+        description: Year the emission factor was issued.
+        range: integer
+        required: true
+      ipccBasis:
+        name: ipccBasis
+        description: IPCC Assessment Report basis for the GWP values used.
+        range: IpccBasisEnum
+        required: true
+    class_uri: openccf:EmissionFactor
+  GasBreakdown:
+    name: GasBreakdown
+    definition_uri: https://w3id.org/openccf/GasBreakdown
+    description: 'Constituent gas-level resolution of a line''s emissions. Where a
+      breakdown is provided it must be complete: the sum of gasCO2eContribution across
+      entries equals the line''s emissionsQuantityKgCO2e, within a small rounding
+      tolerance (relative 0.1% with an absolute floor for near-zero lines). Any portion
+      not attributable to a named gas is carried as an explicit OTHER entry rather
+      than left implicit.'
+    from_schema: https://w3id.org/openccf
+    slots:
+    - gasBreakdown__gas
+    - gasBreakdown__gasQuantity
+    - gasBreakdown__gasCO2eContribution
+    - gasBreakdown__emissionOrigin
+    attributes:
+      gas:
+        name: gas
+        range: GasEnum
+        required: true
+      gasQuantity:
+        name: gasQuantity
+        description: Quantity of the gas in its native unit (e.g. tonnes CH4).
+        range: float
+      gasCO2eContribution:
+        name: gasCO2eContribution
+        description: Portion of the line's emissionsQuantityKgCO2e attributable to
+          this gas, as a non-negative magnitude. Where a breakdown is present, contributions
+          sum to the line total (see class-level note).
+        range: float
+        minimum_value: 0
+      emissionOrigin:
+        name: emissionOrigin
+        description: Origin of this gas's emissions. Where a gas breakdown is provided,
+          gas-level origin takes precedence over the line-level emissionOrigin.
+        range: EmissionOriginEnum
+    class_uri: openccf:GasBreakdown
+  ActivityData:
+    name: ActivityData
+    definition_uri: https://w3id.org/openccf/ActivityData
+    description: Optional activity information underlying the emissions.
+    from_schema: https://w3id.org/openccf
+    slots:
+    - activityData__description
+    - activityData__lifecycleStage
+    - activityData__value
+    - activityData__unit
+    attributes:
+      description:
+        name: description
+        description: Free-text description of the specific activity quantity used
+          to calculate this line's emissions (e.g. "diesel purchased for site generator").
+          Describes this particular measurement for provenance or recalculation, not
+          a grouping label - use subcategory on the line for aggregation.
+      lifecycleStage:
+        name: lifecycleStage
+        description: Where applicable (e.g. upstream, use phase, end-of-life).
+      value:
+        name: value
+        range: float
+      unit:
+        name: unit
+    class_uri: openccf:ActivityData
+  DataQuality:
+    name: DataQuality
+    definition_uri: https://w3id.org/openccf/DataQuality
+    description: 'Data quality of an emissions line, aligned to the GHG Protocol Scope
+      3 Standard''s five data quality indicators. The assessment reflects both the
+      activity data and the emission factor used: the representativeness axes describe
+      how well the inputs match this line''s technology, period and geography, while
+      completeness and reliability describe the underlying data and its sources. Each
+      axis is rated Poor to Very good. (A GHG Protocol revision toward a data-specificity
+      framework is in progress; this structure will track it in a future version.)'
+    from_schema: https://w3id.org/openccf
+    slots:
+    - dataQuality__technologicalRepresentativeness
+    - dataQuality__temporalRepresentativeness
+    - dataQuality__geographicalRepresentativeness
+    - dataQuality__completeness
+    - dataQuality__reliability
+    attributes:
+      technologicalRepresentativeness:
+        name: technologicalRepresentativeness
+        description: Degree to which the emission estimation reflects the actual technology(ies)
+          used.
+        range: DataQualityRatingEnum
+      temporalRepresentativeness:
+        name: temporalRepresentativeness
+        description: Degree to which the emission estimation reflects the actual time
+          period.
+        range: DataQualityRatingEnum
+      geographicalRepresentativeness:
+        name: geographicalRepresentativeness
+        description: Degree to which the emission estimation reflects the actual geography.
+        range: DataQualityRatingEnum
+      completeness:
+        name: completeness
+        description: Degree to which the emission estimation is statistically representative
+          and complete.
+        range: DataQualityRatingEnum
+      reliability:
+        name: reliability
+        description: Reliability of the emission estimation sources and measurement
+          or estimation methods.
+        range: DataQualityRatingEnum
+    class_uri: openccf:DataQuality
+  LandSectorData:
+    name: LandSectorData
+    definition_uri: https://w3id.org/openccf/LandSectorData
+    description: Optional land sector and removals metadata.
+    from_schema: https://w3id.org/openccf
+    slots:
+    - landSectorData__boundary
+    - landSectorData__storageDuration
+    - landSectorData__monitoringApproach
+    attributes:
+      boundary:
+        name: boundary
+        description: Land boundary / traceability level.
+      storageDuration:
+        name: storageDuration
+        description: Expected storage duration / permanence category.
+      monitoringApproach:
+        name: monitoringApproach
+        description: Monitoring approach and reversal treatment.
+    class_uri: openccf:LandSectorData
 metamodel_version: 1.11.0
 source_file: openccf.yaml
-source_file_date: '2026-07-17T17:29:41'
-source_file_size: 2314
-generation_date: '2026-07-21T13:29:52'
+source_file_date: '2026-07-24T16:27:11'
+source_file_size: 19821
+generation_date: '2026-07-29T16:23:18'
 
