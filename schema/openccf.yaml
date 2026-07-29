@@ -1655,7 +1655,7 @@ classes:
     class_uri: openccf:LandSectorData
 metamodel_version: 1.11.0
 source_file: openccf.yaml
-source_file_date: '2026-07-25T17:56:29'
+source_file_date: '2026-07-29T13:51:02'
 source_file_size: 19821
-generation_date: '2026-07-25T17:56:40'
+generation_date: '2026-07-29T13:51:13'
 
