@@ -67,8 +67,8 @@ nav:
 exclude_docs: |
   /templates-linkml/
 
-site_url: https://openccf.github.io/openccf
-repo_url: https://github.com/openccf/openccf
+site_url: https://openccf.github.io/openccf-data-model
+repo_url: https://github.com/openccf/openccf-data-model
 
 # Uncomment this block to enable use of Google Analytics.
 # Replace the property value with your own ID.
