@@ -173,6 +173,10 @@
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
+         <loc>https://openccf.github.io/openccf-data-model/elements/activityData/</loc>
+         <lastmod>2026-07-29</lastmod>
+    </url>
+    <url>
          <loc>https://openccf.github.io/openccf-data-model/elements/boundary/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
@@ -201,6 +205,10 @@
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
+         <loc>https://openccf.github.io/openccf-data-model/elements/dataQuality/</loc>
+         <lastmod>2026-07-29</lastmod>
+    </url>
+    <url>
          <loc>https://openccf.github.io/openccf-data-model/elements/dataQualityInformation/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
@@ -217,6 +225,10 @@
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
+         <loc>https://openccf.github.io/openccf-data-model/elements/emissionFactor/</loc>
+         <lastmod>2026-07-29</lastmod>
+    </url>
+    <url>
          <loc>https://openccf.github.io/openccf-data-model/elements/emissionOrigin/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
@@ -230,6 +242,10 @@
     </url>
     <url>
          <loc>https://openccf.github.io/openccf-data-model/elements/gas/</loc>
+         <lastmod>2026-07-29</lastmod>
+    </url>
+    <url>
+         <loc>https://openccf.github.io/openccf-data-model/elements/gasBreakdown/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
@@ -254,6 +270,10 @@
     </url>
     <url>
          <loc>https://openccf.github.io/openccf-data-model/elements/ipccBasis/</loc>
+         <lastmod>2026-07-29</lastmod>
+    </url>
+    <url>
+         <loc>https://openccf.github.io/openccf-data-model/elements/landSectorData/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
