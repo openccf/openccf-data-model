@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://openccf.github.io/openccf-data-model/elements/Ncname/">
+        <link rel="canonical" href="https://openccf.github.io/openccf-data-model/elements/id/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Ncname - openccf</title>
+        <title>Slot: id - openccf</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#type-properties" class="md-skip">
+        <a href="#slot-id" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ncname
+              Slot: id
             
           </span>
         </div>
@@ -355,6 +355,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -363,10 +365,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#type-properties" class="md-nav__link">
+  <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Type Properties
+        Applicable Classes
       
     </span>
   </a>
@@ -374,13 +376,41 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
+  <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes
+        Properties
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-and-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type and Range
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinality-and-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cardinality and Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -423,6 +453,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#linkml-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LinkML Source
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -444,16 +485,35 @@
   
 
 
-  <h1>Ncname</h1>
-
-<hr />
-<p>search:
-  boost: 1.0
----# Type: Ncname </p>
-<p><em>Prefix part of CURIE</em></p>
+<h1 id="slot-id">Slot: id</h1>
+<p><em>A unique identifier for a thing</em></p>
 <div>
-<p>URI: <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></p>
-<h2 id="type-properties">Type Properties</h2>
+<p>URI: <a href="http://schema.org/identifier">schema:identifier</a></p>
+<!-- no inheritance hierarchy -->
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../NamedThing/">NamedThing</a></td>
+<td>A generic grouping for any identifiable entity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Person/">Person</a></td>
+<td>Represents a Person</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h2 id="properties">Properties</h2>
+<h3 id="type-and-range">Type and Range</h3>
 <table>
 <thead>
 <tr>
@@ -463,23 +523,52 @@
 </thead>
 <tbody>
 <tr>
-<td>Base</td>
-<td><code>NCName</code></td>
+<td>Range</td>
+<td><a href="../Uriorcurie/">Uriorcurie</a></td>
 </tr>
 <tr>
-<td>Type URI</td>
-<td><a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a></td>
+<td>Domain Of</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
-<td>Representation</td>
-<td><code>str</code></td>
+<td>Slot URI</td>
+<td><a href="http://schema.org/identifier">schema:identifier</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="notes">Notes</h2>
-<ul>
-<li>If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "ncname".</li>
-</ul>
+<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Required</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>### Slot Characteristics</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identifier</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -496,14 +585,28 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>xsd:string</td>
+<td>schema:identifier</td>
 </tr>
 <tr>
 <td>native</td>
-<td>openccf:ncname</td>
+<td>openccf:id</td>
 </tr>
 </tbody>
 </table>
+<h2 id="linkml-source">LinkML Source</h2>
+<details>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A unique identifier for a thing</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf/openccf</span>
+<span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">schema:identifier</span>
+<span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">domain_of</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NamedThing</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
+<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+</details>
 </div>
 
 
@@ -511,6 +614,9 @@
 
 
 
+
+  
+  
 
 
 

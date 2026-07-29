@@ -1,383 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://openccf.github.io/openccf/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/about/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/about/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/AccountingTypeEnum/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Boolean/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/ActivityData/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Curie/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/Boolean/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Date/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/CompanyIdentifier/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/DateOrDatetime/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/Curie/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Datetime/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/DataQuality/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Decimal/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/DataQualityRatingEnum/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Double/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/Date/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Float/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/DateOrDatetime/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Integer/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/Datetime/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Jsonpath/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/Decimal/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Jsonpointer/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/Double/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/NamedThing/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/EmissionCategoryEnum/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Ncname/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/EmissionFactor/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Nodeidentifier/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/EmissionOriginEnum/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Objectidentifier/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/EmissionsLine/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Person/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/EmissionsReport/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/PersonCollection/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/Float/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/PersonStatus/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/GasBreakdown/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Sparqlpath/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/GasEnum/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/String/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/GwpHorizonEnum/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Time/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/Integer/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Uri/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/IntensityDenominator/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/Uriorcurie/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/IpccBasisEnum/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/age_in_years/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/Jsonpath/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/birth_date/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/Jsonpointer/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/description/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/LandSectorData/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/id/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/LineStatusEnum/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/name/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/Ncname/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/openccf/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/Nodeidentifier/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/people/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/Objectidentifier/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/primary_email/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
     <url>
-         <loc>https://openccf.github.io/openccf/elements/ReportStatusEnum/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/ScopeEnum/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/Sector/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/Sparqlpath/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/String/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/Time/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/Uri/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/Uriorcurie/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/accountingType/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/activityData/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/boundary/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/category/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/code/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/companyFacilityIdentifier/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/companyIdentifiers/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/companyName/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/completeness/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/dataQuality/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/dataQualityInformation/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/dataYear/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/dataset/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/description/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/emissionFactor/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/emissionOrigin/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/emissionsLines/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/emissionsQuantityKgCO2e/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/gas/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/gasBreakdown/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/gasCO2eContribution/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/gasQuantity/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/geographicalRepresentativeness/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/gwpHorizon/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/intensityDenominators/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/ipccBasis/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/landSectorData/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/lifecycleStage/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/lineStatus/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/monitoringApproach/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/name/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/openccf/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/primaryRegion/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/region/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/reliability/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/reportID/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/reportStatus/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/reportingPeriodEnd/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/reportingPeriodStart/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/scheme/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/scope/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/sectors/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/source/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/storageDuration/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/subcategory/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/technologicalRepresentativeness/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/temporalRepresentativeness/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/totalNetEmissionsLocationBasedKgCO2e/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/totalNetEmissionsMarketBasedKgCO2e/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/type/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/unit/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/value/</loc>
-         <lastmod>2026-07-29</lastmod>
-    </url>
-    <url>
-         <loc>https://openccf.github.io/openccf/elements/valueUnit/</loc>
+         <loc>https://openccf.github.io/openccf-data-model/elements/vital_status/</loc>
          <lastmod>2026-07-29</lastmod>
     </url>
 </urlset>
