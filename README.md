@@ -6,7 +6,7 @@ structured for exchange - not what must be reported, calculated, or shared.
 
 **Status:** v0.3, release candidate for v1.0.
 
-- Schema reference: <https://openccf.github.io/openccf>
+- Schema reference: <https://openccf.github.io/openccf-data-model>
 - Concept, white paper, information model: <https://openccf.org>
 
 ## Structure
