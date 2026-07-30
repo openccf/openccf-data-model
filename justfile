@@ -123,7 +123,7 @@ lint:
 # Generate md documentation for the schema and add artifacts
 [group('model development')]
 gen-doc: _gen-yaml && _add-artifacts
-  uv run gen-doc {{gen_doc_args}} -d {{docdir}} {{source_schema_path}}
+  uv run gen-doc {{gen_doc_args}} --template-directory docs/templates-linkml --subfolder-type-separation -d {{docdir}} {{source_schema_path}}
 
 # Build docs and run test server
 [group('model development')]
