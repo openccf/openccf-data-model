@@ -618,6 +618,11 @@ slots:
     required: true
   emissionsReport__emissionsLines:
     name: emissionsReport__emissionsLines
+    description: The set of Emissions Lines that make up this report. Each element
+      is a complete Emissions Line record, not a reference or identifier - the full
+      quantified detail for that source or category lives here, and this is the only
+      place it lives. A report must contain at least one line. The report's net emissions
+      totals are derived by summing these lines; they are not entered independently.
     from_schema: https://w3id.org/openccf
     slot_uri: openccf:emissionsLines
     alias: emissionsLines
@@ -1240,6 +1245,12 @@ classes:
         required: true
       emissionsLines:
         name: emissionsLines
+        description: The set of Emissions Lines that make up this report. Each element
+          is a complete Emissions Line record, not a reference or identifier - the
+          full quantified detail for that source or category lives here, and this
+          is the only place it lives. A report must contain at least one line. The
+          report's net emissions totals are derived by summing these lines; they are
+          not entered independently.
         range: EmissionsLine
         required: true
         multivalued: true
@@ -1655,7 +1666,7 @@ classes:
     class_uri: openccf:LandSectorData
 metamodel_version: 1.11.0
 source_file: openccf.yaml
-source_file_date: '2026-07-24T16:27:11'
-source_file_size: 19821
-generation_date: '2026-07-30T13:45:12'
+source_file_date: '2026-07-30T17:24:55'
+source_file_size: 20291
+generation_date: '2026-07-30T18:03:15'
 

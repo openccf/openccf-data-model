@@ -22,7 +22,10 @@ Optional nested detail on a line: `emissionFactor`, `dataQuality`,
 `gasBreakdown`, `activityData`, `landSectorData`. Optional context on a report:
 `sectors`, `companyIdentifiers`, `intensityDenominators`.
 
-A single figure is exchanged as a report containing one line.
+A single figure is exchanged as a report containing one line. A full annual
+footprint is exchanged the same way, just with more lines: see
+`tests/data/valid/EmissionsReport-example.yaml` for a
+realistic 100+ line Scope 1/2/3 example.
 
 ## Things to know before implementing
 

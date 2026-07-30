@@ -1,0 +1,1829 @@
+reportID: BEVCO-2024
+companyName: Northfield Beverages Ltd
+primaryRegion: GB
+reportingPeriodStart: '2024-01-01'
+reportingPeriodEnd: '2024-12-31'
+totalNetEmissionsLocationBasedKgCO2e: 7819900.0
+totalNetEmissionsMarketBasedKgCO2e: 7428900.0
+gwpHorizon: GWP100
+reportStatus: THIRD_PARTY_AUDITED
+sectors:
+- scheme: NACE
+  code: '11.07'
+  name: Manufacture of soft drinks
+companyIdentifiers:
+- scheme: LEI
+  value: 2138009XYZBEVCO00042
+intensityDenominators:
+- type: Revenue
+  value: 142.0
+  unit: GBP million
+- type: Average full-time employees
+  value: 610.0
+  unit: FTE
+- type: Production volume
+  value: 318.0
+  unit: million litres
+emissionsLines:
+- scope: SCOPE_1
+  category: STATIONARY_COMBUSTION
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 412000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Natural gas - main plant
+  companyFacilityIdentifier: SITE-SHEF-01
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+    dataset: UK GHG conversion factors 2024
+    value: 0.18287
+    valueUnit: kWh
+  dataQuality:
+    technologicalRepresentativeness: VERY_GOOD
+    temporalRepresentativeness: VERY_GOOD
+    geographicalRepresentativeness: VERY_GOOD
+    completeness: VERY_GOOD
+    reliability: VERY_GOOD
+  activityData:
+    description: Natural gas metered, Sheffield plant
+    value: 2253000.0
+    unit: kWh
+  gasBreakdown:
+  - gas: CO2
+    gasCO2eContribution: 408000.0
+    emissionOrigin: FOSSIL
+  - gas: CH4
+    gasCO2eContribution: 2500.0
+    emissionOrigin: FOSSIL
+  - gas: N2O
+    gasCO2eContribution: 1500.0
+    emissionOrigin: FOSSIL
+- scope: SCOPE_1
+  category: STATIONARY_COMBUSTION
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 88000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Natural gas - Leeds warehouse
+  companyFacilityIdentifier: SITE-LEEDS-02
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+    value: 0.18287
+    valueUnit: kWh
+  activityData:
+    description: Natural gas, Leeds DC
+    value: 481000.0
+    unit: kWh
+- scope: SCOPE_1
+  category: STATIONARY_COMBUSTION
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 26500.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: LPG - forklift bottling
+  companyFacilityIdentifier: SITE-SHEF-01
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+    value: 2.93913
+    valueUnit: kg
+- scope: SCOPE_1
+  category: STATIONARY_COMBUSTION
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 15900.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Backup diesel generators
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+    value: 2.51233
+    valueUnit: litre
+- scope: SCOPE_1
+  category: STATIONARY_COMBUSTION
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 9200.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Heating oil - Glasgow depot
+  companyFacilityIdentifier: SITE-GLAS-03
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+    value: 2.54603
+    valueUnit: litre
+- scope: SCOPE_1
+  category: MOBILE_COMBUSTION
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 143000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: HGV fleet - diesel
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+    dataset: Fleet - HGV rigid
+    value: 2.51233
+    valueUnit: litre
+  dataQuality:
+    technologicalRepresentativeness: VERY_GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: VERY_GOOD
+    completeness: GOOD
+    reliability: GOOD
+  activityData:
+    description: Diesel, owned HGV fleet
+    value: 56920.0
+    unit: litre
+- scope: SCOPE_1
+  category: MOBILE_COMBUSTION
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 61500.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Company cars - diesel
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+    value: 2.51233
+    valueUnit: litre
+- scope: SCOPE_1
+  category: MOBILE_COMBUSTION
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 28400.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Company cars - petrol
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+    value: 2.16802
+    valueUnit: litre
+- scope: SCOPE_1
+  category: MOBILE_COMBUSTION
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 7300.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Van fleet - diesel
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+    value: 2.51233
+    valueUnit: litre
+- scope: SCOPE_1
+  category: PROCESS_EMISSIONS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 54000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: CO2 from carbonation process
+  emissionFactor:
+    source: Facility mass balance
+    dataYear: 2024
+    ipccBasis: AR6
+    dataset: Internal process model
+  dataQualityInformation: Derived from purchased CO2 volumes less recovered CO2.
+- scope: SCOPE_1
+  category: PROCESS_EMISSIONS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 18700.0
+  emissionOrigin: MIXED
+  accountingType: EMISSION
+  region: GB
+  subcategory: Wastewater treatment - on site
+  emissionFactor:
+    source: IPCC 2019 Refinement
+    dataYear: 2019
+    ipccBasis: AR6
+- scope: SCOPE_1
+  category: FUGITIVE
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 39500.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Refrigerant R-404A losses
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+    dataset: Refrigerant GWP - R404A
+  dataQualityInformation: Top-up log across chillers; R-404A GWP applied.
+  gasBreakdown:
+  - gas: HFC
+    gasQuantity: 10.1
+    gasCO2eContribution: 39500.0
+    emissionOrigin: FOSSIL
+- scope: SCOPE_1
+  category: FUGITIVE
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 12300.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Refrigerant R-134a losses - vehicle AC
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+  gasBreakdown:
+  - gas: HFC
+    gasQuantity: 8.6
+    gasCO2eContribution: 12300.0
+    emissionOrigin: FOSSIL
+- scope: SCOPE_1
+  category: FUGITIVE
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 4100.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: SF6 - electrical switchgear
+  emissionFactor:
+    source: IPCC AR6
+    dataYear: 2021
+    ipccBasis: AR6
+  gasBreakdown:
+  - gas: SF6
+    gasQuantity: 0.00018
+    gasCO2eContribution: 4100.0
+    emissionOrigin: FOSSIL
+- scope: SCOPE_1
+  category: NOT_SPECIFIED
+  lineStatus: INCOMPLETE
+  emissionsQuantityKgCO2e: 6800.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Minor fuel use - unallocated
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQualityInformation: Residual site fuel not yet split by source.
+- scope: SCOPE_2
+  category: ELECTRICITY_LOCATION_BASED
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 488000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Grid electricity - all UK sites
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+    dataset: UK grid average
+    value: 0.20705
+    valueUnit: kWh
+  dataQuality:
+    technologicalRepresentativeness: VERY_GOOD
+    temporalRepresentativeness: VERY_GOOD
+    geographicalRepresentativeness: VERY_GOOD
+    completeness: VERY_GOOD
+    reliability: VERY_GOOD
+  activityData:
+    description: Total metered electricity, UK
+    value: 2357000.0
+    unit: kWh
+- scope: SCOPE_2
+  category: ELECTRICITY_MARKET_BASED
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 97000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Grid electricity - residual/contract
+  emissionFactor:
+    source: Supplier REGO + residual mix
+    dataYear: 2024
+    ipccBasis: AR6
+    dataset: Contractual instruments
+  dataQualityInformation: 80% REGO-backed; residual mix applied to remainder.
+- scope: SCOPE_2
+  category: HEAT_STEAM_COOLING
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 41200.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: District heat - Sheffield
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+    value: 0.17012
+    valueUnit: kWh
+  activityData:
+    description: Purchased district heat
+    value: 242000.0
+    unit: kWh
+- scope: SCOPE_2
+  category: HEAT_STEAM_COOLING
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 8600.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Purchased steam - process
+  emissionFactor:
+    source: UK DESNZ
+    dataYear: 2024
+    ipccBasis: AR6
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 1120000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Aluminium cans
+  emissionFactor:
+    source: Spend-based
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 640000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: PET preforms
+  emissionFactor:
+    source: Supplier-specific EF
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 512000.0
+  emissionOrigin: MIXED
+  accountingType: EMISSION
+  region: GB
+  subcategory: Sugar & sweeteners
+  emissionFactor:
+    source: ecoinvent 3.9
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 388000.0
+  emissionOrigin: MIXED
+  accountingType: EMISSION
+  region: GB
+  subcategory: Concentrates & flavourings
+  emissionFactor:
+    source: Supplier data
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 176000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Cardboard & secondary packaging
+  emissionFactor:
+    source: DEFRA 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 264000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Glass bottles
+  emissionFactor:
+    source: ecoinvent 3.9
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 42000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Cleaning chemicals (CIP)
+  emissionFactor:
+    source: Spend-based
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 58000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: IT hardware & peripherals
+  emissionFactor:
+    source: Spend-based
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 21000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Office & facilities supplies
+  emissionFactor:
+    source: Spend-based
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 33000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Professional services
+  emissionFactor:
+    source: Spend-based EEIO
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_02_CAPITAL_GOODS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 210000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Filling line machinery
+  emissionFactor:
+    source: Spend-based
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_02_CAPITAL_GOODS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 64000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Warehouse racking & MHE
+  emissionFactor:
+    source: Spend-based
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_02_CAPITAL_GOODS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 88000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Fleet vehicles purchased
+  emissionFactor:
+    source: Supplier LCA
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_02_CAPITAL_GOODS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 47000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Building fit-out - Leeds DC
+  emissionFactor:
+    source: Spend-based EEIO
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_03_FUEL_ENERGY_RELATED
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 71000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: WTT - natural gas
+  emissionFactor:
+    source: DESNZ WTT 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_03_FUEL_ENERGY_RELATED
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 58000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: WTT - fleet fuels
+  emissionFactor:
+    source: DESNZ WTT 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_03_FUEL_ENERGY_RELATED
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 41000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: T&D losses - electricity
+  emissionFactor:
+    source: DESNZ 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_03_FUEL_ENERGY_RELATED
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 39000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: WTT - purchased electricity
+  emissionFactor:
+    source: DESNZ WTT 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_04_UPSTREAM_TRANSPORT
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 132000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Inbound raw materials - road
+  emissionFactor:
+    source: DESNZ freighting 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_04_UPSTREAM_TRANSPORT
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 96000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Inbound - sea freight
+  emissionFactor:
+    source: GLEC framework
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_04_UPSTREAM_TRANSPORT
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 18000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Inbound - courier/parcel
+  emissionFactor:
+    source: Supplier data
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_04_UPSTREAM_TRANSPORT
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 27000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Third-party warehousing transfers
+  emissionFactor:
+    source: Spend-based
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_05_WASTE_IN_OPERATIONS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 34000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: General waste to landfill
+  emissionFactor:
+    source: DESNZ waste 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_05_WASTE_IN_OPERATIONS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 6800.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Mixed recycling
+  emissionFactor:
+    source: DESNZ waste 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_05_WASTE_IN_OPERATIONS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 12400.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Wastewater effluent
+  emissionFactor:
+    source: DESNZ 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_05_WASTE_IN_OPERATIONS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 4200.0
+  emissionOrigin: BIOGENIC
+  accountingType: EMISSION
+  region: GB
+  subcategory: Organic/food waste
+  emissionFactor:
+    source: DESNZ 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_05_WASTE_IN_OPERATIONS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 3100.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Hazardous waste (chemicals)
+  emissionFactor:
+    source: Contractor data
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_06_BUSINESS_TRAVEL
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 41000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Air travel - short haul
+  emissionFactor:
+    source: DESNZ 2024 + RF
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_06_BUSINESS_TRAVEL
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 78000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Air travel - long haul
+  emissionFactor:
+    source: DESNZ 2024 + RF
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_06_BUSINESS_TRAVEL
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 2400.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Rail travel
+  emissionFactor:
+    source: DESNZ 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_06_BUSINESS_TRAVEL
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 9600.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Hotel stays
+  emissionFactor:
+    source: DEFRA/Cornell index
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_06_BUSINESS_TRAVEL
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 7800.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Hire cars & taxis
+  emissionFactor:
+    source: DESNZ 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_07_EMPLOYEE_COMMUTING
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 63000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Commuting - car
+  emissionFactor:
+    source: Survey + DESNZ 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_07_EMPLOYEE_COMMUTING
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 8900.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Commuting - public transport
+  emissionFactor:
+    source: Survey + DESNZ 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_07_EMPLOYEE_COMMUTING
+  lineStatus: INCOMPLETE
+  emissionsQuantityKgCO2e: 14200.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Homeworking energy
+  emissionFactor:
+    source: EcoAct homeworking 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_08_UPSTREAM_LEASED_ASSETS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 52000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Leased cold storage - 3PL
+  emissionFactor:
+    source: Landlord data
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_08_UPSTREAM_LEASED_ASSETS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 11300.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Leased sales offices
+  emissionFactor:
+    source: Estimated
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_09_DOWNSTREAM_TRANSPORT
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 214000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Outbound distribution - road
+  emissionFactor:
+    source: DESNZ freighting 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_09_DOWNSTREAM_TRANSPORT
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 88000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Outbound - retailer DCs
+  emissionFactor:
+    source: Spend/tonne-km
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_09_DOWNSTREAM_TRANSPORT
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 23000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Direct-to-consumer parcel
+  emissionFactor:
+    source: Carrier data
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_10_PROCESSING_SOLD_PRODUCTS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 57000.0
+  emissionOrigin: MIXED
+  accountingType: EMISSION
+  region: GB
+  subcategory: Bottling of sold concentrate
+  emissionFactor:
+    source: Customer-specific
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_10_PROCESSING_SOLD_PRODUCTS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 31000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Co-packer processing
+  emissionFactor:
+    source: Estimated
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_11_USE_OF_SOLD_PRODUCTS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 386000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Refrigeration of sold drinks (retail)
+  emissionFactor:
+    source: Use-phase model
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_11_USE_OF_SOLD_PRODUCTS
+  lineStatus: INCOMPLETE
+  emissionsQuantityKgCO2e: 92000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Consumer chilling at home
+  emissionFactor:
+    source: Use-phase model
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_12_EOL_SOLD_PRODUCTS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 44000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: End-of-life - aluminium cans
+  emissionFactor:
+    source: DESNZ waste 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_12_EOL_SOLD_PRODUCTS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 61000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: End-of-life - PET bottles
+  emissionFactor:
+    source: DESNZ waste 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_12_EOL_SOLD_PRODUCTS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 18000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: End-of-life - glass
+  emissionFactor:
+    source: DESNZ waste 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_12_EOL_SOLD_PRODUCTS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 12500.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: End-of-life - secondary packaging
+  emissionFactor:
+    source: DESNZ waste 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_13_DOWNSTREAM_LEASED_ASSETS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 73000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Leased vending & coolers - placed
+  emissionFactor:
+    source: Asset register + use model
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_13_DOWNSTREAM_LEASED_ASSETS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 41000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Branded fridges in retail
+  emissionFactor:
+    source: Estimated
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_14_FRANCHISES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 128000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Franchised bottling partner - EU
+  emissionFactor:
+    source: Partner CCF
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_14_FRANCHISES
+  lineStatus: INCOMPLETE
+  emissionsQuantityKgCO2e: 64000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Franchised bottling partner - regional
+  emissionFactor:
+    source: Estimated
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_15_INVESTMENTS
+  lineStatus: INCOMPLETE
+  emissionsQuantityKgCO2e: 39000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Minority stake - distributor JV
+  emissionFactor:
+    source: Investee reported / equity share
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_15_INVESTMENTS
+  lineStatus: INCOMPLETE
+  emissionsQuantityKgCO2e: 21000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Associate - packaging venture
+  emissionFactor:
+    source: Estimated equity share
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_1
+  category: NOT_SPECIFIED
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 8500.0
+  emissionOrigin: BIOGENIC
+  accountingType: REMOVAL
+  region: GB
+  subcategory: On-site tree planting - verified removal
+  emissionFactor:
+    source: Woodland Carbon Code
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQualityInformation: Sequestration from company afforestation; WCC-verified.
+  landSectorData:
+    boundary: Company-owned land parcel (2.1 ha)
+    storageDuration: Long-term (>100 yr) subject to monitoring
+    monitoringApproach: WCC monitoring; reversals reported if felled
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 28000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Citric acid & acidulants
+  emissionFactor:
+    source: ecoinvent 3.9
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 47000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: CO2 - purchased (carbonation)
+  emissionFactor:
+    source: Supplier data
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 39000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Labels & shrink film
+  emissionFactor:
+    source: DEFRA 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 14000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Pallets - timber
+  emissionFactor:
+    source: Supplier-specific EF
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 9600.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Water - mains supply
+  emissionFactor:
+    source: DESNZ 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 22000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Marketing & POS materials
+  emissionFactor:
+    source: Spend-based
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_04_UPSTREAM_TRANSPORT
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 7400.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Inbound - rail
+  emissionFactor:
+    source: GLEC framework
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_04_UPSTREAM_TRANSPORT
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 15800.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Inbound - air freight (expedited)
+  emissionFactor:
+    source: DESNZ 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_06_BUSINESS_TRAVEL
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 6100.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Air travel - domestic
+  emissionFactor:
+    source: DESNZ 2024 + RF
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_06_BUSINESS_TRAVEL
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 1200.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Ferry travel
+  emissionFactor:
+    source: DESNZ 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_09_DOWNSTREAM_TRANSPORT
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 44000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Outbound - sea freight (export)
+  emissionFactor:
+    source: GLEC framework
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_09_DOWNSTREAM_TRANSPORT
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 19500.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Outbound - cold chain surcharge
+  emissionFactor:
+    source: Estimated
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_11_USE_OF_SOLD_PRODUCTS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 57000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Vending machine operation
+  emissionFactor:
+    source: Use-phase model
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_12_EOL_SOLD_PRODUCTS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 5400.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: End-of-life - labels & film
+  emissionFactor:
+    source: DESNZ waste 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_12_EOL_SOLD_PRODUCTS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 3200.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: End-of-life - pallets
+  emissionFactor:
+    source: DESNZ waste 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 11000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Yeast & fermentation inputs
+  emissionFactor:
+    source: ecoinvent 3.9
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_01_PURCHASED_GOODS_SERVICES
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 8700.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Filtration media & consumables
+  emissionFactor:
+    source: Spend-based
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_02_CAPITAL_GOODS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 16000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Laboratory & QA equipment
+  emissionFactor:
+    source: Spend-based
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: FAIR
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: POOR
+    reliability: FAIR
+- scope: SCOPE_3
+  category: S3_02_CAPITAL_GOODS
+  lineStatus: INCOMPLETE
+  emissionsQuantityKgCO2e: 21000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Solar PV installation - Sheffield
+  emissionFactor:
+    source: Supplier LCA
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_05_WASTE_IN_OPERATIONS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 2600.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Spent filtration media
+  emissionFactor:
+    source: Contractor data
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_05_WASTE_IN_OPERATIONS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 4900.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Packaging waste - reject stock
+  emissionFactor:
+    source: DESNZ waste 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_07_EMPLOYEE_COMMUTING
+  lineStatus: INCOMPLETE
+  emissionsQuantityKgCO2e: 0.0
+  emissionOrigin: NOT_SPECIFIED
+  accountingType: EMISSION
+  region: GB
+  subcategory: Commuting - cycling/walking
+  emissionFactor:
+    source: Survey
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_07_EMPLOYEE_COMMUTING
+  lineStatus: INCOMPLETE
+  emissionsQuantityKgCO2e: 3400.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Commuting - EV charging (home)
+  emissionFactor:
+    source: Survey + DESNZ 2024
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_15_INVESTMENTS
+  lineStatus: INCOMPLETE
+  emissionsQuantityKgCO2e: 8600.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Green bond - allocated share
+  emissionFactor:
+    source: Investee reported
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_10_PROCESSING_SOLD_PRODUCTS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 26000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Dilution & filling - export concentrate
+  emissionFactor:
+    source: Customer-specific
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_13_DOWNSTREAM_LEASED_ASSETS
+  lineStatus: COMPLETE
+  emissionsQuantityKgCO2e: 17800.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Leased draught dispense units
+  emissionFactor:
+    source: Use model
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: FAIR
+    completeness: GOOD
+    reliability: GOOD
+- scope: SCOPE_3
+  category: S3_14_FRANCHISES
+  lineStatus: INCOMPLETE
+  emissionsQuantityKgCO2e: 38000.0
+  emissionOrigin: FOSSIL
+  accountingType: EMISSION
+  region: GB
+  subcategory: Franchised bottling - use-phase share
+  emissionFactor:
+    source: Partner CCF
+    dataYear: 2024
+    ipccBasis: AR6
+  dataQuality:
+    technologicalRepresentativeness: GOOD
+    temporalRepresentativeness: GOOD
+    geographicalRepresentativeness: GOOD
+    completeness: GOOD
+    reliability: GOOD

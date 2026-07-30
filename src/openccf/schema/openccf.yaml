@@ -84,6 +84,13 @@ classes:
         range: ReportStatusEnum
         required: true
       emissionsLines:
+        description: >-
+          The set of Emissions Lines that make up this report. Each element is
+          a complete Emissions Line record, not a reference or identifier -
+          the full quantified detail for that source or category lives here,
+          and this is the only place it lives. A report must contain at least
+          one line. The report's net emissions totals are derived by summing
+          these lines; they are not entered independently.
         range: EmissionsLine
         required: true
         multivalued: true
