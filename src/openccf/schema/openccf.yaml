@@ -49,8 +49,11 @@ classes:
       primaryRegion:
         required: true
         description: >-
-          Location of the reporting entity as a UN/LOCODE
-          (minimum country; state/region extension supported).
+          Location of the reporting entity: an ISO 3166-1 alpha-2 country
+          code (e.g. GB), optionally extended with a hyphen and either an
+          ISO 3166-2 subdivision (e.g. US-CA) or a 3-character UN/LOCODE
+          place code (e.g. GB-LON).
+        pattern: "^[A-Za-z]{2}(-[A-Za-z0-9]{1,3})?$"
       reportingPeriodStart:
         range: date
         required: true
@@ -209,8 +212,11 @@ classes:
       region:
         required: true
         description: >-
-          Country or region where emissions physically occurred, as a UN/LOCODE
-          (minimum country; state/region extension supported).
+          Country or region where emissions physically occurred: an ISO
+          3166-1 alpha-2 country code (e.g. GB), optionally extended with a
+          hyphen and either an ISO 3166-2 subdivision (e.g. US-CA) or a
+          3-character UN/LOCODE place code (e.g. GB-LON). 
+        pattern: "^[A-Za-z]{2}(-[A-Za-z0-9]{1,3})?$"
       companyFacilityIdentifier:
         description: Facility where emissions physically occurred (optional).
       emissionFactor:
