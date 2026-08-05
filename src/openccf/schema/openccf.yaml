@@ -180,10 +180,10 @@ classes:
           Optional free-text subcategorisation of the line within its category, at the
           sender's discretion (e.g. "Food and beverages" or "HGV fleet"). There is no
           controlled vocabulary; values are descriptive and not intended to be
-          machine-comparable. Useful for breaking a category into meaningful detail 
-          without changing its GHG Protocol classification. It is intended as a grouping label 
-          a sender or receiver can use to aggregate or subtotal lines (e.g. summing all 
-          "HGV fleet" lines). It describes the kind of line, not the specific activity used 
+          machine-comparable. Useful for breaking a category into meaningful detail
+          without changing its GHG Protocol classification. It is intended as a grouping label
+          a sender or receiver can use to aggregate or subtotal lines (e.g. summing all
+          "HGV fleet" lines). It describes the kind of line, not the specific activity used
           to calculate it (see ActivityData).
       lineStatus:
         range: LineStatusEnum
@@ -215,7 +215,7 @@ classes:
           Country or region where emissions physically occurred: an ISO
           3166-1 alpha-2 country code (e.g. GB), optionally extended with a
           hyphen and either an ISO 3166-2 subdivision (e.g. US-CA) or a
-          3-character UN/LOCODE place code (e.g. GB-LON). 
+          3-character UN/LOCODE place code (e.g. GB-LON).
         pattern: "^[A-Za-z]{2}(-[A-Za-z0-9]{1,3})?$"
       companyFacilityIdentifier:
         description: Facility where emissions physically occurred (optional).
