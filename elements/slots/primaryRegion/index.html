@@ -382,6 +382,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#value-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Value Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -459,7 +470,7 @@
 
 
 <h1 id="slot-primaryregion">Slot: primaryRegion</h1>
-<p><em>Location of the reporting entity as a UN/LOCODE (minimum country; state/region extension supported).</em></p>
+<p><em>Location of the reporting entity: an ISO 3166-1 alpha-2 country code (e.g. GB), optionally extended with a hyphen and either an ISO 3166-2 subdivision (e.g. US-CA) or a 3-character UN/LOCODE place code (e.g. GB-LON).</em></p>
 <div>
 <p>URI: <a href="https://w3id.org/openccf/slot/primaryRegion">openccf:slot/primaryRegion</a></p>
 <!-- no inheritance hierarchy -->
@@ -533,6 +544,21 @@
 </tr>
 </tbody>
 </table>
+<h3 id="value-constraints">Value Constraints</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regex Pattern</td>
+<td><code>^[A-Za-z]{2}(-[A-Za-z0-9]{1,3})?$</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -560,8 +586,9 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">primaryRegion</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Location of the reporting entity as a UN/LOCODE (minimum country; state/region</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">extension supported).</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Location</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">reporting</span><span class="nv"> </span><span class="s">entity:</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">ISO</span><span class="nv"> </span><span class="s">3166-1</span><span class="nv"> </span><span class="s">alpha-2</span><span class="nv"> </span><span class="s">country</span><span class="nv"> </span><span class="s">code</span>
+<span class="w">  </span><span class="s">(e.g.</span><span class="nv"> </span><span class="s">GB),</span><span class="nv"> </span><span class="s">optionally</span><span class="nv"> </span><span class="s">extended</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">hyphen</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">either</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">ISO</span><span class="nv"> </span><span class="s">3166-2</span><span class="nv"> </span><span class="s">subdivision</span>
+<span class="w">  </span><span class="s">(e.g.</span><span class="nv"> </span><span class="s">US-CA)</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">3-character</span><span class="nv"> </span><span class="s">UN/LOCODE</span><span class="nv"> </span><span class="s">place</span><span class="nv"> </span><span class="s">code</span><span class="nv"> </span><span class="s">(e.g.</span><span class="nv"> </span><span class="s">GB-LON).&#39;</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/openccf</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
@@ -569,6 +596,7 @@
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmissionsReport</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^[A-Za-z]{2}(-[A-Za-z0-9]{1,3})?$</span>
 </code></pre></div>
 </details>
 </div>
