@@ -5,6 +5,7 @@ description: >-
   An open, interoperable data model for exchanging GHG Protocol-aligned
   corporate carbon footprints between systems. Released under CC0-1.0.
 license: CC0-1.0
+version: 1.0.0
 see_also:
   - https://openccf.org
 
@@ -43,6 +44,14 @@ classes:
       reportID:
         identifier: true
         description: Unique identifier for this report.
+      schemaVersion:
+        required: true
+        description: >-
+          The OpenCCF schema version this report was built against (e.g.
+          1.0.0), so a receiving system can tell which version of the
+          schema to interpret it with. Not the version of any generating
+          software - the schema version itself.
+        pattern: "^\\d+\\.\\d+\\.\\d+$"
       companyName:
         required: true
         description: Legal or trading name of the reporting entity.

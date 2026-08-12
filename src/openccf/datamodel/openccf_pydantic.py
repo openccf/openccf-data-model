@@ -30,7 +30,7 @@ from pydantic import (
 
 
 metamodel_version = "1.11.0"
-version = "None"
+version = "1.0.0"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -305,18 +305,45 @@ class EmissionsReport(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/openccf', 'tree_root': True})
 
     reportID: str = Field(default=..., description="""Unique identifier for this report.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
+    schemaVersion: str = Field(default=..., description="""The OpenCCF schema version this report was built against (e.g. 1.0.0), so a receiving system can tell which version of the schema to interpret it with. Not the version of any generating software - the schema version itself.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     companyName: str = Field(default=..., description="""Legal or trading name of the reporting entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
-    primaryRegion: str = Field(default=..., description="""Location of the reporting entity as a UN/LOCODE (minimum country; state/region extension supported).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
+    primaryRegion: str = Field(default=..., description="""Location of the reporting entity: an ISO 3166-1 alpha-2 country code (e.g. GB), optionally extended with a hyphen and either an ISO 3166-2 subdivision (e.g. US-CA) or a 3-character UN/LOCODE place code (e.g. GB-LON).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     reportingPeriodStart: date = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     reportingPeriodEnd: date = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     totalNetEmissionsLocationBasedKgCO2e: float = Field(default=..., description="""Net aggregate for the reporting period on the location-based Scope 2 method: sum(EMISSION) - sum(REMOVAL) + sum(REVERSAL) over all emissionsLines, excluding GROSS_CO2_FLUX and OTHER_LAND_SECTOR_DISCLOSURE lines, and excluding ELECTRICITY_MARKET_BASED lines. Always present: location-based is the baseline method, and for reports with no market-based electricity this is simply the report total.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     totalNetEmissionsMarketBasedKgCO2e: Optional[float] = Field(default=None, description="""Net aggregate for the reporting period on the market-based Scope 2 method: as above, excluding ELECTRICITY_LOCATION_BASED lines. Present only where the report contains market-based electricity lines. Omitted (left blank, never zero) otherwise.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     gwpHorizon: GwpHorizonEnum = Field(default=..., description="""GWP time horizon applied across the whole report. Report-level to enforce consistency; IPCC AR basis is recorded per line.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     reportStatus: ReportStatusEnum = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
-    emissionsLines: list[EmissionsLine] = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
+    emissionsLines: list[EmissionsLine] = Field(default=..., description="""The set of Emissions Lines that make up this report. Each element is a complete Emissions Line record, not a reference or identifier - the full quantified detail for that source or category lives here, and this is the only place it lives. A report must contain at least one line. The report's net emissions totals are derived by summing these lines; they are not entered independently.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     sectors: Optional[list[Sector]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     companyIdentifiers: Optional[list[CompanyIdentifier]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
     intensityDenominators: Optional[list[IntensityDenominator]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsReport']} })
+
+    @field_validator('schemaVersion')
+    def pattern_schemaVersion(cls, v):
+        pattern=re.compile(r"^\d+\.\d+\.\d+$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid schemaVersion format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid schemaVersion format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('primaryRegion')
+    def pattern_primaryRegion(cls, v):
+        pattern=re.compile(r"^[A-Za-z]{2}(-[A-Za-z0-9]{1,3})?$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid primaryRegion format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid primaryRegion format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
 class EmissionsLine(ConfiguredBaseModel):
@@ -367,12 +394,12 @@ class EmissionsLine(ConfiguredBaseModel):
 
     scope: ScopeEnum = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     category: EmissionCategoryEnum = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
-    subcategory: Optional[str] = Field(default=None, description="""Optional free-text subcategorisation of the line within its category, at the sender's discretion (e.g. \"Food and beverages\" or \"HGV fleet\"). There is no controlled vocabulary; values are descriptive and not intended to be machine-comparable. Useful for breaking a category into meaningful detail  without changing its GHG Protocol classification. It is intended as a grouping label  a sender or receiver can use to aggregate or subtotal lines (e.g. summing all  \"HGV fleet\" lines). It describes the kind of line, not the specific activity used  to calculate it (see ActivityData).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
+    subcategory: Optional[str] = Field(default=None, description="""Optional free-text subcategorisation of the line within its category, at the sender's discretion (e.g. \"Food and beverages\" or \"HGV fleet\"). There is no controlled vocabulary; values are descriptive and not intended to be machine-comparable. Useful for breaking a category into meaningful detail without changing its GHG Protocol classification. It is intended as a grouping label a sender or receiver can use to aggregate or subtotal lines (e.g. summing all \"HGV fleet\" lines). It describes the kind of line, not the specific activity used to calculate it (see ActivityData).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     lineStatus: LineStatusEnum = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     emissionsQuantityKgCO2e: float = Field(default=..., description="""Total CO2-equivalent for this line, expressed as a non-negative magnitude. Direction (whether the line adds to or subtracts from the net) is determined by accountingType, not by the sign of this value - consistent with GHG Protocol gross reporting, under which gross emissions and gross removals are reported separately and not netted within a category.""", ge=0, json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     emissionOrigin: EmissionOriginEnum = Field(default=..., json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine', 'GasBreakdown']} })
     accountingType: Optional[AccountingTypeEnum] = Field(default=AccountingTypeEnum.EMISSION, description="""Inventory treatment of this line, and its contribution to the report net total: EMISSION adds, REMOVAL subtracts, REVERSAL adds; GROSS_CO2_FLUX and OTHER_LAND_SECTOR_DISCLOSURE are disclosure-only and excluded from the net. Defaults to EMISSION where omitted.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine'], 'ifabsent': 'EMISSION'} })
-    region: str = Field(default=..., description="""Country or region where emissions physically occurred, as a UN/LOCODE (minimum country; state/region extension supported).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
+    region: str = Field(default=..., description="""Country or region where emissions physically occurred: an ISO 3166-1 alpha-2 country code (e.g. GB), optionally extended with a hyphen and either an ISO 3166-2 subdivision (e.g. US-CA) or a 3-character UN/LOCODE place code (e.g. GB-LON).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     companyFacilityIdentifier: Optional[str] = Field(default=None, description="""Facility where emissions physically occurred (optional).""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     emissionFactor: Optional[EmissionFactor] = Field(default=None, description="""Metadata on the emission factor used for this line. Optional as many exchanged figures (e.g. republished totals, or directly measured emissions) have no disclosed factor. Where factor is provided, source, year and ipccBasis are required.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     dataQuality: Optional[DataQuality] = Field(default=None, description="""GHG Protocol data quality assessment for this line, spanning both the activity data and the emission factor used. Optional; most relevant where secondary, proxy or estimated inputs are applied. Use dataQualityInformation for any additional context.""", json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
@@ -380,6 +407,19 @@ class EmissionsLine(ConfiguredBaseModel):
     gasBreakdown: Optional[list[GasBreakdown]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     activityData: Optional[ActivityData] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
     landSectorData: Optional[LandSectorData] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['EmissionsLine']} })
+
+    @field_validator('region')
+    def pattern_region(cls, v):
+        pattern=re.compile(r"^[A-Za-z]{2}(-[A-Za-z0-9]{1,3})?$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid region format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid region format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
 class Sector(ConfiguredBaseModel):

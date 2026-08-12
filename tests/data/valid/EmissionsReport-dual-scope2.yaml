@@ -14,6 +14,7 @@
 # Summing all five lines would count the same electricity twice.
 
 reportID: ACME-2024-DUAL
+schemaVersion: "1.0.0"
 companyName: Acme Manufacturing Ltd
 primaryRegion: GB
 reportingPeriodStart: '2024-01-01'

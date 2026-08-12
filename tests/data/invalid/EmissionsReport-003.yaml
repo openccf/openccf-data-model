@@ -1,4 +1,5 @@
 reportID: BAD-SCOPE-CAT
+schemaVersion: "1.0.0"
 companyName: Mismatch Co
 primaryRegion: GB
 reportingPeriodStart: '2024-01-01'

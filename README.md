@@ -4,7 +4,7 @@ An open, interoperable data model for exchanging GHG Protocol-aligned corporate
 carbon footprints between systems. It defines how a corporate footprint is
 structured for exchange - not what must be reported, calculated, or shared.
 
-**Status:** v0.3, release candidate for v1.0.
+**Status:** v1.0.
 
 - Schema reference: <https://openccf.github.io/openccf-data-model>
 - Concept, white paper, information model: <https://openccf.org>
@@ -53,6 +53,12 @@ realistic 100+ line Scope 1/2/3 example.
    each net total equals the signed sum of its contributing lines; where a
    `gasBreakdown` is present, contributions sum to the line total within 0.1%.
    Checked by the test suite; implementations should check them too.
+
+6. **Every report declares its own schema version.** `schemaVersion` (e.g.
+   `1.0.0`) is required, so a receiving system can tell which version of the
+   schema to interpret a document with, without relying on out-of-band
+   context. It's the schema version, not the version of whatever software
+   generated the report.
 
 ## Repository layout
 

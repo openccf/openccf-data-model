@@ -7,6 +7,7 @@ title: OpenCCF - Open Corporate Carbon Footprint Data Model
 see_also:
 - https://openccf.org
 id: https://w3id.org/openccf
+version: 1.0.0
 imports:
 - linkml:types
 license: CC0-1.0
@@ -522,6 +523,20 @@ slots:
     - EmissionsReport
     range: string
     required: true
+  emissionsReport__schemaVersion:
+    name: emissionsReport__schemaVersion
+    description: The OpenCCF schema version this report was built against (e.g. 1.0.0),
+      so a receiving system can tell which version of the schema to interpret it with.
+      Not the version of any generating software - the schema version itself.
+    from_schema: https://w3id.org/openccf
+    slot_uri: openccf:schemaVersion
+    alias: schemaVersion
+    owner: EmissionsReport
+    domain_of:
+    - EmissionsReport
+    range: string
+    required: true
+    pattern: ^\d+\.\d+\.\d+$
   emissionsReport__companyName:
     name: emissionsReport__companyName
     description: Legal or trading name of the reporting entity.
@@ -1187,6 +1202,7 @@ classes:
     from_schema: https://w3id.org/openccf
     slots:
     - emissionsReport__reportID
+    - emissionsReport__schemaVersion
     - emissionsReport__companyName
     - emissionsReport__primaryRegion
     - emissionsReport__reportingPeriodStart
@@ -1204,6 +1220,14 @@ classes:
         name: reportID
         description: Unique identifier for this report.
         identifier: true
+      schemaVersion:
+        name: schemaVersion
+        description: The OpenCCF schema version this report was built against (e.g.
+          1.0.0), so a receiving system can tell which version of the schema to interpret
+          it with. Not the version of any generating software - the schema version
+          itself.
+        required: true
+        pattern: ^\d+\.\d+\.\d+$
       companyName:
         name: companyName
         description: Legal or trading name of the reporting entity.
@@ -1676,7 +1700,7 @@ classes:
     class_uri: openccf:LandSectorData
 metamodel_version: 1.11.0
 source_file: openccf.yaml
-source_file_date: '2026-08-05T12:59:01'
-source_file_size: 20664
-generation_date: '2026-08-05T13:01:40'
+source_file_date: '2026-08-12T08:35:31'
+source_file_size: 21051
+generation_date: '2026-08-12T08:46:19'
 

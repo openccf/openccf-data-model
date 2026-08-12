@@ -1,5 +1,5 @@
 # Auto generated from openccf.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-07-25T18:33:57
+# Generation date: 2026-08-12T09:12:16
 # Schema: openccf
 #
 # id: https://w3id.org/openccf
@@ -60,7 +60,7 @@ from linkml_runtime.linkml_model.types import Date, Float, Integer, String
 from linkml_runtime.utils.metamodelcore import XSDDate
 
 metamodel_version = "1.11.0"
-version = None
+version = "1.0.0"
 
 # Namespaces
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
@@ -91,6 +91,7 @@ class EmissionsReport(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = OPENCCF.EmissionsReport
 
     reportID: Union[str, EmissionsReportReportID] = None
+    schemaVersion: str = None
     companyName: str = None
     primaryRegion: str = None
     reportingPeriodStart: Union[str, XSDDate] = None
@@ -109,6 +110,11 @@ class EmissionsReport(YAMLRoot):
             self.MissingRequiredField("reportID")
         if not isinstance(self.reportID, EmissionsReportReportID):
             self.reportID = EmissionsReportReportID(self.reportID)
+
+        if self._is_empty(self.schemaVersion):
+            self.MissingRequiredField("schemaVersion")
+        if not isinstance(self.schemaVersion, str):
+            self.schemaVersion = str(self.schemaVersion)
 
         if self._is_empty(self.companyName):
             self.MissingRequiredField("companyName")
@@ -751,11 +757,16 @@ class slots:
 slots.emissionsReport__reportID = Slot(uri=OPENCCF.reportID, name="emissionsReport__reportID", curie=OPENCCF.curie('reportID'),
                    model_uri=OPENCCF.emissionsReport__reportID, domain=None, range=URIRef)
 
+slots.emissionsReport__schemaVersion = Slot(uri=OPENCCF.schemaVersion, name="emissionsReport__schemaVersion", curie=OPENCCF.curie('schemaVersion'),
+                   model_uri=OPENCCF.emissionsReport__schemaVersion, domain=None, range=str,
+                   pattern=re.compile(r'^\d+\.\d+\.\d+$'))
+
 slots.emissionsReport__companyName = Slot(uri=OPENCCF.companyName, name="emissionsReport__companyName", curie=OPENCCF.curie('companyName'),
                    model_uri=OPENCCF.emissionsReport__companyName, domain=None, range=str)
 
 slots.emissionsReport__primaryRegion = Slot(uri=OPENCCF.primaryRegion, name="emissionsReport__primaryRegion", curie=OPENCCF.curie('primaryRegion'),
-                   model_uri=OPENCCF.emissionsReport__primaryRegion, domain=None, range=str)
+                   model_uri=OPENCCF.emissionsReport__primaryRegion, domain=None, range=str,
+                   pattern=re.compile(r'^[A-Za-z]{2}(-[A-Za-z0-9]{1,3})?$'))
 
 slots.emissionsReport__reportingPeriodStart = Slot(uri=OPENCCF.reportingPeriodStart, name="emissionsReport__reportingPeriodStart", curie=OPENCCF.curie('reportingPeriodStart'),
                    model_uri=OPENCCF.emissionsReport__reportingPeriodStart, domain=None, range=Union[str, XSDDate])
@@ -809,7 +820,8 @@ slots.emissionsLine__accountingType = Slot(uri=OPENCCF.accountingType, name="emi
                    model_uri=OPENCCF.emissionsLine__accountingType, domain=None, range=Optional[Union[str, "AccountingTypeEnum"]])
 
 slots.emissionsLine__region = Slot(uri=OPENCCF.region, name="emissionsLine__region", curie=OPENCCF.curie('region'),
-                   model_uri=OPENCCF.emissionsLine__region, domain=None, range=str)
+                   model_uri=OPENCCF.emissionsLine__region, domain=None, range=str,
+                   pattern=re.compile(r'^[A-Za-z]{2}(-[A-Za-z0-9]{1,3})?$'))
 
 slots.emissionsLine__companyFacilityIdentifier = Slot(uri=OPENCCF.companyFacilityIdentifier, name="emissionsLine__companyFacilityIdentifier", curie=OPENCCF.curie('companyFacilityIdentifier'),
                    model_uri=OPENCCF.emissionsLine__companyFacilityIdentifier, domain=None, range=Optional[str])
